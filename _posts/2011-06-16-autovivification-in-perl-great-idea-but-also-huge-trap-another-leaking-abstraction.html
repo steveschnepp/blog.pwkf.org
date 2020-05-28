@@ -1,0 +1,50 @@
+---
+layout: post
+title: "Autovivification in Perl : Great Idea but also Huge Trap - Another Leaking Abstraction..."
+date: 2011-06-16 18:20:22 +0100
+tags: [perl, fail]
+---
+
+<p><a href="http://en.wikipedia.org/wiki/Autovivification" hreflang="en">Autovivification</a> is one of Perl's really great design success.</p>
+<p>It all comes to <em>you don't need to worry about existence before
+dereferencing something</em>.</p>
+<p>That means, for setting a nested hash, you only need to write :</p>
+<pre>
+$h-&gt;{foo}{bar} = &quot;value&quot;;
+</pre>
+<p>And that will work out of the box. Perl will happily create all the
+data-structure for you.</p>
+<p>So, now a little coding test, what does the following code output ?</p>
+<pre>
+my $a;
+
+if ($a-&gt;{foo}{bar}) {
+   print &quot;Found foo/bar
+&quot;;
+}
+
+if ($a-&gt;{foo}) {
+   print &quot;Found foo
+&quot;;
+}
+</pre>
+<p>Naively, it shouldn’t output anything, right ?</p>
+<p>Not so fast. Upon a careful read of <q>Perl will happily create all the
+data-structure for you</q>, we can put some emphasis on one word : <q>Perl will
+happily <strong>create</strong> all the data-structure for you</q>.</p>
+<p>That might be just perfect, except that Perl creates it whenever it needs
+it, even if it is only for <strong>reading</strong>.</p>
+<p>And now you understand the catch : a <strong>read</strong> operation can
+result in a <strong>write</strong> one.</p>
+<p>As Uncle Ben (from SpiderMan) said<sup>[<a href="#pnote-614219-1" id="rev-pnote-614219-1" name="rev-pnote-614219-1">1</a>]</sup> : <q>With Great
+Power Comes Great Responsibility</q>.</p>
+<p><a href="http://search.cpan.org/~ilmari/" hreflang="en">Dagfinn Ilmari
+Mannsåker</a> showed me a nice <a href="http://search.cpan.org/perldoc?autovivification" hreflang="en">autovivification</a> module on CPAN that fixes this behavior, and enables
+a fine tuning of this process.</p>
+<p>I really think the fact that creation also happen when querying the value is
+a real bug in Perl itself, or at least a bug in the design of the feature.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-614219-1" id="pnote-614219-1" name="pnote-614219-1">1</a>] Voltaire, Franklin D. Roosevelt and other said
+something very similar, but they are not as geeky.</p>
+</div>

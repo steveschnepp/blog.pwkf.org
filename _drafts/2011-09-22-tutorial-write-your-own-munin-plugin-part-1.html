@@ -1,0 +1,50 @@
+---
+layout: post
+title: "Tutorial - Write your own Munin plugin - Part 1"
+date: 2011-09-22 12:17:23 +0100
+tags: [munin, tutorial, sysadmin]
+---
+
+<p>Writing a <a href="http://munin-monitoring.org/" hreflang="en">munin</a>
+plugin is dead easy, let's see how.</p>
+<h2>Context</h2>
+<p>We'll write a plugin for the apache log file. It is very simple at first,
+but will evolve to use progressively all the features of munin.</p>
+<p>We assume the apache log file is <code>/var/log/apache/access_log</code>,
+and its format is a plain common log format with vhost prefixed to it.</p>
+<pre>
+LogFormat &quot;%v %l %u %t \&quot;%r\&quot; %&gt;s %b&quot; commonvhost
+CustomLog /var/log/apache/access_log commonvhost
+</pre>
+<h2>Simple one</h2>
+<p>Here a very simple plugin, all in POSIX shell :</p>
+<pre>
+#! /bin/sh
+# Simple apache plugin
+
+if [ $1 = &quot;config&quot; ]
+then
+  cat &lt;&lt;EOF
+graph_title Simple apache plugin to show hits
+hits_2xx.label Hits 2xx
+hits_3xx.label Hits 3xx
+hits_4xx.label Hits 4xx
+hits_5xx.label Hits 5xx
+EOF
+fi
+
+HITS_2XX=$(grep -c '&quot; 2.. ' /var/log/apache/access_log )
+HITS_3XX=$(grep -c '&quot; 3.. ' /var/log/apache/access_log )
+HITS_4XX=$(grep -c '&quot; 4.. ' /var/log/apache/access_log )
+HITS_5XX=$(grep -c '&quot; 5.. ' /var/log/apache/access_log )
+
+# now we emit the values.
+# The '.value' part is important and should not be omitted.
+echo &quot;hits_2xx.value $HITS_2XX&quot;
+echo &quot;hits_3xx.value $HITS_3XX&quot;
+echo &quot;hits_4xx.value $HITS_4XX&quot;
+echo &quot;hits_5xx.value $HITS_5XX&quot;
+
+
+
+</pre>

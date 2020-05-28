@@ -1,0 +1,32 @@
+---
+layout: post
+title: "Sed is much slower than Perl, or not..."
+date: 2009-11-12 10:11:18 +0100
+tags: [sql, perl, locales]
+---
+
+<p>I wanted to do some text replacement with a <strong>huge</strong> file
+(think ~18GiB), filled with <strong>huge</strong> lines (think ~2MiB per
+ligne)<sup>[<a href="#pnote-459477-1" id="rev-pnote-459477-1" name="rev-pnote-459477-1">1</a>]</sup>.</p>
+<p>I naïvely piped it through <code>sed</code> and I was quite shocked that it
+was CPU bound, and not I/O bound. The average rate was about 5 MiB/s (measured
+with <a href="http://www.ivarch.com/programs/pv.shtml" hreflang="en">pv</a>,
+and the CPU was at almost 100%.The text file was gzipped on the filesystem, but
+with a 1/100 ratio, so the gzip process just took less than 2% CPU. I replaced
+then the <code>sed -e</code> with the Perl one-liner <code>perl -lnpe</code>,
+and .... <em>tadaa</em>, it was flying at a rate of 50MiB/s !</p>
+<p>While I'm a big fan of Perl, and know its effectiveness to handle text
+streams, I'm was still astonished : being 10x faster than sed was
+something.</p>
+<p>But in the good old saying <q>Too good to be true means suspect</q>, I
+remembered something about the character encoding of the regular expression.
+Since the system is entirely configured in UTF8, I suspected the
+<em>infamous</em> UTF8 overhead over plain ASCII.</p>
+<p>I was right : a little <code>LANG=C</code> in front of the sed command line
+restored the rate to 50MiB/s.</p>
+<p>So, <strong>beware</strong> of the <strong>performance impact</strong> of
+<strong>UTF8</strong> strings, and try to avoid it if you can.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-459477-1" id="pnote-459477-1" name="pnote-459477-1">1</a>] For the record, it was a MySQL dump</p>
+</div>

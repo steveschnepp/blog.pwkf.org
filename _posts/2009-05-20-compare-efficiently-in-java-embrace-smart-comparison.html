@@ -1,0 +1,120 @@
+---
+layout: post
+title: "Compare Efficiently in Java : Embrace Smart Comparison"
+date: 2009-05-20 05:40:58 +0100
+tags: []
+---
+
+<p>Bill the Lizard shows us <a href="http://www.billthelizard.com/2008/08/avoid-npe-when-comparing-strings.html" hreflang="en">a nice trick to avoid this NPE</a> when used with string literals
+: call the method on the string literal. It's possible because it's also an
+object, and cannot be <code>null</code>.</p>
+<p>But, as much as this trick code seems sweet, but it just feels like a red
+herring on the long run, First it only works for comparing strings and even
+only when comparing a string with a string literal.</p>
+<h2>To Equality ...</h2>
+<p>It is what he said at the end that is much more interesting :</p>
+<blockquote>
+<p>The lesson to be learned here is that if you have to resort to &quot;clever&quot;
+tricks to get something done, with just a little bit of lateral thinking you
+can probably find a cleaner, simpler way.</p>
+</blockquote>
+<p>Let's take this lesson even further.</p>
+<p>I had a Perl &amp; C++ background before coming to the Java world, and I am
+sometimes puzzled that Java makes things quite unnecessary complicated for the
+programmer from time to time.</p>
+<p>My little suggestion : create a quite simple helper static function :</p>
+<pre>
+static boolean isEqual(String a, String b) {
+   if (a == b) return true;
+
+   // a &amp; b cannot be null at the same time
+   if (a == null || b == null) return false;
+
+   // Now none can be null
+   return a.equals(b);
+}
+</pre>
+<p>Now, the NPE is avoided for any kind of string, with any order. We could
+also have a <em>smarter</em> equality comparison function by first converting
+to a string, and comparing the resulting string instead of comparing the
+original numbers.</p>
+<pre>
+static boolean isEqualSmart(Object a, Object b) {
+   if (a == b) return true;
+
+   // a &amp; b cannot be null at the same time
+   if (a == null || b == null) return false;
+
+   // Now none can be null
+   return a.toString().equals(b.toString());
+}
+</pre>
+<p>With the wonders of Java's function overloading, you can even write
+specialized functions that convert even more <em>smartly</em> their arguments.
+And then be able to compare a string with a number (even a primitive type).</p>
+<h2>... and Beyond</h2>
+<p>We began about testing equality, but for comparison such as
+<code>&lt;=</code> or <code>&gt;</code>, you have to decode the output of the
+quite ugly <code>compareTo()</code> method. The helper static function trick
+comes also handy here.</p>
+<p>First, we design a complete API that enable alphanumeric, and numeric
+comparison : the so-called <strong>smart comparison</strong>. The API should
+take any Object, or even primitive types, and convert it at will to enable
+hybrid comparison. This will greatly enhance the comparisons abilities of
+Java.</p>
+<pre>
+class OpAlpha {
+
+   // Alphanumeric comparison
+   public static boolean lt(Object a, Object b) {
+      /* convert to string and compare */
+   }
+   public static boolean gt(Object a, Object b) {
+      /* convert to string and compare */
+   }
+
+   // ... rest of the implementation ...
+}
+
+
+class OpNum {
+
+   // numeric comparison
+   public static boolean lt(Object a, Object b) {
+      /* convert to numeric and compare */
+   }
+
+   // ... rest of the implementation ...
+}
+
+class Op {
+   // smart comparison, depends on the 2nd argument type
+   public static boolean lt(Object a, int b) {
+      /* convert to int and compare */
+   }
+   public static boolean lt(Object a, String b) {
+      /* convert to string and compare */
+   }
+   public static boolean lt(Object a, Number b) {
+      /* convert to Number and compare */
+   }
+
+   // ... rest of the implementation ...
+}
+</pre>
+<p>The usage is like this :</p>
+<pre>
+String a = &quot;124&quot;;
+assertTrue( Op.eq(a, 124) );
+assertFalse( Op.lt(a, 1) );
+assertTrue( OpAlpha.lt(a, 1) );
+</pre>
+<p>We can see that all the tedious part of handling the conversions is done
+under the hood. Choosing the comparison to is just a matter of choosing the
+right class. A little more work could even be done to take the <code>Op</code>
+classes to implement <code>Comparator</code> in a complete OO way in addition
+of the static helpers.</p>
+<h2>Update (01/06/2009)</h2>
+<p>It seems that <a href="/post/2009/06/Equality-in-Java-is-a-Hot-Topic-but-a-Hazardous-one">equality in
+Java is quite hazardous</a>, and that you have to be extra careful not to set a
+comparison-land-mine off by accident.</p>

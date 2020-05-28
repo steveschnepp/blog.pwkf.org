@@ -1,0 +1,51 @@
+---
+layout: post
+title: "Waiting for Munin 2.0 - Performance - Architecture"
+date: 2010-06-09 20:26:24 +0100
+tags: [munin, munin20]
+---
+
+<h2>A little intro/refresh on munin's architecture on the master</h2>
+<p>Munin has a very simple architecture on the master : <code>munin-cron</code>
+is launched via cron every 5 minutes. Its only job is to launch in order
+<code>munin-update</code>, <code>munin-graph</code>, <code>munin-html</code>
+&amp; <code>munin-limits</code>.</p>
+<h2>The various processes</h2>
+<h3>munin-update</h3>
+<p>This process retrieves the values from the various nodes and to update the
+rrd files. This one should never take more than 5 minutes to run, otherwise
+there will be gaps since the next update will not be launched
+(lockfile-protected runs).</p>
+<p>This process stresses the I/O on the master, and depends on the plugins
+execution time on the various nodes. On 1.4 the retrieval is
+multi-threaded<sup>[<a href="#pnote-525782-1" id="rev-pnote-525782-1" name="rev-pnote-525782-1">1</a>]</sup>, so an slow node doesn't impact too much the
+whole process.</p>
+<p><strong>2.0 proposes asynchronous updates and vectorized
+updates.</strong></p>
+<h3>munin-graph</h3>
+<p>This process generates all the image files from the rrd files.</p>
+<p>It is usually a process that is quite CPU-bound, it generates also a fair
+load of I/O. Since 1.4 there might also be a parallel graphing generation in
+order to take advantage of multiple CPU / multiple I/O paths.</p>
+<p>A simple optimization is to generate only needed graphs instead of all of
+them each time. This leads to CGI-generation of graphs. 1.2 &amp; 1.4 took a
+first step in this direction, but it's quite a hack since it's only a very
+basic script that calls <code>munin-update</code> with the correct
+parameters.</p>
+<p>A FastCGI port of the wrapper (<code>munin-cgi-graph</code>) removes the
+overhead of starting the wrapper for each call, but in 1.4 the code is quite
+experimental and has some serious bugs that would need extensive patching to be
+fixed.</p>
+<p><strong>2.0 completes the integration of CGI graphing with removing the
+overhead of calling <code>munin-graph</code> and does this extensive patching
+for bugs fixing</strong></p>
+<h3>munin-html</h3>
+<p>This process generates all the html files from the rrd files. This one is
+quite fast for now.</p>
+<h3>munin-limits</h3>
+<p>This process checks the limits to see if there is a warning/alert to send
+via mail or nagios. This one is also quite fast for now.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-525782-1" id="pnote-525782-1" name="pnote-525782-1">1</a>] more multi-process actually</p>
+</div>

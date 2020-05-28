@@ -1,0 +1,73 @@
+---
+layout: post
+title: "Waiting for Munin 2.0 - Break the 5 minutes barrier !"
+date: 2011-06-13 13:43:23 +0100
+tags: []
+---
+
+<p>Every monitoring software has a polling rate. It is usually 5 min, because
+it's the sweet spot that enables frequent updates yet still having a low
+overhead.</p>
+<p>Munin is not different in that respect : it's data fetching routines
+<strong>have</strong> to be launched every 5 min, otherwise you'll face data
+loss. And this 5 min period is deeply grained in the code. So changing it is
+possible, but very tedious and error prone.</p>
+<p>But sometimes we need a very fine sampling rate. Every 10 seconds enables us
+to track fast changing metrics that would be averaged out otherwise. Changing
+the whole polling process to cope with a 10s period is very hard on hardware,
+since now <strong>every</strong> update has to finish in these 10 seconds.</p>
+<p>This triggered an extension in the plugin protocol, commonly known as
+<em>supersampling</em>.</p>
+<h2>Supersampling</h2>
+<h3>Overview</h3>
+<p>The basic idea is that fine precision should only be for selected plugins
+only. It also cannot be triggered from the master, since the overhead would be
+way too big.</p>
+<p>So, we just let the plugin sample itself the values at a rate it feels
+adequate. Then each polling round, the master fetches all the samples since
+last poll.</p>
+<p>This enables various constructions, mostly around <em>streaming</em> plugins
+to achieve highly detailed sampling with a very small overhead.</p>
+<h5>Notes</h5>
+<p>This protocol is currently completely transparent to
+<code>munin-node</code>, and therefore it means that it can be used even on
+older (1.x) nodes. Only a 2.0 master is required.</p>
+<h3>Protocol details</h3>
+<p>The protocol itself is derived from the spoolfetch extension.</p>
+<h4>Config</h4>
+<p>A new directive is used, <code>update_rate</code>. It enables the master to
+create the rrd with an adequate step.</p>
+<p>Omitting it would lead to rrd averaging the supersampled values onto the
+default 5 min rate. This means <strong>data loss</strong>.</p>
+<h5>Notes</h5>
+<p>The heartbeat has always a 2 step size, so failure to send all the samples
+will result with unknown values, as expected.</p>
+<p>The RRD file size is always the same in the default config, as all the RRA
+are configured proportionally to the <code>update_rate</code>. This means that,
+since you'll keep as much data as with the default, you keep it for a shorter
+time.</p>
+<h4>Fetch</h4>
+<p>When spoolfetching, the epoch is also sent in front of the value.
+Supersampling is then just a matter of sending multiple epoch/value lines, with
+monotonically increasing epoch. Note that since the epoch is an integer value
+for rrdtool, the smallest granularity is 1 second. For the time being, the
+protocol itself does also mandates integers. We can easily imagine that with
+another database as backend, an extension could be hacked together.</p>
+<h3>Compatibility with 1.4</h3>
+<p>On older 1.4 masters, only the last sampled value gets into the rrd.</p>
+<h3>Sample implementation</h3>
+<p>The canonical sample implementation is multicpu1sec, a contrib plugin on
+github. It is also a so-called streaming plugin.</p>
+<h3>Streaming plugins</h3>
+<p>These plugins fork a background process when called that streams a system
+tool into a spool file. In multipcu1sec, it is the <code>mpstat</code> tool
+with a period of 1 second.</p>
+<h2>Undersampling</h2>
+<p>Some plugins are on the opposite side of the spectrum, as they only need a
+lower precision.</p>
+<p>It makes sense when :</p>
+<ul>
+<li>data should be kept for a <em>very</em> long time</li>
+<li>data is <strong>very</strong> expensive to generate and it doesn't vary
+fast.</li>
+</ul>

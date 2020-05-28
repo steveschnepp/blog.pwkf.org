@@ -1,0 +1,30 @@
+---
+layout: post
+title: "Immutability of an URL"
+date: 2009-04-27 16:13:30 +0100
+tags: []
+---
+
+<p>In the pure spirit of <a href="http://www.javapractices.com/topic/TopicAction.do?Id=211" hreflang="en">Data
+is King</a> I think that URL should <strong>never</strong> change. Even the W3C
+agrees with their <a href="http://www.w3.org/Provider/Style/URI.html" hreflang="en">Cool URIs don't change</a> article.</p>
+<p>But we all know that in IT <em>never</em> is only <em>not in the foreseen
+future</em>. So URL <strong>do</strong> change, at least after a while, and
+usually for technical reasons<sup>[<a href="#pnote-397657-1" id="rev-pnote-397657-1" name="rev-pnote-397657-1">1</a>]</sup>.</p>
+<p>Since you can update your website to update the URLs, but the inbound link
+cannot be easily updated. To handle this need, the HTTP protocol has specified
+the 301 response code.</p>
+<p>The solution is that the site should remember all the urls that it generated
+and redirects accordingly. This way you'll never loose a potential reader to
+the infamous 404 (this page does not exist).</p>
+<p>Some sites even try to approximate the page on a custom 404 page. That's
+another reason to have user-friendly urls : to be able to hint your reader to
+appropriate pages in case you don't find his initial destination.</p>
+<p>Sadly, this redirect behavior isn't supported by my blog engine
+(dotclear)... That's for the <a href="http://en.wikipedia.org/wiki/Eating_one%27s_own_dog_food" hreflang="en">eat
+your own dog's food</a>, but I'm looking forward to do it on my current
+blogging platform.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-397657-1" id="pnote-397657-1" name="pnote-397657-1">1</a>] upgrade to another blog engine...</p>
+</div>

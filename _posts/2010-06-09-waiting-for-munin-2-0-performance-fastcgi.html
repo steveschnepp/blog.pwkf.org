@@ -1,0 +1,109 @@
+---
+layout: post
+title: "Waiting for Munin 2.0 - Performance - FastCGI"
+date: 2010-06-09 21:00:54 +0100
+tags: [munin, munin20]
+---
+
+<p>1.2 has CGI, it is slow, unsupported, but <a href="http://munin-monitoring.org/wiki/CgiHowto" hreflang="en">it does
+exist</a>.</p>
+<p>1.4 has even an <a href="http://munin-monitoring.org/wiki/CgiHowto#FastCGI" hreflang="en">experimental FastCGI</a> install mode.</p>
+<p>Quoting from this page :</p>
+<blockquote>
+<p>This is more a proof of concept than a recommended - it's slow. Also we do
+not test it before every release</p>
+</blockquote>
+<p>In 2.0 lots of work has been done to take this experimental CGI mode into a
+supported one. It might even be the primary way of using munin since, when an
+install has a certain size, CGI becomes mandatory.</p>
+<p>That's because <code>munin-graph</code> doesn't have time to finish its job
+when the next one is launched, and the new one doesn't run. It is not as
+dramatic as a missed <code>munin-update</code> execution, since the graphs will
+still be generated on the later round, but there will be random graph lags and
+it will put quite some stress on the CPU &amp; I/O subsystem. This will slow
+<code>munin-update</code> down since it also uses the I/O subsystem much, and
+that's to be avoided at all costs.</p>
+<p>Mainstream CGI has some consequences :</p>
+<ol>
+<li>Only the FastCGI wrapper remained : the plain CGI one is dropped.
+<ul>
+<li>The CPAN module <code>CGI::Fast</code> is compatible when launched as a
+normal CGI.</li>
+<li>Almost all HTTP servers support plain CGI, and with the <a href="http://www.fastcgi.com/devkit/doc/cgi-fcgi.1" hreflang="en">cgi-fcgi</a>
+wrapper from the FastCGI devkit (Debian package <code>libfcgi</code>), you can
+have the best of both worlds (a custom HTTP server &amp; FastCGI). I even
+posted on how to have a working <a href="/post/2010/06/CGI-on-steroids-with-FastCGI%2C-but-on-a-CGI-only-server-The-FastCGI-wrapper">
+thttpd with FastCGI</a>.</li>
+</ul>
+</li>
+<li>The old process limit mechanism is dropped also. The FastCGI server
+configuration is a much better way to control it. The old code was based on
+System V semaphores and was not 100% reliable.</li>
+<li>A caching system has to be implemented, in order for each graph to be
+generated only once for its lifetime.</li>
+<li>The CGI process is launched with the HTTP server user. Since it doesn't
+only read now, but also writes log files and images files, there is an extra
+step when installing it. But it's already described in the <a href="http://munin-monitoring.org/wiki/CgiHowto" hreflang="en">Munin CGI</a> page
+given previously.</li>
+<li>Since the process is launched only once, for now it read only once the
+config. So if some part of the config change, the FastCGI container MUST be
+restarted.</li>
+</ol>
+<h2>Some benchmarks</h2>
+<p>Now, the sweet part : I'm putting up some micro-benchmarks.</p>
+<p>They should be taken with caution as every benchmark should be, but I think
+the general idea is conveyed. For the sake of simplicity I'm only doing 1
+request in parallel and disabled IMS caching.</p>
+<h3>Basic 1.2 CGI</h3>
+<pre>
+$ httperf --num-conns 10  --add-header='Cache-Control: no-cache
+' \
+    --uri  /cgi-bin/munin-cgi-graph/localdomain/localhost.localdomain/cpu-day.png
+
+Total: connections 10 requests 10 replies 10 test-duration 27.939 s
+
+Connection rate: 0.4 conn/s (2793.9 ms/conn, &lt;=1 concurrent connections)
+Connection time [ms]: min 1653.9 avg 2793.9 max 5217.0 median 1912.5 stddev 1487.8
+Connection time [ms]: connect 0.0
+Connection length [replies/conn]: 1.000
+
+Request rate: 0.4 req/s (2793.9 ms/req)
+Request size [B]: 131.0
+</pre>
+<h3>1.4 FastCGI</h3>
+<p>The munin-fastcgi-graph is only loaded once, but the munin-graph is reloaded
+each time.</p>
+<pre>
+$ httperf --num-conns 10  --add-header='Cache-Control: no-cache
+' \
+    --uri  /cgi-bin/munin-fastcgi-graph/localdomain/localhost.localdomain/cpu-day.png
+
+Total: connections 10 requests 10 replies 10 test-duration 13.807 s
+
+Connection rate: 0.7 conn/s (1380.7 ms/conn, &lt;=1 concurrent connections)
+Connection time [ms]: min 1141.3 avg 1380.7 max 1636.1 median 1381.5 stddev 173.7
+Connection time [ms]: connect 0.0
+Connection length [replies/conn]: 1.000
+
+Request rate: 0.7 req/s (1380.7 ms/req)
+</pre>
+<p>The response time is cut almost in half. That's expected, since only the top
+half of the processing isn't reloaded.</p>
+<h3>2.0 FastCGI</h3>
+<p>Here everything is loaded once.</p>
+<pre>
+$ httperf --num-conns 10  --add-header='Cache-Control: no-cache
+' \
+    --uri  /cgi-bin/munin-cgi-graph-2.0/localdomain/localhost.localdomain/cpu-day.png
+
+Total: connections 10 requests 10 replies 10 test-duration 1.668 s
+
+Connection rate: 6.0 conn/s (166.8 ms/conn, &lt;=1 concurrent connections)
+Connection time [ms]: min 123.0 avg 166.8 max 513.4 median 127.5 stddev 121.9
+Connection time [ms]: connect 0.0
+Connection length [replies/conn]: 1.000
+
+Request rate: 6.0 req/s (166.8 ms/req)
+</pre>
+<p>Now response time is cut almost by a ten factor ! That's quite good news,
+since it goes 20 times faster that the original CGI.</p>

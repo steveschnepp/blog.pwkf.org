@@ -1,0 +1,55 @@
+---
+layout: post
+title: "Databases: Efficient Denormalization with Views"
+date: 2009-05-14 15:35:15 +0100
+tags: []
+---
+
+<p>On the other side, to <strong>denormalize</strong> is sometimes seen as a
+way to :</p>
+<ul>
+<li><strong>optimize development</strong> : you do not need to write (and
+debug) complex queries since all the data is nicely located in the same
+table</li>
+<li><strong>optimize performance</strong> : the data has a better locality (no
+need to fetch or compute data from elsewhere). You can even pre-compute
+<a href="http://database-programmer.blogspot.com/2008/11/keeping-denormalized-values-correct.html" hreflang="en">order totals</a><sup>[<a href="#pnote-402145-1" id="rev-pnote-402145-1" name="rev-pnote-402145-1">1</a>]</sup>.</li>
+</ul>
+<p>Denormalize correctly is quite difficult since <strong>one change</strong>
+snowballs in <strong>multiple updates</strong> to keep the redundant data
+coherent. It is therefore usually done on the <strong>application side</strong>
+with ready-to-use ORM frameworks. But managing it at the application level
+comes with an ugly cost : it has to be <strong>reimplemented over and
+over</strong> each time the application switches technology, version or when a
+new application is connecting to the database.</p>
+<p>In almost every programming language, code reuse is encouraged. Here, at the
+database level, we can also apply the same principles, and use views to
+transparently present a denormalized API (read <em>tables</em>) on a more
+normalized schema.</p>
+<p>The main points are :</p>
+<ul>
+<li>Views are the main code reuse vector at the database level. Current
+database usually correctly optimize (by rewrite and recombination) the simple
+queries so that performance is on par with a hand crafted query that doesn't
+use the views</li>
+<li>Sometime even faster since the data is nicely organized, so there is much
+less data to transfer, and I/O bandwidth is a usual suspect.</li>
+<li>The application part doesn't even need to know that normalization happens
+under-hood since <a href="http://www.ibm.com/developerworks/db2/library/techarticle/0210rielau/0210rielau.html" hreflang="en">updates to views</a> are possible in many modern RDMs with the
+<a href="http://publib.boulder.ibm.com/infocenter/ids9help/topic/com.ibm.sqlt.doc/sqltmst333.htm" hreflang="en">@@INSTEAD OF@@ trigger</a> (or something <a href="http://www.postgresql.org/docs/current/static/rules-update.html" hreflang="en">equivalent</a>).</li>
+<li>Theses updates can be created with <a href="http://en.wikipedia.org/wiki/Materialized_view" hreflang="en">Materialized
+views</a> are a step even further on the denormalizing road, since it provides
+the common benefits of denormalize without the implementation caveats. We can
+even hand-craft these <em>Materialized views</em> directly in an aggregation
+table in order to have the space benefits of normalisation and the performance
+benefits of denormalization.</li>
+</ul>
+<p>So, nothing stops you from normalizing at will, and denormalizing when
+needed. Where to put the cursor is yours to decide, but moving it afterwards is
+finally easier that what is commonly admited.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-402145-1" id="pnote-402145-1" name="pnote-402145-1">1</a>] That article also explains why <strong>denormalization
+maintenance must stay at the database level</strong> with a very interesting
+metaphor</p>
+</div>

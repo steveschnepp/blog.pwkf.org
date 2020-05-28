@@ -1,0 +1,66 @@
+---
+layout: post
+title: "Databases: Better Defer Constraints than Avoid Them"
+date: 2009-07-03 09:28:26 +0100
+tags: []
+---
+
+<h2><em>ACID</em>ity of transactions as rescue...</h2>
+<p>Let's examine what all of the <code>A</code>, the <code>C</code>, the
+<code>I</code> and the <code>D</code> have for implications on our current
+subject.</p>
+<h3>Transactions are <strong>atomic</strong> (A)</h3>
+<p>The database should not really care about validating the constraints all the
+time Only the beginning and end state is really important. <strong>Inside a
+transaction, the data may be inconsistent</strong> : <q>Dust hasn't yet
+settled</q>.</p>
+<p>Let's study an example. You have an unique index on an ordering.</p>
+<pre>
+TABLE ITEMS (
+    ITEM_ID SERIAL,
+    GROUP_ID INTEGER,
+    ORDER INTEGER,
+    LABEL VARCHAR
+)
+
+ADD UNIQUE INDEX ON ITEMS(GROUP_ID, ORDER)
+</pre>
+<p>Here, if you want to swap 2 items, you have to use an unused temporary
+value, otherwise the check won't be valid <strong>at all times</strong>.</p>
+<h3>Transactions are <strong>consistent</strong> (C)</h3>
+<p>The check <strong>needs</strong> to be done at least when the transaction
+ends. No special need here except that you <strong>need</strong> to re-enable
+before ending the transaction.</p>
+<h3>Transactions are <strong>isolated</strong> (I)</h3>
+<p>We can also easily imagine that the check only <strong>needs</strong> to be
+done when the transaction ends, just before the commit. Normally no one should
+be able to see the changing data meanwhile it's not completed.</p>
+<p>One <strong>very important</strong> thing to know is that if you are using a
+<strong>READ UNCOMMITTED isolation</strong> for other transactions <strong>you
+will see inconsistent data</strong>.</p>
+<p>Anyway, if you are doing that, you know what you are doing and are obviously
+taking special care about it, don't you ?</p>
+<h3>Transactions are <strong>durable</strong> (D)</h3>
+<p>This final property has nothing to do with our current issue. Good.</p>
+<h2>... But sometimes early warning is quite nice</h2>
+<p>When interacting with external systems, that don't participate in our
+transaction, extra care should be taken in order to cope with the exceptional
+case of a constraint failure. Distributed transactions is a very complex
+subject, and usually it's not <del>supported</del> done<sup>[<a href="#pnote-415135-1" id="rev-pnote-415135-1" name="rev-pnote-415135-1">1</a>]</sup>.</p>
+<h2>Conclusion</h2>
+<p>With the principle of <em>least surprise</em> in mind, we can easily
+understand why <code>deferred</code> is not the default behavior, but it makes
+a very nice addition to our toolbox.</p>
+<p>So now there isn't any good reason anymore not to use (and abuse)
+constraints in your databases.</p>
+<p>Remember, <strong>your data is you most precious asset</strong>, protect it
+at all cost from evil misbehaved bug-ridden software<sup>[<a href="#pnote-415135-2" id="rev-pnote-415135-2" name="rev-pnote-415135-2">2</a>]</sup> !</p>
+<p>Wow... Just in time before the end of the month... I would have failed
+<a href="/post/2009/04/Should-The-URL-Include-a-Date-or-Not">my motto on
+URLs</a> ;-)</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-415135-1" id="pnote-415135-1" name="pnote-415135-1">1</a>] Do you always implement a double-phase commit on every
+SOAP/REST/XML-HTTP/POST interface that you expose ?</p>
+<p>[<a href="#rev-pnote-415135-2" id="pnote-415135-2" name="pnote-415135-2">2</a>] Yeah, I have chosen my side in the coming war...</p>
+</div>

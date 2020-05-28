@@ -1,0 +1,24 @@
+---
+layout: post
+title: "Do not fear git rebase : make snapshots !"
+date: 2013-04-04 09:49:18 +0100
+tags: [rebase, git, backup]
+---
+
+<p>Git is a nice version system, but some commands are destructrive, such as
+rebase.</p>
+<p>Here is a script to have a safety net, and free backups !</p>
+<pre>
+#! /bin/sh
+# Script to snaphot a git repo
+SNAP_VERSION=$(date +%s)
+BUNDLE_NAME=$(basename $( pwd )).${SNAP_VERSION}.git.bundle
+git bundle create ../${BUNDLE_NAME} --all
+git remote add snap-${SNAP_VERSION} ../${BUNDLE_NAME}
+git fetch -p snap-${SNAP_VERSION}
+</pre>
+<p>Usage is very easy. If you want to restore your current branch to the master
+one you made earlier.</p>
+<pre>
+git reset --hard snap-1365068411/master
+</pre>

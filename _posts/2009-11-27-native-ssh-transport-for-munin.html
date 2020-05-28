@@ -1,0 +1,42 @@
+---
+layout: post
+title: "Native SSH transport for Munin"
+date: 2009-11-27 00:19:04 +0100
+tags: [ssh, munin]
+---
+
+<p>Actually the tunnel won't disappear, but they will be launched only when
+needed and, most importantly configured in <code>munin.conf</code>.</p>
+<p>The <a href="/assets/images/direct_ssh_transport.diff" hreflang="en">native ssh for
+munin patch</a> should applies quite cleanly on revision 3101 of the svn
+trunk.</p>
+<p>Its use is quite straightforward : in <code>/etc/munin/munin.conf</code>,
+you just migrate address to the new configuration directive
+<code>remote_connection_cmd</code> that take the whole <code>ssh</code> command
+to launch a stdio munin-node such as pmmn.</p>
+<p>If we take the examples from the previous post, it becomes clear it's
+<strong>much</strong> easier to configure.</p>
+<h3>munin.conf snippet - Inetd version</h3>
+<pre>
+[server1]
+    address localhost
+    port 7001
+[server2]
+    address localhost
+    port 7002
+</pre>
+<h3>munin.conf snippet - Native SSH transport version</h3>
+<p>Right now, the <code>address</code> directive is still mandatory, but
+ignored when connecting.</p>
+<pre>
+[server1]
+    address dummy
+    remote_connection_cmd /usr/bin/ssh -- supusr@server1 /home/suprusr/pmmn/pmmn.pl
+[server2]
+    address dummy
+    remote_connection_cmd /usr/bin/ssh -- supusr@server2 /home/suprusr/pmmn/pmmn.pl
+</pre>
+<h3>Warning</h3>
+<p>Beware that the <code>ssh</code> process will now be launched by the
+<code>munin</code> user, so you have to update the key-based SSH authentication
+accordingly.</p>

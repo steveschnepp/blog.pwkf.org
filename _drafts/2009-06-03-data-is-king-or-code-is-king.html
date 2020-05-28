@@ -1,0 +1,43 @@
+---
+layout: post
+title: "\"Data Is King\" or \"Code Is King\" ?"
+date: 2009-06-03 08:30:55 +0100
+tags: [sql, database]
+---
+
+<p>An often overlooked secret of <strong>computing</strong> is that it
+<strong>is</strong> all and mostly about 2 things : <strong>data</strong> and
+<strong>algorithms</strong>.</p>
+<p>The resulting 2 kinds of programmers differ in their relationship with the
+code they produce, especially in how it handles data.</p>
+<h2>Code is King</h2>
+<p>Several key points :</p>
+<ul>
+<li>The most important asset is the code. Special care is taken to put layer
+upon layer in order to be able for the code to survive any change outside
+itself.</li>
+<li>Databases are mostly taken as a glorified data dump.</li>
+<li>Data constraints (unicity &amp; nullness) are enforced at the application
+level.</li>
+<li>Coding speed is paramount.</li>
+</ul>
+<p>The PHP/MySQL tandem is a typical example of this philosophy, I think this
+has precisely led to the common understanding that MySQL is a database that is
+very fast but not so careful or feature-full as others.</p>
+<p>The various J2EE stacks is also a good example with the ubiquitous ORM
+solutions, such a Hibernate that tries very hard to reproduce the joining and
+data checks in the Java.</p>
+<p>The current NoSQL meme turns also around this. Data is quite cheap, and can
+be</p>
+<h2>Data is King</h2>
+<ul>
+<li>Developper-centric / DBA centric</li>
+<li>fast ROI, long investment</li>
+<li>&quot;Data is King&quot; makes you vendor independent, since code can always be
+rewritten. Data on the other hand, isn't that easily converted.</li>
+</ul>
+<h2>AJAX is a modern version of the same divide</h2>
+<p>More and more we put more and more code inside the browser with the help of
+JavaScript. In the end, the application server tend to be not much more than a
+way to relay Ajax/JSON requests to the database, the extreme rationalization of
+this is <a href="http://en.wikipedia.org/wiki/CouchDB" hreflang="en">CouchDB</a>.</p>

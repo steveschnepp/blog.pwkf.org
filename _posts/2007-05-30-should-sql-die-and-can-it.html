@@ -1,0 +1,58 @@
+---
+layout: post
+title: "Should SQL die, and can it ?"
+date: 2007-05-30 19:47:49 +0100
+tags: [sql, database]
+---
+
+<p>I just draw a comparison of the data language and the general languages
+:</p>
+<ul>
+<li>Creating our data structures by hand feels like ASM and its multiple wheels
+reinvented everytime.</li>
+<li>Vanilla SQL feels like C and its bare instruction set.</li>
+<li>Advanced SQL (Stored Proc et al) feels just like C++ and all those
+<em>almost</em> compatible implementations.</li>
+<li>A statically compiled ORM (think <a href="http://www.hibernate.org/">Hibernate</a>) feels like Java and it's strong
+typing system with its truckload of runtime casts.</li>
+<li>A dynamic ORM (think <a href="http://en.wikipedia.org/wiki/Active_record_pattern">ActiveRecord</a>) feels
+like a dynamic scripting language and its &quot;wow&quot; factor at the beginning,
+rapidly followed by the &quot;is-this-the-fastest-cpu-available&quot; factor.</li>
+</ul>
+<p>I have some grudges against the ORM i'm using now :</p>
+<ul>
+<li>It's not really easy to reverse-engineer a database. Everyone seems really
+happy to start with a fresh new one.</li>
+<li>Joins are optimised for only the simplest joins. (If it's not just a plain
+<code>foreach</code>-like application loop)</li>
+<li>If you have some complex things to do, the usual
+&quot;you-always-can-write-a-custom-mapping&quot; applies.</li>
+</ul>
+<p>Not writing any SQL can be a nice goal, but i don't think that writing SQL
+is specially that hard. It's a quite good language for what it's designed for
+actually.</p>
+<p>I think that today's ORM solutions are a little half-baked. It puts too much
+hassle on the user for the result it provides. He has to describe the whole
+database structure in order to manage to generate the differents objects that
+impersonate the undelaying tables.</p>
+<p>Why can't this tedious process happen in runtime ? Ok, maybe not really in
+runtime, but either on compile time or on launch time. Two directions could be
+explored :</p>
+<ul>
+<li>The ORM could automatically adapt itself on the undelaying database schema
+by introspecting the schema (many DBA tools did that for years).</li>
+<li>The ORM could also adapt the database schema to runtime changes by doing
+some runtime <code>ALTER TABLE</code>.</li>
+</ul>
+<p>In contrast, writing SQL yourselfs is often the easiest and fastest
+solution, since you directly and only ask what you want. It also allow you not
+to think too much about concurrency since that's usually what good RDBMS do the
+best. With an ORM, either you explain a lot your intentions, and then you often
+do the SQL optimiser job, or you hope that your ORM is clever enough to guess
+what you want to do. Usually it's not that good at it, and tries to hide it
+behind some agressive caching mecanism.</p>
+<p>So I think SQL is here to stay a little while, just like C/C++ is. The ORM
+have no really catched up since. (We're like in the old days of non-JIT
+Java).</p>
+<p>Btw, I even dreamed of an ORM in bijection with XML or <a href="http://en.wikipedia.org/wiki/YAML" hreflang="en">YAML</a> with a XPath query
+language, but I will write later on that.</p>

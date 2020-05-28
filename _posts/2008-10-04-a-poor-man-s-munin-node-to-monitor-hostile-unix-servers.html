@@ -1,0 +1,73 @@
+---
+layout: post
+title: "A Poor Man's Munin Node to Monitor \"Hostile\" UNIX Servers"
+date: 2008-10-04 11:05:20 +0100
+tags: [ssh, munin]
+---
+
+<p><a href="http://munin.projects.linpro.no/" hreflang="en">Munin</a> is a nice
+monitoring system. Simple but quite effective. It's main selling point is the
+UNIX-esque simplicity of the architecture. You can just <a href="http://sysmonblog.co.uk/?p=17" hreflang="en">create a new plugin</a> in a
+matter of minutes to monitor whatever you can imagine.</p>
+<p>There is even a <a href="https://github.com/munin-monitoring/contrib/" hreflang="en">comprehensive collection</a> of plugins ready to use (admittedly
+of various quality).</p>
+<h2>Various platform are supported</h2>
+<p>Usually the main issue is the <em>MuninNode</em>, an agent (daemon) that
+runs on the server to be monitored, since it is responsible of translating the
+request of the munin server (the one with the graphs) to the various plugins,
+build-ins or external. The ease of installing this agent depends on the OS and
+the access you have on the server :</p>
+<h3>Windows</h3>
+<p>For Windows you can install <a href="http://www.jory.info/serendipity/index.php?/categories/4-Munin-Node-for-Windows" hreflang="en">munin-node-win32</a>.</p>
+<h3>Unix (with root access)</h3>
+<p>For Unix when you are root, usually there is a package ready to install in
+your distribution, or from the source.</p>
+<h3>Others (Hostile servers)</h3>
+<p>On <em>hostile</em> servers, you don't usually have a root access and no
+easy acces to a compiler.</p>
+<p>I wrote <a href="https://github.com/munin-monitoring/contrib/tree/master/tools/pmmn/" hreflang="en">pmmn (Poor Man's Munin Node)</a>, a little vanilla Perl script that
+emulates the core functionality of the real munin-node script, but without
+having to install many Perl CPAN modules.</p>
+<p>It has also a nice functionality : it is possible to communicate via
+stdin/stdout instead of a TCP port. This way it is very easy to monitor hosts
+that are behind a firewall without opening (and monitoring) many tunnels.</p>
+<h2>Installation of <strong>pmmn</strong></h2>
+<p>Suppose you have access to the server via a supervision user (let's say
+<em>supusr</em>). Installation of <strong>pmmn</strong> is quite easy : just
+copy the files somewhere on the disk where you have access, for example
+(<em>/home/supusr</em>).</p>
+<h3>TCP installation</h3>
+<p>Just launch the server with <strong>-p 4949</strong> and declare it in the
+<strong>munin.conf</strong> file on your munin-server. This solution is quite
+equivalent to a regular munin-node installation.</p>
+<h3>Tunnel installation</h3>
+<p>Same as the TCP, but you have to <a href="http://munin.projects.linpro.no/wiki/MuninSSHTunneling" hreflang="en">create a
+TCP tunnel via SSH</a> to be able to reach the munin-node.</p>
+<h3>Inetd+SSH installation</h3>
+<p>It is a mix between <a href="http://munin.projects.linpro.no/wiki/MuninInetdBouncing" hreflang="en">port
+forwarding via inetd</a> and the Tunnel-based previously discussed.</p>
+<p>You first have to <a href="http://www.laubenheimer.net/ssh-keys.shtml" hreflang="en">established a key-based SSH authentication</a> without passphrase
+(you will not be there to type it) from <em>supusr</em> on the inet server
+(usually the munin-node one) to the user <em>supusr</em> on the server to be
+monitored.</p>
+<p>For example, to monitor <em>server1</em> and <em>server2</em>, in the file
+/etc/inetd.conf, you have to add lines :</p>
+<pre>
+7001   stream  tcp     nowait  supusr /usr/bin/ssh -- supusr@server1 /home/suprusr/pmmn/pmmn.pl
+7002   stream  tcp     nowait  supusr /usr/bin/ssh -- supusr@server2 /home/suprusr/pmmn/pmmn.pl
+</pre>
+<p>Then, in the <em>munin.conf</em> file of the MuninServer, you just have to
+declare the new nodes :</p>
+<pre>
+[server1]
+    address localhost
+    port 7001
+[server2]
+    address localhost
+    port 7002
+</pre>
+<p>The MuninServer will now set up a stdin/stdout SSH tunnel transparently and
+launch the <strong>pmmn</strong> server when needed. You are now free to write
+plugins like if a real munin-node where installed. The only restriction is that
+y ou don't have a root access, so you are limited in the information you may
+collect.</p>

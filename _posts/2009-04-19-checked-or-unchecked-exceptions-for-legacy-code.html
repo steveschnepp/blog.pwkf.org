@@ -1,0 +1,44 @@
+---
+layout: post
+title: "Checked or Unchecked Exceptions for Legacy Code ?"
+date: 2009-04-19 12:32:30 +0100
+tags: []
+---
+
+<h2>Checked Exceptions are breaking encapsulation</h2>
+<p>In theory it's quite nice since the called code can communicate with it's
+caller when something unexpected happened.</p>
+<p>The key word here is <em><ins>unexpected</ins></em>. If you have to
+explicitly know the exceptions that could occur, it's not really unexpected.
+And if it's not unexpected, using exception handling just add an
+<em>out-of-band</em> data path. It's on par with transporting data in a private
+class field when calling a member instead of using its arguments. This leads to
+breaking encapsulation as Alan Griffiths wrote in <a href="http://www.octopull.demon.co.uk/java/ExceptionalJava.html" hreflang="en">Exceptional Java</a>. This vision is also shared by Bruce Eckel in his
+article entitled <a href="http://www.mindview.net/Etc/Discussions/CheckedExceptions" hreflang="en">Does
+Java need Checked Exceptions</a>?.</p>
+<h2>Checked Exceptions are quite painful to use</h2>
+<h3>Local Exception Handling is hard to manage</h3>
+<p>I personally find checked exceptions quite painful to use. By definition,
+you have to catch every exception that is thrown by the underlaying code.</p>
+<p>And if the underlaying code doesn't know what to do with the exception,
+chances are, that you don't know either, so you just pass the exception to the
+caller. And so on...</p>
+<h3>Too much code to change</h3>
+<p>Therefore exceptions are usually caught at the top level with a generic
+catch-all structure that logs the error, since no layer could sensibly do
+something clever with the exception.</p>
+<p>Then you just have to change all the signature of the whole stack, just to
+be able to catch them at the top. Using unchecked exception lets you have this
+for free, and conveys the meaning that nothing is caught until the top.</p>
+<h2>Unchecked Exceptions might be dangerous...</h2>
+<p>Obviously, unchecked means not checked. So you might fail to catch them at
+the top level and then the whole application crashes. Checked exceptions are a
+safeguard against that. Just like strong static typing is.</p>
+<p><strong>You trade compile-time safety</strong> (checked) <strong>for
+development-time speed and ease</strong> (unchecked).</p>
+<h2>... but are not really.</h2>
+<p>On the other hand, if you have a good design, you don't have much different
+top levels, and then the risk is somewhat limited.</p>
+<p><strong>Moreover, since you <em>always</em> have to take unchecked one into
+account, why don't use them ?</strong></p>
+<p>By the way, in C++, the exceptions are unchecked by default.</p>

@@ -1,0 +1,46 @@
+---
+layout: post
+title: "How to try Munin 2.1.x easily in Debian-derivatives"
+date: 2014-01-19 13:01:47 +0100
+tags: []
+---
+
+<p>In my previous post I explained how to <a href="/post/2014/01/Tutorial-Setup-a-dev-environment-for-Munin">setup a simple
+development environment</a>, but I feel that's a little too much if you only
+want to try that new, shiny, munin version.</p>
+<p>So, let's assume that you're on a debian-derivative distribution (Ubuntu,
+Raspbian, ... , and of course Debian).</p>
+<p>The nicest news is that 2.1.x already hit the <a href="https://wiki.debian.org/DebianExperimental" hreflang="en">experimental part of
+Debian</a>. That makes it <strong>very</strong> easy to use as everything is
+described there.</p>
+<p>I'll just copy/paste some instructions tailored for munin, please refer to
+the original page if you'd like to learn more.</p>
+<h3>Add experimental to your sources.list</h3>
+<pre>
+echo &quot;deb http://ftp.debian.org/debian experimental main&quot; &gt;&gt; /etc/apt/sources.list
+</pre>
+<h3>Update the apt database</h3>
+<pre>
+apt-update
+</pre>
+<h3>Install the experimental version of munin</h3>
+<pre>
+apt-get -t experimental install munin
+</pre>
+<h3>Pin the munin as the experimental version</h3>
+<p>That works quite well, but the munin package won't be updated, as the
+automatic upgrades only comes from the non-experimental part. And obviously the
+version there is lower than the experimental one.</p>
+<p>So, that is called package <strong>pinning</strong>, that is to
+<strong>pin</strong> a certain package in a certain repository. It is still
+very simple to do :</p>
+<pre>
+cat &gt;&gt; /etc/apt/preferences &lt;&lt;EOF
+Package: munin
+Pin: release a=experimental
+Pin-Priority: 800
+EOF
+</pre>
+<h3>Conclusion</h3>
+<p>So, that's it. You have successfully upgraded to the unstable side of
+munin...</p>

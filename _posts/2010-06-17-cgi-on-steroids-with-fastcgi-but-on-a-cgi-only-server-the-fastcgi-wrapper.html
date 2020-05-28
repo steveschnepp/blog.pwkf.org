@@ -1,0 +1,66 @@
+---
+layout: post
+title: "CGI on steroids with FastCGI, but on a CGI-only server - The FastCGI wrapper"
+date: 2010-06-17 16:23:03 +0100
+tags: [design, performance, perl]
+---
+
+<h2>FastCGI is really <em>CGI on steroids</em></h2>
+<p>FastCGI is very common way to increase performance of a CGI installation. It
+is based on the fact that usually the startup of CGI scripts is slow, whereas
+the response is quite fast.</p>
+<p>So if you have a persistent process, you only have to take care of the
+startup once, and you then experience a real speedup.</p>
+<h3>FastCGI vs mod_perl (or mod_python, ...)</h3>
+<p>Once a big fan of <code>mod_perl</code>, I'm converted to FastCGI since.
+<code>mod_perl</code> was for a long time <strong>the</strong> answer for
+speeding up Perl CGI scripts. It has a very good track record of stability and
+has real hooks deep in the Apache processing requests.</p>
+<p>FastCGI focuses on a different feature set that is more actual than
+<code>mod_perl</code><sup>[<a href="#pnote-527747-1" id="rev-pnote-527747-1" name="rev-pnote-527747-1">1</a>]</sup> :</p>
+<ul>
+<li>It is much simpler to install and configure, especially when having
+multiple applications.</li>
+<li>Able to connect to a distant server (running as a different UID, chrooted
+or even on a remote host)</li>
+<li>Able to mix scripting languages without any need to compile some other
+apache modules.</li>
+<li>Able to be used with several webservers, even closed-source ones : FastCGI
+is a protocol, not an API.</li>
+</ul>
+<h2>But steroids do have some side effects</h2>
+<h3>CGI issues</h3>
+<p>One downside is that your CGI script should be adapted to FastCGI and the
+fact that the script doesn't end with the end of the request.</p>
+<p>In the real world that's quite easy. Every language that is commonly used
+for CGI offers <a href="http://www.fastcgi.com/drupal/node/5" hreflang="en">CGI-wrapper libraries</a> that works in a FastCGI context as well as a
+plain CGI one.</p>
+<h3>Webserver issues</h3>
+<p>Another issue can also come from the webserver. Since CGI is dead simple to
+implement even the micro-webserver <a href="http://www.acme.com/software/thttpd/" hreflang="en">thttpd</a> implements
+it.</p>
+<p>FastCGI on the other hand is a little more difficult to implement, since the
+webserver needs to create a container that monitors and calls the
+FastCGI-enabled script.</p>
+<h3>A standalone FastCGI container</h3>
+<p>Fortunately, the FastCGI team provided us with a ready-to-use container and
+a very simple client that acts a plain CGI script, but proxies it to a
+full-blown container.</p>
+<p>Since the plain CGI part is a very small native executable its overhead is
+negligible compared to the reply time, even without comparison with the startup
+time of the whole script.</p>
+<p>Its installation is also quite straightforward. I just installed the
+<code>libfcgi</code> package on Debian : it provides
+<code>/usr/bin/cgi-fcgi</code>.</p>
+<p>I created a simple CGI wrapper for my previous <a href="/post/2010/06/Waiting-for-Munin-2.0-Performance-FastCGI">munin
+benchmarking</a> needs :</p>
+<pre>
+#! /bin/sh
+
+exec /usr/bin/cgi-fcgi -connect /tmp/munin-cgi.sock \
+     /usr/lib/cgi-bin/munin-cgi-graph
+</pre>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-527747-1" id="pnote-527747-1" name="pnote-527747-1">1</a>] who really need deep apache hooks ?</p>
+</div>

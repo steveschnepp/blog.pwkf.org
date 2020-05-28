@@ -1,0 +1,84 @@
+---
+layout: post
+title: "Databases: Efficient Case-insensitive searches with Function-based Indexing"
+date: 2009-08-12 15:28:49 +0100
+tags: []
+---
+
+<h2>Special case of case-insensitive search</h2>
+<p>In Oracle10g, you might use the new case-insensitive search with a
+<code><a href="http://www.dba-oracle.com/t_oracle10g_release_2_case_insensitive_searches.htm" hreflang="en">NLS_SORT=BINARY_CI</a></code> command.</p>
+<h3>Pro</h3>
+<ul>
+<li>Designed for this purpose, so it's very straightforward to use</li>
+</ul>
+<h3>Con</h3>
+<ul>
+<li>Limited to case-insensitive searching by design</li>
+</ul>
+<h2>Native functional indexes</h2>
+<p>Some databases provides native functional indexes.</p>
+<p>On these databases optimization is done simply by creating an index on
+<code>UPPER(MY_COLUMN)</code> and letting the query optimizer
+transparently<sup>[<a href="#pnote-426279-1" id="rev-pnote-426279-1" name="rev-pnote-426279-1">1</a>]</sup> use the newly created index.</p>
+<p>It usually work by applies a function to the data just before handing it to
+the index, so the function output doesn't exist in the database.</p>
+<h3>Pro</h3>
+<ul>
+<li><strong>Very</strong> easy to use : it just feels right (you can naïvely
+create an index on the WHERE clause)</li>
+<li>Doesn't take any extra space in the database (only the index).</li>
+<li>Generic, can be used for something else than just case-insensitive
+searches.</li>
+</ul>
+<h3>Con</h3>
+<ul>
+<li>Since the data isn't stored in the database, a call to the function has to
+be made when</li>
+<li>Functions have to be from the immutable category in the <a href="http://www.postgresql.org/docs/8.3/static/xfunc-volatility.html" hreflang="en">function volatility categories</a></li>
+</ul>
+<h2>Generated columns</h2>
+<p>DB2 provides something called <a href="http://publib.boulder.ibm.com/infocenter/db2luw/v8/topic/com.ibm.db2.udb.doc/ad/c0007004.htm" hreflang="en">generated columns</a>. It's almost the same than the native
+indexes, except that the functional column is explicit.</p>
+<h3>Pro</h3>
+<ul>
+<li>Quite easy to use, since the column is updated and used transparently.</li>
+<li>Generic, can be used for something else than just case-insensitive
+searches. Just make sure the optimizer uses the extra column. You might have to
+rewrite the request a little.</li>
+</ul>
+<h3>Con</h3>
+<ul>
+<li>Requires extra space in the table.</li>
+<li>Removing a column can be cumbersome (in DB2 you have to recreate the whole
+table for example), whereas removing a simple index is much easier.</li>
+<li>The extra column is returned when doing a <code>SELECT * FROM
+...</code><sup>[<a href="#pnote-426279-2" id="rev-pnote-426279-2" name="rev-pnote-426279-2">2</a>]</sup>.</li>
+</ul>
+<h2>Trigger-based <em>Generated columns</em> Emulation</h2>
+<p>If nothing else is provided, you always have the option to emulate. The
+solution will be trigger-based since it's one of the few perfect match for
+them.</p>
+<p>So, the base idea is derived from the <em>Generated columns</em> : have a
+special extra column that represents the output of the function. An index will
+be created on this column and used via a <em>manual</em> update of the involved
+requests (Adding an extra <code>WHERE</code> clause should be more than enough,
+this way you might even benefit from a partial match).</p>
+<h3>Pro</h3>
+<ul>
+<li>Universal. Useful if portability is paramount.</li>
+<li>Very simple : there is no need to understand advanced database
+features.</li>
+</ul>
+<h3>Con</h3>
+<ul>
+<li>Only a poor man's solution : everything is manual</li>
+<li>The same than <em>Generated columns</em> since it's the same idea, just
+manually implemented.</li>
+</ul>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-426279-1" id="pnote-426279-1" name="pnote-426279-1">1</a>] You might have to update some kind of statistics for
+the new index</p>
+<p>[<a href="#rev-pnote-426279-2" id="pnote-426279-2" name="pnote-426279-2">2</a>] But you don't do that anyway, do you ?</p>
+</div>

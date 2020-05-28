@@ -1,0 +1,58 @@
+---
+layout: post
+title: "Waiting for Munin 2.0 - Keep more data with custom data retention plans"
+date: 2010-08-22 14:44:39 +0100
+tags: [munin, munin20, sysadmin]
+---
+
+<h2>RRD is Munin's backbone.</h2>
+<p>Munin keeps its data in an <a href="http://oss.oetiker.ch/rrdtool/">RRD
+database</a>. It's a wonderful piece of software, designed for this very
+purpose : keep an history of numeric data.</p>
+<p>All you need is to tell RRD for how long and the precision you want to keep
+your data. RRD manages then all the underlying work : pruning old data,
+averaging to decrease precision if needed, ...</p>
+<p>Munin automatically creates the RRD databases it needs.</p>
+<h2>1.2 - Only one set</h2>
+<p>In 1.2, every database creation was done with the same temporal &amp;
+precision parameters. Since the output parameters were constant (day, week,
+month, year graphs), there were little need to have a different set of
+parameters.</p>
+<h2>1.4 - 2 sets : normal &amp; huge</h2>
+<p>In 1.4, various users showed their need to have different graphing outputs,
+and began to hack around Munin's fixed graphing. It became rapidly obvious that
+the 1.2 preset wasn't a fit for everyone.</p>
+<p>Therefore a <code>huge</code> dataset was available to be able to extend the
+finest precision (5min) to the whole Munin timeframe. This comes at a price
+though : more space is required, and the graph generation is slower, specially
+when generating the yearly one, since more data has to be read and
+analysed.</p>
+<p>The switch is done for the whole munin installation by changing the
+system-wide <code>graph_data_size</code>, although already created rrd
+databases aren't changed. It is then even possible for a user to pre-customize
+the rrd file. Munin will then happily uses them transparently thanks to the RRD
+layer.</p>
+<h3>Manual overriding</h3>
+<p>Altering the RRD files after it is created is possible, but not as simple.
+Standard export &amp; import from RRD take the structure with it. So data has
+to be moved around with special tools. <a href="http://code.google.com/p/pmptools/source/browse/trunk/rrd/rrdmove">rrdmove</a>
+is my attempt to create such a tool. It copies data between 2 already existing
+RRD files, even asking RRD to interpolate the data when needed.</p>
+<h2>2.0 - Full control</h2>
+<p>Starting with 2.0, the parameter <code>graph_data_size</code> is per
+service. It also has a special mode : <code>custom</code>. <a href="http://munin-monitoring.org/wiki/format-graph_data_size">Its format</a> is
+very simple :</p>
+<pre>
+
+graph_data_size custom FULL_NB, MULTIPLIER_1 MULTIPLIER_1_NB, ... MULTIPLIER_NMULTIPLIER_N_NB
+graph_data_size custom 300, 15 1600, 30 3000
+</pre>
+<p>The first number is the number of data at full resolution. Then usually it
+comes gradually decreasing resolution.</p>
+<p>A decreasing resolution has 2 usages :</p>
+<ul>
+<li>Limit the space consumption : keeping full resolution for the whole period
+(default : 5min for 2 years) is sometime too precise.</li>
+<li>Increase performance : RRD will choose the best fitting resolution to
+generate its graphs. Already aggregated data is faster to compute.</li>
+</ul>

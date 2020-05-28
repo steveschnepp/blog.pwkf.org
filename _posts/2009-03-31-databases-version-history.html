@@ -1,0 +1,78 @@
+---
+layout: post
+title: "Databases: Version History"
+date: 2009-03-31 11:03:55 +0100
+tags: []
+---
+
+<p>One concept gaining huge momentum lately is file versionning (mostly
+<a href="http://en.wikipedia.org/wiki/Git_(software)" hreflang="en">Git</a> and
+<a href="http://en.wikipedia.org/wiki/Subversion_(software)" hreflang="en">Subversion</a>). It is quite interesting to track the evolution of the
+data contained in the files, and not only the last time the file was
+updated.</p>
+<p>On the last post <a href="/post/2009/03/Databases%3A-Meta-Data-ctime-mtime">Databases: Meta-Data</a> I
+was discussing about the merits of having a modification timestamp among with
+other various informations and more generally about the parallels between a
+database and a filesystem.</p>
+<p>We can also adapt this model to our database by not only storing the last
+modification date, but also the old data.</p>
+<p>Two main options are :</p>
+<ul>
+<li>replicate the whole row in a <em>history table</em></li>
+<li>have a generic <em>history table</em> that only store the old values of the
+column that have changed</li>
+</ul>
+<p>The approach is done in the way <a href="http://www.ddj.com/database/184406340">this ddj database article</a>, but in a
+much less intrusive manner. We just have our trigger-based system evolve with
+every modification logging an insertion in the derived history table.</p>
+<p>The history table and trigger become :</p>
+<pre>
+TABLE MD_ORDERS_HISTORY (
+   SERIAL MD_ORDERS_HISTORY_ID PRIMARY KEY,
+   TIMESTAMP CTIME,
+   CHAR TYPE DEFAULT 'M',
+   INT ORDERS_ID FOREIGN_KEY ON ORDERS(ORDERS_ID),
+   MONEY PRICE_ADJUSTMENT
+)
+
+CREATE INSERT TRIGGER ON ORDERS o
+BEGIN
+  INSERT INTO MD_ORDERS (ORDERS_ID) VALUES (o.ORDERS_ID)
+END
+
+CREATE UPDATE TRIGGER ON ORDERS o
+BEGIN
+  UPDATE MD_ORDERS SET MTIME=NOW(), MLOGIN=CURRENT_USER()
+    WHERE ORDERS_ID = o.ORDERS_ID
+  -- Log the change
+  INSERT INTO MD_ORDERS_HISTORY (ORDERS_ID, PRICE_ADJUSTMENT)
+    VALUES (o.ORDERS_ID, o.PRICE_ADJUSTMENT)
+END
+
+CREATE DELETE TRIGGER ON ORDERS o
+BEGIN
+  -- Log the delete
+  INSERT INTO MD_ORDERS_HISTORY (ORDERS_ID, PRICE_ADJUSTMENT, TYPE)
+    VALUES (o.ORDERS_ID, o.PRICE_ADJUSTMENT, 'D')
+END
+</pre>
+<p>The interesting point is that you can now travel back in time in order to
+see what happened to a row in case of debugging the application or its
+(mis)usage.</p>
+<p>The main issue of this system is that your database usage will be larger by
+several orders of magnitude, depending of how often your application update its
+data.</p>
+<p>Several possibilities to limit the size exists :</p>
+<ul>
+<li>Partitioning the historical data, and storing it on a slower (cheaper)
+array.</li>
+<li>Pruning the old data since depending on the application, traveling back 1
+whole year may be overkill</li>
+<li>Live aggregating changes. If the data was modified less than 1 hour ago,
+just update the last history line. We can even have a
+<code>history_start</code> timestamp and <code>history_stop</code> timestamp to
+show that a aggregation has taken place.</li>
+<li>Deferred aggregating changes. Like the live one, but on a scheduled basis.
+It can even have a dynamic granularity (a granularity of 1 day if the data is 1
+year old, 1 hour if it is 1 month old).</li>
+</ul>

@@ -1,0 +1,31 @@
+---
+layout: post
+title: "Experimenting with a C munin node"
+date: 2013-04-13 16:59:16 +0100
+tags: [c, munin, design, performance, sysadmin]
+---
+
+<h2>Core plugins are designed for simplicity...</h2>
+<p>As I wrote about it earlier, Helmut rewrote some core plugins in C. It was
+maintly done with efficiency in mind.</p>
+<p>As those plugins are only parsing one <code>/proc</code> file, there seemed
+no need to endure the many forks inherent with even trivial shell programming.
+It also acknowledges the fact that the measuring system shall be as light as
+possible</p>
+<p>Munin plugin are highly driven towards simplicity. Therefore having shell
+plugins is quite logical. It conveys the educational sample purpose for users
+to write their own, while being quite easy to code/debug for the developpers.
+Since their impact on current systems is very small, there are not much
+incentive to change.</p>
+<h2>... but efficiency is coming !</h2>
+<p>Nonetheless, now monitored systems are becoming quite small.</p>
+<p>It is mostly thanks to embedded systems like the <a href="http://www.raspberrypi.org/" hreflang="en">RaspberryPi</a>. This means that
+processing power available is much lower than on <em>normal</em>
+nodes<sup>[<a href="#pnote-729310-1" id="rev-pnote-729310-1" name="rev-pnote-729310-1">1</a>]</sup>.</p>
+<p><strong>Now</strong> the embedded C approach for plugins has a new
+rationale.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-729310-1" id="pnote-729310-1" name="pnote-729310-1">1</a>] Usually datacenter nodes are more in the high end of
+the spectrum than the low-end.</p>
+</div>

@@ -1,0 +1,98 @@
+---
+layout: post
+title: "Spinoffs in the munin ecosystem"
+date: 2013-04-13 10:53:37 +0100
+tags: [munin, sysadmin, ecosystem]
+---
+
+<h2>KISS is the core design of Munin</h2>
+<p>Munin's greatest strength is its very KISS architecture. It therefore gets
+many things right, such as a huge modularity.</p>
+<p>Each component (master/node/plugin) has a simple API to communicate with the
+others.</p>
+<h2>Spin-offs ...</h2>
+<p>I admit that the master, even the node, have convoluted code. In fact some
+rewrites already do exist.</p>
+<h3>... are welcomed ...</h3>
+<p>And they are a really good thing, as it enables rapid prototyping on things
+that the stock munin has (currently) trouble to do.</p>
+<p>The stock munin is a piece of software that many depend upon, so it has to
+move at a much slower pace than one does want, even me. As much as I really
+want to add many many features to it, I still have to take extra care that it
+doesn't break stuff, even the least known features.</p>
+<p>So I take munin off-springs very seriously and even offer as much help as I
+can in order for them to succeed.</p>
+<h3>... because they are very valuable in the long term</h3>
+<p>In my opinion competition is only short bad in the short term, and in the
+long term they usually add significant value to the whole ecosystem. That said,
+there's always a risk to become slowly irrelevant, but I think that's the real
+power of open-source's evolutionary paradigm : embrace them or become obsolete
+and get replaced.</p>
+<p>Since, if someone takes the time to author a competitor that has a real
+threat potential, it mostly means that there's a real itch to scratch and that
+many things are to be learnt.</p>
+<h2>Different layers of spin-offs</h2>
+<p>The munin ecosystem is divided in 3 main categories, obviously related to
+the 3 main components of munin : master, node &amp; plugin.</p>
+<h3>Plugins</h3>
+<p>That's the most obvious part as custom plugins are the real <em>bread and
+butter</em> of munin.</p>
+<p>Stock plugins are mostly written in Perl or POSIX shell, as Perl is munin's
+own language and POSIX shell is ubiquitous. That fact is acknowledged by the
+fact that core munin provides 2 libraries (Perl &amp; Shell) to help plugin
+authoring.</p>
+<p>So, it's quite natural that each mainstream language has grown its own
+plugin library. Some language even have <a href="https://github.com/aouyar/PyMunin" hreflang="en">two</a> of <a href="https://github.com/samuel/python-munin" hreflang="en">them</a>.</p>
+<h4>C</h4>
+<p>Some plugins got even rewritten in plain C, as it was shown that shell
+plugins do have a significant impact on very under-powered nodes, such as
+embedded routers.</p>
+<h3>Node</h3>
+<p>This component is very simple. Yet, it has to be run on all the nodes that
+one wants to monitor. It is currently written in Perl, and while that's not an
+issue on UNIX-like systems, it can be quite problematic on embedded ones</p>
+<h4>Simple munin</h4>
+<p>The official package comes with a POSIX shell rewrite that has to be run
+from inetd. It is quite useful for embedded routers like OpenWRT, but still
+suffers from an hard dep on POSIX shell and inetd.</p>
+<h4>SNMP</h4>
+<p>SNMP is another way to monitor nodes. While it works really well, it mostly
+suffers the fact that its configuration is quite different of the usual way, so
+I guess some things will change on that side.</p>
+<h4>Win32 ports</h4>
+<p>Win32 has long been a very difficult OS to monitor, as it doesn't offer much
+of the UNIX-esque features. Yet the number of win32 nodes that one wants to
+monitor is quite high, as it makes munin one the few systems that can easily
+monitor heterogeneous systems.</p>
+<p>Therefore, while you can install the stock munin-node, several projects
+emerged. We decided to adopt <a href="http://munin-monitoring.org/browser/munin-node-win32" hreflang="en">munin-node-win32</a>.</p>
+<h4>Android</h4>
+<p>There's also a dedicated <a href="https://github.com/silverchris/Android-Munin-Node" hreflang="en">node for
+Android</a>. It makes sense, given that the Android is yet Linux-derived, but
+lacks Perl, and is a Java mostly platform. This node also has some basic
+capabilities of pushing data to the master instead of the usual polling.</p>
+<p>This is specially interesting given the fact that Android nodes are usually
+loosely connected, so the node spools values itself and pushes them when it
+recovers connectivity.</p>
+<p>Note that this is specifically an aspect that is currently lacking in munin,
+and I'm planning to address it in the 2.1 series. So thanks to its author for
+showing a relevant use-case.</p>
+<h4>C</h4>
+<p>That's my last experiment. It started with a simple question : <em>how
+difficult would it be to code a fairly portable version of the node ?</em></p>
+<p>It turned out that it wasn't that difficult. I'm even asking myself about
+eventually replacing the win32 specific port with this one, as the code is much
+simpler. The win32 node has several plugin built-in mostly due to platform
+specifics. I still have to find a way to work my way around it, but it's in
+quite good shape.</p>
+<p>This post was originally done to promote it, but while writing it I noticed
+that the ecosystem deserved a post on its own. So I'll write another one,
+specific to the C port of munin-node and plugins.</p>
+<h3>Master</h3>
+<p>The master is the most complex component. So rewrites of it won't happen
+as-is. They usually take the form of a bridge between the munin protocol and
+another graphing system, such as Graphite.</p>
+<h4>Clients</h4>
+<p>There are also client libraries that are able to directly query munin nodes,
+to be able to reuse the vast ecosystem. Languages are various, from the obvious
+<a href="http://julien.danjou.info/projects/pymunincli/" hreflang="en">Python</a> to <a href="https://github.com/sosedoff/munin-ruby" hreflang="en">Ruby</a>, along with a quite modern <a href="https://github.com/Redpill-Linpro/node-munin-client">node.js</a> one.</p>

@@ -1,0 +1,100 @@
+---
+layout: post
+title: "Surrogate Keys : Globally Unique, Application Unique or Type Unique ?"
+date: 2009-05-11 05:47:09 +0100
+tags: [sql, database]
+---
+
+<h2>Type unique : One sequence per table</h2>
+<p>The most common idiom out there. Just define a surrogate key per table,
+usually done via an <code>auto_increment</code> field, <code>serial</code>
+field or a <code>sequence</code> per table.</p>
+<p>It is the most natural way of thinking, since the ID is usually seen as a
+monotically incrementing counter. Therefore many applications use even the
+evil<sup>[<a href="#pnote-401164-1" id="rev-pnote-401164-1" name="rev-pnote-401164-1">1</a>]</sup> <code>SELECT MAX(ID)+1</code> construct,
+because they specifically require that there should be no missed rows and that
+the ID have to be strictly in order.</p>
+<p>The usual implementation of this is to have a kind of thread-local function
+that hands unique ID allocated in group and never trying to reuse an already
+issued/allocated ID. If you reserve 50 ID at once you directly level the cost
+of locking the ressource to only 1 in 50 requests, and not trying to reuse them
+enables you to just have to lock the end of the spectrum and not the whole
+spectrum. That's what the <code>CACHE</code> keyword is about in <a href="http://www.techonthenet.com/oracle/sequences.php" hreflang="en">Oracle</a> and
+<a href="http://www.postgresql.org/docs/8.3/static/sql-createsequence.html" hreflang="en">PostgreSQL</a>. Others RDBMS usually also have a similar
+option</p>
+<p>But this optimisation leaves us with a big side-effect : the ID that are
+generated are not strictly in order anymore, and furthermore there can be huge
+gaps in them. Since one of the main purpose of one ID per table is now gone,
+why not directly bite the bullet and use the same ID generation on the the
+whole application ?</p>
+<h2>Application unique : One sequence to rule them all</h2>
+<p>This is something I first experienced with <a href="http://subversion.tigris.org/" hreflang="en">Subversion</a>, coming from a CVS
+background : the revision number is repository-wide and not file-wide anymore.
+This has some mental drawbacks at first, since you still know that a file of
+version 5324 is more recent than version 3200, but not <em>how much</em> more
+since the commits could have been done in another place. The difference is more
+visible with 1.4 versus 1.5.</p>
+<p>But as I was more used to it, that thinking was obviously a red herring. It
+did divert us that a file could have been completely rewritten in just one
+revision, and that one signle line could have be flipped back and forth in
+several revisions,</p>
+<p>So the number, and the gap between them, as the basis of the amount of
+modifications has its value decreased. What could be quite interesting though
+is that the revision number is globally incrementing<sup>[<a href="#pnote-401164-2" id="rev-pnote-401164-2" name="rev-pnote-401164-2">2</a>]</sup>. That enables us to know that a file in
+revision 1000 was commited before another one with revision 2000.</p>
+<p>Back in our database, if we just define <strong>one</strong> sequence for
+all the ID in the database we have 2 advantages :</p>
+<ol>
+<li>One ID represents only one row. Debugging is easier and when you see an ID
+<em>in the wild</em>, you can think of which row it represents.</li>
+<li>You can establish an almost exact history of sequencing the creations of
+the rows.</li>
+</ol>
+<p>The inevitable locking performance issue that arises often is made painless
+through bigger block allocations.</p>
+<p>One of the lesser known issue is that, usually when using an ID per table,
+after a while you begin to <em>know</em> which ID belongs to wich table since
+all the tables are filled at different rates : 50083 is an order ID, whereas
+13650239 looks more like a message ID.</p>
+<h2>Globally unique :</h2>
+<p>If you push this logic a little bit further, you can even imagine that all
+the ID produced could be unique. Then you will have the benefits of unicity,
+but even on the whole IT level. It makes interapplication debugging easier,
+since the leaked keys can be nicely tracked down to their origin. How to
+generate such an unique ID is tricky question, since the applications usually
+are coded in heterogeneous environemments and technologies.</p>
+<h3>A central ID service</h3>
+<p>The most obvious way is to have a central ID service, the same as the unique
+sequence in the application. It has to be accessed in a distributed way, and
+the implementation can be quite cumbersome thoughout all the different
+technologies that exists.</p>
+<p>This service has also to have the highest <a href="http://en.wikipedia.org/wiki/Service_level_agreement" hreflang="en">SLA</a> as
+the applications that depends on it. It becomes then quickly a <a href="http://en.wikipedia.org/wiki/Single_point_of_failure" hreflang="en">SPOF</a>
+if not designed carefully.</p>
+<h3>GUID</h3>
+<p>Since <em>online</em> ID generation has some serious drawbacks, the easiest
+<em>offline</em> way is to generate <a href="http://en.wikipedia.org/wiki/Globally_Unique_Identifier" hreflang="en">GUID</a>s, there are many hooks in each technology/application to be a
+quite educated move.</p>
+<p>It also has drawbacks, but more in the semantic fields. A GUID is quite
+semantically opaque since looking at it does not tell you anything about
+where/when the ID was generated. You have to do a full key scan of all the
+applications to find its origin.</p>
+<h3>Almost globally unique : Application ID + Application Unique</h3>
+<p>Earlier, we just found out the application-unique ID. If you pair it with an
+unique application ID, you just managed to have a globally unique ID. In the
+generation of this ID, you just prefix it with the ID of the application, and
+tada.... you have your globally unique ID.</p>
+<p>The net effect is that if you see this ID in the wild, you know where it was
+created. If you have an increasing one, you can even guess almost
+<em>when</em>.</p>
+<h2>Parallels between applications and networks</h2>
+<p>The more I think about it, the more I can draw parallels between rows in
+applications and adresses in networks, but I'll write more on that later in
+another article.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-401164-1" id="pnote-401164-1" name="pnote-401164-1">1</a>] Evil because it's usually not thread safe and quite
+horridly inefficient</p>
+<p>[<a href="#rev-pnote-401164-2" id="pnote-401164-2" name="pnote-401164-2">2</a>] Actually in subversion it has a **strict** incrementing
+policy</p>
+</div>

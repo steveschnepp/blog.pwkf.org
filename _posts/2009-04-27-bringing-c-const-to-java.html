@@ -1,0 +1,216 @@
+---
+layout: post
+title: "Bringing C++ Const to Java"
+date: 2009-04-27 16:10:09 +0100
+tags: []
+---
+
+<p>In Java, the commonly accepted way is to use the <code>final</code> keyword.
+But it has a major drawback : the object cannot be <em>redefined</em>, but can
+be <em>modified</em> by calling mutable members. You have to convert it to an
+immutable type. This is a simple task, but radically different ways exists.</p>
+<h2>Achieve Immutable in Java</h2>
+<p>We'll see some differents methods with a common example. Let's start with a
+very simple <code>Point</code> class :</p>
+<pre>
+public class Point {
+    private int x;
+    private int y;
+    void setX(int i) { this.x = i; }
+    void setY(int i) { this.y = i; }
+    int getX() { return this.x; }
+    int getY() { return this.y; }
+}
+</pre>
+<h3>The <em>Java Collection way</em></h3>
+<p>It is the easiest way. It is designed to be a drop-in, like in the Java
+Collection API. You just create a read-only class that derives your read-write
+class just like the <code>PointReadOnly</code> that mimics the r/o List. It
+overrides all the methods either to delegate or to forbid calling by throwing a
+run-time exception.</p>
+<pre>
+public class PointReadOnly extends Point {
+    private final Point inner;
+    public PointReadOnly(Point p) { this.inner = p };
+
+    void setX(int i) {
+        throw new UnsupportedOperationException(&quot;PointReadOnly is read-only&quot;);
+    }
+    void setY(int i) {
+        throw new UnsupportedOperationException(&quot;PointReadOnly is read-only&quot;);
+    }
+
+    int getX() { return inner.getX(); }
+    int getY() { return inner.getY(); }
+}
+</pre>
+<h4>Advantages</h4>
+<p>You can use it <strong>right-now</strong> : Your code can slowly evolve to
+progressively generate and integrate this new object without really knowing
+it's here. The misuses, that are changing the object, will be catched in the
+testing phase when exceptions are being thrown. The use of a good logging
+system in the setters is a nice addition.</p>
+<h4>Disadvantages</h4>
+<p>Any pedantic compiler should warn you that the setter parameter isn't read.
+I tried to be quite clever and find ways to ignore it. Just rewrite it as :</p>
+<pre>
+    void setX(int i) {
+        if (i == 0) { /* Do nothing but keep the compiler happy */ }
+        throw new UnsupportedOperationException(&quot;PointReadOnly is read-only&quot;);
+    }
+</pre>
+<p>The performance penalty is minimal since any compiler should optimize the
+if-case away and even if not, <strong>this function should not be called
+anyway</strong>.</p>
+<p>But <a href="http://stackoverflow.com/questions/786740/how-to-avoid-the-unused-param-warning-when-overriding-a-method-in-java-1-4/786794#786794" hreflang="en">as a user on StackOverflow pointed</a>, that warning
+<em>definitively</em> indicates a code smell : <strong>this hierarchy blatantly
+violates Liskov's principle of substitution</strong> since a class receiving an
+instance of a <code>Point</code> expects <code>setX()</code> to work, and may
+not handle this exception correctly. Obviously a read-writeable class is
+readable, but a readable class is not necessarly a read-writeable class. This
+may introduce subtle bugs that would only be catched at runtime, and therefore
+testing, as simple as it may be, has to be quite thorough in order not to be
+bitten at a inconvenient time.</p>
+<p>A good solution that respects Liskov's principle is to redesign the
+hierarchy, we'll talk about it just later. But right now, don't despair, you
+can have almost the best of the both world : simple, yet <em>almost</em>
+respecting Liskov's principle.</p>
+<h4>Circus time : ride two horses at once</h4>
+<p>Actually what violates Liskov's principle is that the setters don't do the
+job they are entitled to do. Throwing an exception is a sure way to
+<strong>ensure</strong> that the object won't be modified, but that is usually
+overkill<sup>[<a href="#pnote-397655-1" id="rev-pnote-397655-1" name="rev-pnote-397655-1">1</a>]</sup>. If you just log the erroneous call, but
+still do what it should do, you have the warnings, but not the nasty
+consequences. Just take care to log the callstack also, in order to be able to
+fix it much more easily.</p>
+<p>The new method becomes then :</p>
+<pre>
+void setX(int i) {
+    Log.warn(new UnsupportedOperationException(&quot;PointReadOnly is read-only&quot;));
+    return inner.setX(i);
+}
+</pre>
+<p>A notable side effect is that your class isn't really read-only anymore
+though, just complain-only.</p>
+<h3>The <em>Object-Oriented way</em></h3>
+<p>A much better solution is to create a read-only super class that the
+read-write one would inherit. The read-only class only implements getters (or
+any non-changing method). The read-write complement them with the setters.</p>
+<p>It would lead to code like :</p>
+<pre>
+public class PointReadOnly {
+    private final Point inner;
+    public PointReadOnly(Point p) { this.inner = p };
+
+    int getX() { return inner.getX(); }
+    int getY() { return inner.getY(); }
+}
+
+public class Point extends PointReadOnly {
+    private int x;
+    private int y;
+    void setX(int i) { this.x = i; }
+    void setY(int i) { this.y = i; }
+    int getX() { return this.x; }
+    int getY() { return this.y; }
+}
+</pre>
+<h4>Advantages</h4>
+<p>Now <strong>Liskov's principle is not violated anymore</strong> and code
+that expects a read-only class can seamlessly have a r/o or a r/w class.</p>
+<p>The changing will also spread naturally all throughout the codebase, just
+like the C++ <code>const</code> modifier and failures to comply would be caught
+at <strong>compile time</strong> and not at runtime.</p>
+<p>The r/o is a nice wrapper for the read-only class, and a r/w can even be
+used in place of the r/o place.</p>
+<h4>Disadvantages</h4>
+<p>It doesn't <em>feel</em> right :The r/o class is just a placeholder for a
+r/w class.</p>
+<h4>Comments</h4>
+<p>An interface-base inheritance scheme can even be better. <code>Point</code>
+as the r/o interface, <code>PointMutable</code> as the r/w and
+<code>PointBase</code> as the base implentation class. This way you can avoid
+the wrapper class. You also get the C++ <code>const_cast&lt;&gt;()</code> for
+free (by just downcasting as <code>PointMutable</code>).</p>
+<pre>
+interface Point {
+        int getX();
+        int getY();
+}
+interface PointMutable extends Point {
+        void setX(int i);
+        void setY(int i);
+}
+class PointBase implements Point {
+    private int x;
+    private int y;
+    void setX(int i) { this.x = i; }
+    void setY(int i) { this.y = i; }
+    int getX() { return this.x; }
+    int getY() { return this.y; }
+}
+</pre>
+<p>I realize this does not answer your question about getting rid of the
+warnings. But warnings can either be suppressed, ignored, or addressed. An
+unused parameter is often a bad smell that indicates your method might not be
+doing what it's expected to do. Methods should only get essential parameters.
+If the parameter is not used, the parameter is not essential, and therefore
+something needs to be changed.</p>
+<h3>The <em><code>String</code> way</em></h3>
+<p>Another way is just to avoid the read-only and mutable API all together and
+go the functional way. Since it's a completely different paradigm, it doesn't
+exactly fits the bill here but it's a quite important way of <a href="http://en.wikipedia.org/wiki/Gordian_Knot" hreflang="en">cutting the gordian
+knot</a>. Its concepts are rooted in both functional programming and RAII. It
+is quite practical only if you have an efficient garbage collection system,
+since it has the tendency to create lots of temporary objets that are mostly
+created, used and forgot.</p>
+<p>Do do thing, you have to redesign the whole class, in order to be able to
+defined it only once, and when you call a modifying method, you end up with an
+other object, also immutable. The <code>String</code>, <code>Integer</code> and
+<code>Class</code> class make extensive usage of this.</p>
+<p>So, our class will become :</p>
+<pre>
+class final Point {
+    private final int x;
+    private final int y;
+    Point(int x, int y) { this.x = x; this.y = y; }
+    int getX() { return this.x; }
+    int getY() { return this.y; }
+
+    void setX(int i) { return new Point(i, this.y); }
+    void setY(int i) { return new Point(this.x, i); }
+}
+</pre>
+<p>As you can see, every object is not modifiable, if a method recieves the
+object as an argument, it cannot modify it, since it would have a new object.
+The properties are final, and the class has usually to be made final in order
+not to be able to mutate the class by inheritance.</p>
+<p>This enables programming without side-effect and therefore is quite
+interesting for multi-thread programming.</p>
+<h2>Conclusion &amp; thoughts</h2>
+<p>The <code>UnsupportedOperationException</code> is a very practical idiom,
+that even the Java Collection API is based on it. It may not be very nice in
+theory, but in practice it has its usages. It should not be abused thought, and
+the <em>OO</em>-way should be prefered when possible, usually when you are in
+control of all the code base.</p>
+<p>The logging approch doesn't really solve the problem since it's only
+advisory, but can fit the bill when the code base is huge and you want to be
+able to understand what is going wrong.</p>
+<p>The <em>OO</em>-way is a nice compromise between the abstract beauty of the
+String-way and the quite hugly kludge of the <em>Collection</em>-way,
+especially when used with the interfaces scheme : it spreads out as the
+<code>const</code> param, and force the coder to think if a modifying is really
+needed.</p>
+<p>The <em>String</em>-way is very tempting, as a true create-and-forget way.
+If you could even enforce to only have one instance of each representation
+you'll have a free <code>==</code> (almost) overloaded operator<sup>[<a href="#pnote-397655-2" id="rev-pnote-397655-2" name="rev-pnote-397655-2">2</a>]</sup>.</p>
+<p>So we have at least 3 ways to learn and adapt idioms from C++ in Java. The
+major issue is that it's not as itegrated as <code>const</code> : every object
+needs custom code except maybe the <em>String</em>-way.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-397655-1" id="pnote-397655-1" name="pnote-397655-1">1</a>] It all depends on the indent, specific policies on
+specific usages.</p>
+<p>[<a href="#rev-pnote-397655-2" id="pnote-397655-2" name="pnote-397655-2">2</a>] Just be aware of classloader issue with
+<code>static</code>. Hmmm that will be covered in another article.</p>
+</div>

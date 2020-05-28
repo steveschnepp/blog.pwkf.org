@@ -1,0 +1,29 @@
+---
+layout: post
+title: "Enhance RRD I/O performance in Munin 1.4 and Scale"
+date: 2011-06-20 07:42:41 +0100
+tags: [rrd, munin, performance]
+---
+
+<p>As with most of the RRD-based monitoring software (Cacti, Ganglia, ...), it
+is quite difficult to scale.</p>
+<p>The bad part is that <strong>updating</strong> <strong>lots</strong> of
+small RRD files seems like <strong>pure random I/O to</strong> the OS as stated
+in there documentation.</p>
+<p>The <strong>good part</strong> is that we are not alone, and therefore the
+<strong>RRD developers did tackle the issue</strong> with <a href="http://oss.oetiker.ch/rrdtool/doc/rrdcached.en.html" hreflang="en">rrdcached</a>. It spools the updates, and flushs them to disk in a batched
+manner, or when needed by a rrd read command such as graphing. That's why it is
+<strong>scales</strong> well when using <strong>CGI graphing</strong>.
+Otherwise, munin-graph will read every rrd, and therefore force a flush on all
+the cache.</p>
+<p>And the icing on the cake is that, although it is only fully integrated to
+munin 2.0, <strong>you can use it right away in the 1.4.x series</strong>.</p>
+<p>You only need to define the environment variable
+<code>RRDCACHED_ADDRESS</code> while running the scripts accessing the
+RRDs.</p>
+<p>Then, you have to remove the <code>munin-graph</code> part of the
+<code>munin-cron</code> and run it on its own line. Usually only every hour or
+so, to be able to accumulate data in <code>rrdcached</code> before flushing it
+all to disk when graphing.</p>
+<p>Updating to 2.0 is also an option to have a real CGI support. (CGI on 1.4 is
+existing but has nowhere decent performance).</p>

@@ -1,0 +1,80 @@
+---
+layout: post
+title: "Waiting for Munin 2.0 - Performance - Asynchronous updates"
+date: 2010-06-13 07:07:55 +0100
+tags: [munin, munin20, performance]
+---
+
+<p><code>munin-update</code> is <strong>the</strong> fragile link in the munin
+architecture. A <strong>missed execution</strong> means that some <strong>data
+is lost</strong>.</p>
+<h2>The problem : updates are synchronous</h2>
+<p>In Munin 1.x, updates are synchronous : the value of each
+service<sup>[<a href="#pnote-526512-1" id="rev-pnote-526512-1" name="rev-pnote-526512-1">1</a>]</sup> is the one that <code>munin-update</code>
+retrieves each scheduled run.</p>
+<p>The issue is that <code>munin-update</code> has to ask every service on
+every node for their values. Since the values are only computed when asked,
+<code>munin-update</code> has to wait quite some time for every value.</p>
+<p>This <strong>very simple design</strong> enables munin to have the
+<strong>simplest plugins</strong> : they are completely
+<strong>stateless</strong>. While being one great strength of munin, it puts a
+severe blow on scalability : more plugins/node means obviously a slower
+retrieval.</p>
+<h2>Evolving Solutions</h2>
+<h3>1.4 : Parallel Fetching</h3>
+<p>1.4 addresses some of these scalability issues by implementing parallel
+fetching. It takes into account that the <strong>most of the execution
+time</strong> of <code>munin-update</code> is spent <strong>waiting for
+replies</strong>. In 1.4 <code>munin-update</code> can ask
+<code>max_processes</code> nodes in parallel.</p>
+<p>Now, the I/O part is becoming the next limiting factor, since updating many
+RRDs in <strong>parallel</strong> is the same as <strong>random I/O</strong>
+access for the underlying munin-master OS. Serializing &amp; grouping the
+updates will be possible with the new RRDp interface from rrdtool version 1.4
+and on-demand graphing. Tomas Zvala even offered <a href="http://sourceforge.net/mailarchive/message.php?msg_name=4BEDB877.9050004%40zvala.cz" hreflang="en">a patch for 1.4 RRDp</a> on the ML. It is very promising, but
+doesn't address the root defect in this design : a hard dependence of regular
+<code>munin-update</code> runs.</p>
+<h3>2.0 : Stateful plugins</h3>
+<p>2.0 provides a way for plugins to be stateful. They might schedule their
+polling themselves, and then when <code>munin-update</code> runs, only emit
+collect already computed values. This way, a <strong>missed run</strong> isn't
+as dramatic as it is in the 1.x series, since <strong>data isn't lost</strong>.
+The data collection is also <strong>much faster</strong> because the real
+computing is done <strong>ahead of time</strong>.</p>
+<h3>2.0 : Asynchronous proxy node</h3>
+<p>But <strong>changing plugins</strong> to be <strong>stateful</strong> and
+self-polled is <strong>difficult</strong> and tedious. <strong>It even works
+against of one of the real strength of munin</strong> : having simple &amp;
+stateless plugins.</p>
+<p>To address this concern, an experimental proxy node is created. For 2.0 it
+takes the form of a couple of processes : <code>munin-async-server</code> and
+<code>munin-sync-client</code>.</p>
+<h2>The proxy node in detail (<code>munin-async</code>)</h2>
+<h3>Overview</h3>
+<p>These 2 processes form an asynchronous proxy between
+<code>munin-update</code> and <code>munin-node</code>. This avoids the need to
+change the plugins or upgrade <code>munin-node</code> on all nodes.</p>
+<p><code>munin-async-server</code> should be installed on the same host than
+the proxied <code>munin-node</code> in order to avoid any network issue. It is
+the process that will poll regularly <code>munin-node</code>. The I/O issue of
+<code>munin-update</code> is here non-existent, since <code>munin-async</code>
+stores all the values by simply appending them in a text file without any
+further processing. This file is later read by the client's
+<code>munin-update</code>, and it will be processed there.</p>
+<h3>Specific update rates</h3>
+<p>Having one proxy per node enables a polling of all the services there with a
+specific update rate.</p>
+<p>To achieve this, <code>munin-async-server</code> forks into multiple
+processes, one for each proxied service. This way each service is completely
+isolated from the other, and therefore is able to have its own update rate, is
+safe from other plugins slowdowns, and it does even completely parallelize the
+information gathering.</p>
+<h3>SSH transport</h3>
+<p><code>munin-async-client</code> uses the new SSH native transport of 2.0. It
+permits a very simple install of the async proxy.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-526512-1" id="pnote-526512-1" name="pnote-526512-1">1</a>] in 1.2 it's the same as plugin, but since 1.4 and the
+introduction of <ins>multigraph</ins>, one plugin can provide multiple
+<ins>services</ins>.</p>
+</div>

@@ -1,0 +1,38 @@
+---
+layout: post
+title: "When having good relationships with package maintainers can also be a curse"
+date: 2013-02-24 12:23:24 +0100
+tags: [munin, packaging]
+---
+
+<p>I advise every user to <strong>only</strong> use the <strong>packaged
+version</strong> of <a href="http://munin-monitoring.org" hreflang="en">munin</a>. Here's a short article to explain the background of my
+reluctance to ask for users to directly use the official tarball.</p>
+<p>I have become upstream of <a href="http://munin-monitoring.org" hreflang="en">munin</a> a while ago now. As such, I'm in contact with package
+maintainers. They take the official releases and cram it into their own
+distribution of choice<sup>[<a href="#pnote-721204-1" id="rev-pnote-721204-1" name="rev-pnote-721204-1">1</a>]</sup>.</p>
+<p>I have to admit that the various epic war stories read throughout the web
+about <em>upstream vs packagers</em> are very far from the truth here. They are
+a <ins>charm</ins> to work with. Often challenging and demanding, but always
+because there's a real need. And that's quite a good thing, as I'm still a
+rookie in term of open source software management. Therefore I'm quite grateful
+when they gently pinpoint my mistakes<sup>[<a href="#pnote-721204-2" id="rev-pnote-721204-2" name="rev-pnote-721204-2">2</a>]</sup>.</p>
+<p>Yet, this nice team comes with a <em>price</em>. Since we mostly hang out on
+IRC together, there is way much inter-distro communication than on other
+software. But I'm the <em>sole</em> owner of the <em>tarball distro</em> .</p>
+<p>Yet, as I don't like to build everything from source, I obviously use a
+distro. There, since the packaging is very nicely done, I don't feel to take
+the hassle of using my own &quot;tarball&quot; to test them. I just build a package for
+my distro out of the release code.</p>
+<p>That's also a curse, as I admit that I although I test the <em>code</em>, I
+only seldom test the <em>packaging</em>. This means that I cannot really advise
+someone on using the tarball, nor directly git code as even I don't do it.</p>
+<p>But, that said, <strong>I still think I'm the luckiest upstream
+around</strong>. Thanks guys !</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-721204-1" id="pnote-721204-1" name="pnote-721204-1">1</a>] Be it linux-based like Gentoo, Redhat..., BSD-based as
+FreeBSD, OpenBSD..., or even multi-kernel based as Debian</p>
+<p>[<a href="#rev-pnote-721204-2" id="pnote-721204-2" name="pnote-721204-2">2</a>] Defaulting to CGI graphics was a move that was way too
+premature, end-user wise. So thanks to them, it defaults to cron again</p>
+</div>

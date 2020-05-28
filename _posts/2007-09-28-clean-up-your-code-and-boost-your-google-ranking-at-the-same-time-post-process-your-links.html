@@ -1,0 +1,55 @@
+---
+layout: post
+title: "Clean-Up Your Code and Boost Your Google Ranking at the Same Time : Post-process Your Links"
+date: 2007-09-28 06:28:25 +0100
+tags: []
+---
+
+<p>The search engine ranking of a web site is very important nowadays. As
+usually every optimisation means an complexification of the code, many
+developpers just pay that price. It's mostly paid with a
+<em>javascriptification</em> of the links that we don't want to be followed,
+and <em>javascriptification</em> of functional dialog popups.</p>
+<p>There's an other approch to this. It still makes heavy use of Javascript,
+but :</p>
+<ul>
+<li>your site will still work as intended even with javascript disabled</li>
+<li>your site will be much more maintenable</li>
+</ul>
+<p>The idea is to post-process the links with a Javascript function that is
+triggered just before the end of the loading of the page. Usually it can be
+done with a body-onLoad, or a &lt;script/&gt; element at the bottom of the
+page. This script parses all the &lt;a/&gt; elements, and decodes the classes
+added to it. If you encode the classenames like this code :</p>
+<pre>
+&lt;a
+href=&quot;my_popup.html&quot;
+class=&quot;medium_popup pp/popup&quot;&gt;
+        explain these words
+&lt;/a&gt;
+</pre>
+<p>We can see that the classes of the link are <code>medium_popup</code>, that
+is handled normally by the browser, and <code>pp/popup</code> is used by the
+post-processing code to add a onClick() handler that could be expressed as
+<code>onClick=&quot;javascript:open_popup('my_popup.html');return
+false;&quot;</code>.</p>
+<p>The big advantage is that you can very simply add popup to your links,
+web-spiders knows how to go to your popup with all your shiny glossary, and so
+can users without javascript or just open in a new tab with a middle-click on
+some browsers.</p>
+<p>If it's a dialog box to ask some more informations, you can encode the link
+like that :</p>
+<pre>
+&lt;a
+href=&quot;&quot;
+class=&quot;medium_popup pp/link/my_dialog.html&quot;&gt;
+        choose the date
+&lt;/a&gt;
+</pre>
+<p>This way <code>pp/link/my_dialog.html</code> will be parsed and the
+<code>href</code> will be dynamically replaced with
+<code>my_dialog.html</code>.</p>
+<p>You can even later add a <code>pp/popup</code> after the
+<code>pp/link/my_dialog.html</code>, and have the dialob box magically opened
+in a popup.</p>
+<p>I'll post later some example code to parse it.</p>

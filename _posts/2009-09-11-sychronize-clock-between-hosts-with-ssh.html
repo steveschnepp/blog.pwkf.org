@@ -1,0 +1,27 @@
+---
+layout: post
+title: "Sychronize clock between hosts with SSH"
+date: 2009-09-11 12:58:20 +0100
+tags: [ssh]
+---
+
+<p><a href="http://en.wikipedia.org/wiki/Network_Time_Protocol" hreflang="en">NTP</a> is very handy for server clock synchronisation, but it can be
+cumbersome to deploy.</p>
+<p>Sometimes you just need to do a one-shot clock synchronisation, so you use
+the standard <code>date</code> command. But there isn't a flag to easily copy a
+setting to another.</p>
+<h2>From a remote host</h2>
+<p>Quite easy :</p>
+<pre>
+# date `ssh remoteuser@remotehost date +%m%d%H%M%Y.%S`
+</pre>
+<h2>To a remote host</h2>
+<p>It's also very easy<sup>[<a href="#pnote-440747-1" id="rev-pnote-440747-1" name="rev-pnote-440747-1">1</a>]</sup> :</p>
+<pre>
+# ssh root@remotehost date `date +%m%d%H%M%Y.%S`
+</pre>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-440747-1" id="pnote-440747-1" name="pnote-440747-1">1</a>] Yes, I <strong>do</strong> know that logging remotely
+as root is a security pitfall...</p>
+</div>

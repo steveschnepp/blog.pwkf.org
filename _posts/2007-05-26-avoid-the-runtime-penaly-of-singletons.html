@@ -1,0 +1,75 @@
+---
+layout: post
+title: "Avoid the runtime penaly of Singletons"
+date: 2007-05-26 06:29:21 +0100
+tags: []
+---
+
+<p>A common way to do the Singleton pattern involves a
+<code>getInstance()</code> method which does a runtime test like this :</p>
+<pre>
+private static Singleton instance;
+private static Object mutex;
+
+public static Singleton getInstance() {
+        if (null == instance) {
+                // First call
+                synchronized (mutex) {
+                        if (null == instance) {
+                                instance = new Singleton ();
+                        }
+                }
+        }
+        return instance;
+}
+
+private Singleton() {
+}
+</pre>
+<p>This method works well, since it uses the <em>double-null-check</em>. You
+always have to check it while beeing under a synchronized belt, and you check
+it just before in order to avoid the synchronized cost after its
+initialisation. So we have a method that still makes a runtime check, and
+cannot be nicely inlined by the compilator.</p>
+<p>If you can afford to :</p>
+<ul>
+<li>not be able to deregister the instance afterwards with a
+<code>freeInstance()</code> method (We'll speak about this later)</li>
+<li>not defering the creation of the instance the first time you need it (also
+called lazy creation)</li>
+</ul>
+<p>you can avoid that extra cost by creating the instance in class loading time
+with a static block.</p>
+<p>The code then becomes :</p>
+<pre>
+public static Singleton getInstance() {
+        return instance;
+}
+
+private Singleton() {
+}
+
+private static Singleton instance = new Singleton();
+</pre>
+<p>The <code>getInstance()</code> method can now be inline quite easily and
+there is no more extra check cost. Note that here the default constructor is
+empty. If it's not, I suggest to put the static initialisation at the end of
+the class, in order for the rest of the class to be initialised and to be ready
+for use in the constructor.</p>
+<p>If you want to be able to deregister you have to use the first version, and
+write a freeInstance() like :</p>
+<pre>
+public static void freeInstance() {
+        if (null != instance) {
+                // First call
+                synchronized (mutex) {
+                        if (null != instance) {
+                                // Do some closing work here if required like instance.close()
+                                instance = null;
+                        }
+                }
+        }
+}
+</pre>
+<p>And now you just wrote a primitive form of pooling (with only one
+instance)..But that's another story...</p>

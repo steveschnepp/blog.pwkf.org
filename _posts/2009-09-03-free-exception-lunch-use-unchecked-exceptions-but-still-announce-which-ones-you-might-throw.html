@@ -1,0 +1,22 @@
+---
+layout: post
+title: "Free Exception lunch : Use unchecked exceptions, but still announce which ones you might throw."
+date: 2009-09-03 08:23:23 +0100
+tags: []
+---
+
+<p>In a previous article I choosed my side : <a href="/post/2009/07/Checked-or-Unchecked-Exceptions-for-Legacy-Code">Unchecked
+Exceptions are much simpler to use</a>.</p>
+<p>But, on the other side of this great division, there is a very valid point :
+<strong>You usually declare checked exceptions</strong>. Sure it's possible to
+only declare to throw <code>Exception</code>, but that would defeat the whole
+purpose of using checked exceptions.</p>
+<p>The nicest thing is that you can also have a custom exception hierarchy, but
+based on <code>RuntimeException</code> instead of a plain
+<code>Exception</code>. This way it's like in C++. Everything might be thrown,
+and you don't <strong>need</strong> to handle them.</p>
+<p><strong>Declaring them</strong>, on the other side, is very interesting
+because you are <strong>documenting your interface</strong> for almost
+<strong>free</strong>.</p>
+<p>So, use unchecked exceptions to free yourself of the checked catch-slavery,
+but still declare the custom ones you might throw.</p>

@@ -1,0 +1,32 @@
+---
+layout: post
+title: "Equality in Java is a Hot Topic, but a Hazardous one."
+date: 2009-06-01 15:38:29 +0100
+tags: []
+---
+
+<p>It seems that comparing two objects isn't as a simple task to do as it seems
+at first.</p>
+<p>My concept for <a href="/post/2009/05/Compare-Efficiently-in-Java-%3A-Embrace-Smart-Comparison">smart
+comparison</a> still holds, but is completed perfectly with the <a href="http://www.artima.com/lejava/articles/equality.html" hreflang="en">How to
+Write an Equality Method in Java</a> article posted on Artima soon after
+mine<sup>[<a href="#pnote-406940-1" id="rev-pnote-406940-1" name="rev-pnote-406940-1">1</a>]</sup>.</p>
+<p>2 main points that you have to be careful to (Others are also detailed in
+this article) :</p>
+<ul>
+<li><code>hasCode()</code> has to be redefined usually since otherwise the
+<a href="http://www.geocities.com/technofundo/tech/java/equalhash.html" hreflang="en">equality contract</a> on <code>Object.hascode()</code> would be
+broken.</li>
+<li>the <code>equals()</code> has to take an Object as parameter since
+overloading in Java is resolved by the compile-time type of the argument, not
+the run-time type.</li>
+</ul>
+<p>I just got bitten by the second one, but not much (yet) since I mostly rely
+on compile-time overloading. My purpose here was only to compare objects either
+to constants or to simple variables. But in the generalization I would
+certainly have overlooked this and be bitten much more deeply.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-406940-1" id="pnote-406940-1" name="pnote-406940-1">1</a>] But as much as I wished it to be, it is not related
+:-)</p>
+</div>

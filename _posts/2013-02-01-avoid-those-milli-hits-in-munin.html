@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Avoid those milli-hits in Munin"
+date: 2013-02-01 09:47:16 +0100
+tags: [munin, sysadmin]
+---
+
+<p>A recurring question on IRC is : <q>why do I have 500 million hit/s in my
+graph ?</q>.</p>
+<p>Turns out that they are really seeing <code>500m hit/s</code>, and that
+lower-case <code>m</code> means <em>milli</em>, and not <em>Mega</em> as
+specified in the <a href="http://en.wikipedia.org/wiki/Metric_prefix" hreflang="en">Metric system</a>. This is automatically done by RRD.</p>
+<p>To avoid this you should just specify <code>graph_scale no</code> as
+<a href="http://munin-monitoring.org/wiki/graph_scale" hreflang="en">specified</a>.</p>

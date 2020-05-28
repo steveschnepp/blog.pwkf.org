@@ -1,0 +1,113 @@
+---
+layout: post
+title: "Convert your Log Files into Gold"
+date: 2007-09-18 06:36:16 +0100
+tags: [sql]
+---
+
+<p>Log files are a necessary evil on a live system. A few rules can transform
+your log files from a useless heap of textfiles to a gold mine.</p>
+<p>I'll focus mostly on <a href="http://logging.apache.org/log4j/" hreflang="en">Log4J</a> since it's available on Java, but is ported on many languages
+also as it sets some kind of logging standard.</p>
+<p>The logger is configured per class with a :</p>
+<p><code>private static Logger logger =
+Logger.getLogger(MyClass.class);</code></p>
+<p>The logger is private since each class should have its logger, especially
+the derived ones (that way you can very nicely debug the virtual function
+calls), and static since it's either thread-safe and that way you have it even
+in the &lt;init&gt; and &lt;cinit&gt; of your class (you did put it in the
+first line of the class, didn't you ?).</p>
+<p>This is very useful since you can configure a per-package or a even
+per-class level of logging. It is very useful since all your classes do only
+one thing, don't they ?</p>
+<p>I usually use only 5 levels of logging : ERROR, WARN, INFO, DEBUG, TRACE</p>
+<ul>
+<li><strong>TRACE</strong> is used to help with a dump of many internal
+variables (it's a last resort debug, since usually it's very verbose)</li>
+<li><strong>DEBUG</strong> is used to debug this class, with keypoints inside
+the class, in order to see the inside flow of execution.</li>
+<li><strong>INFO</strong> is used to debug other classes with the help of this
+one. Usually it emits only one line per public call, with the incoming
+parameters and the result displayed in a synthetised form.</li>
+<li><strong>WARN</strong> is used when an exceptional situation happens
+(usually a catched Exception that is triggered by the caller data) and there is
+a known path to recover.</li>
+<li><strong>ERROR</strong> is used when an exceptional situation happens, but
+there is no known path to recover. Usually this line is send by email to the
+administrator. If there is a problem, and an ERROR is logged, there should be
+no other ERROR logged for this problem : it will help you to keep a high
+signal/noise ratio.</li>
+</ul>
+<p>In a live production system, I just log INFO for <em>terminal</em> business
+classes (the ones that represent actions), and WARN on technical ones (the one
+that actions class uses). I configure it to send an email on every ERROR.</p>
+<p>It's also very important to have a reminder of a synthetised form of the
+arguments in the INFO, WARN &amp; ERROR log messages (such as an ORDER_ID if
+it's an ordering action or the PRODUCT_ID if it's a deleting product action).
+It's also a good thing to put the exception that triggered the WARN/ERROR log.
+That way you can just grep through your logs to see if, when and what happened
+to that famous product that everyone is so excited about</p>
+<p>Always use a RollingFileAppender. <strong>Always</strong>. If you're scared
+about loosing some logs, just put an insane number of backup files since
+<strong>nothing</strong> is worse than not enough space on the log filesystem :
+you won't have the logs anyway. Note that if you have a different kind of
+rolling mecanismed you can use it, the point is that you should
+<strong>never</strong> leave a growing log file without control.</p>
+<p>So, here is a exemple of 2 classes (one business, one technical) that
+present the logging system I talked about :</p>
+<pre>
+public class PublishProductAction extends Action {
+
+private static Logger logger = Logger.getLogger(AddProductAction.class);
+private int product_id;
+public PublishProductAction(int product_id) { this.product_id = product_id; }
+public void execute() {
+        logger.info(&quot;publishing product[product_id:&quot;
+                + product_id + &quot;]&quot;);
+        try {
+                // Do things...
+        } catch (Exception e) {
+                logger.error(&quot;Cannot publish product[&quot;
+                        + product_id + &quot;] : &quot;, e);
+        }
+        logger.debug(&quot;done publishing product[product_id:&quot;
+                + product_id + &quot;]&quot;);
+}
+
+}
+
+public class MyPreparedStatement {
+
+private static Logger logger = Logger.getLogger(MyPreparedStatement.class);
+private String sql;
+public MyPreparedStatement(String sql) { this.sql_id = sql; }
+public void execute(Collection params) {
+        startTimer();
+        try {
+        if (sql == null) {
+                // Log in warning, since it should not happen,
+                // but we can handle it gracefully
+                logger.warn(&quot;The SQL statement is null, we do nothing&quot;);
+                return;
+        }
+                try {
+                // Do things...
+        } catch (Exception e) {
+                // log only in info since we don't catch
+                // the Exception.
+                logger.info(&quot;Cannot execute SQL[&quot; + sql + &quot;] : &quot;, e);
+                thow e;
+        }
+        } finally {
+                stopTimer();
+                // help the outside class to see what happened
+                if (logger.isInfoEnabled()) {
+                        logger.info(&quot;executed sql [&quot;
+                                + parseSQL(sql, params) + &quot;] in &quot;
+                                + getTime() + &quot; ms&quot;);
+                }
+        }
+}
+
+}
+</pre>

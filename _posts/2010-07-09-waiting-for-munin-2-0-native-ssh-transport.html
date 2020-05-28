@@ -1,0 +1,56 @@
+---
+layout: post
+title: "Waiting for Munin 2.0 - Native SSH transport"
+date: 2010-07-09 08:33:40 +0100
+tags: [munin, munin20, ssh, sysadmin, http]
+---
+
+<p>In the munin architecture, the munin-master has to connect to the munin-node
+via a very simple protocol and plain TCP.</p>
+<p>This has several advantages :</p>
+<ol>
+<li><strong>Very</strong> simple to manage &amp; install</li>
+<li>Optional SSL since 1.4 enabling secure communications</li>
+<li>Quite simple firewall rules.</li>
+</ol>
+<p>It has also some disadvantages :</p>
+<ol>
+<li>A new listening service means a wider exposure</li>
+<li>The SSL option might add some administrative overhead (certificates
+management, ...)</li>
+<li>A native protocol isn't always covered by all firewall solutions</li>
+<li>Some organisations only authorize a few protocols to simplify audits (ex:
+only SSH &amp; HTTPS)</li>
+</ol>
+<h2>Native SSH</h2>
+<p>Theses down points may be solved by <a href="http://munin-monitoring.org/wiki/MuninSSHTunneling" hreflang="en">encapsulation over SSH</a>, but it can be a tedious task to maintain if
+the number of hosts increases.</p>
+<p>Therefore 2.0 introduces the concept of a <strong>native SSH</strong>
+transport. Its usage is dead simple : replace the address with an
+<code>ssh://</code> URL-like one.</p>
+<p>The node still has to be modified to communicate with
+<code>stdin</code>/<code>stdout</code> instead of a network socket. For now,
+only <a href="/post/2008/11/04/A-Poor-Man-s-Munin-Node-to-Monitor-Hostile-UNIX-Servers">pmmn</a>
+and <a href="/post/2010/06/Waiting-for-Munin-2.0-Performance-Asynchronous-updates">munin-async</a>
+are able to provide such a node.</p>
+<h3>Configuration</h3>
+<p>The URL is quite self-explanatory as shown in the example below :</p>
+<pre>
+[old-style-host]
+    address host.example.com
+
+[new-style-host]
+    address ssh://munin-node-user@host.example.com/path/to/stdio-enabled-node --params
+</pre>
+<h3>Installation notes</h3>
+<p>Authentication should be done without password but via SSH keys. The
+connection is from <code>munin-user@host-munin</code> to
+<code>munin-node-user@remote-node</code>.</p>
+<p>If you use <code>munin-async</code>, the user on the remote node might only
+be a readonly one, since it only needs to read spooled data. This implies that
+you use <code>--spoolfetch</code> and not <code>--vectorfetch</code> that
+updates the spool repository.</p>
+<h2>Upcoming HTTP(S) transport in 3.0</h2>
+<p>And the sweetest part is that since all the work has been done for adding
+another transport, adding a CGI-based HTTP transport one is possible (and
+therefore done) for 3.0.</p>

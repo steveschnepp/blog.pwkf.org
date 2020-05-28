@@ -1,0 +1,142 @@
+---
+layout: post
+title: "Avoid the Preprocessor : Use ''Compile-Time Polymorphism'' for Cross-platform Development"
+date: 2009-12-11 11:52:33 +0100
+tags: []
+---
+
+<p>We'll take a very simple file I/O subsystem here as an example
+(<code>open</code>, <code>close</code>). We'll also only take Linux and
+Windows, since that's usually the 2 most common platforms people want to
+develop for<sup>[<a href="#pnote-467153-1" id="rev-pnote-467153-1" name="rev-pnote-467153-1">1</a>]</sup>.</p>
+<h2>The usual abstraction with the preprocessor</h2>
+<p>Usually preprocessor <code>#ifdef</code>s are used to compile specific parts
+for the underlying OS.</p>
+<p>The file <code>fileiosys.cpp</code> looks<sup>[<a href="#pnote-467153-2" id="rev-pnote-467153-2" name="rev-pnote-467153-2">2</a>]</sup> like the one below
+:</p>
+<pre>
+fileiosys_filedesc open(char* filename) {
+#ifdefine __WIN32__
+    return OpenFile(
+        filename,
+        GENERIC_READ | GENERIC_WRITE,
+        FILE_SHARE_READ | FILE_SHARE_WRITE,
+        NULL,
+    );
+#else // UNIX
+    return open(filename, O_READ | O_WRITE, 0666);
+#endif
+}
+
+int close (fileiosys_filedesc fd) {
+#ifdefine __WIN32__
+    return CloseHandle(fd) ? 0 : -1;
+#else // UNIX
+    return close(fd);
+#endif
+}
+</pre>
+<p>The header <code>fileiosys.h</code> looks then like :</p>
+<pre>
+// Define a custom file descriptor
+#ifdefine __WIN32__
+    #define fileiosys_filedesc HANDLE
+#else // UNIX
+    #define fileiosys_filedesc int
+#endif
+
+fileiosys_filedesc open(char* filename);
+int close(fileiosys_filedesc fd);
+</pre>
+<h2>Avoid the preprocessor Compile-time polymorphism</h2>
+<p>As the previous little example, the code isn't really easy to read. You have
+to always think which environnement you are in. All the specifics are
+multiplexed in the same file, and the programmer has to always demultiplex it
+in real time each time he reads the code.</p>
+<p>The last part of the interface file is quite simple to read since it's
+already abstracted away. Now let's completely demultiplex the implementation in
+several implementation files.</p>
+<h3>The header file is the common interface</h3>
+<p>The interface is the most important part of the design. It should be
+high-level enough to mask the differences between the plateforms you want to
+support, but not too high-level, otherwise you'll end up duplicating to much
+code.</p>
+<p>So, for our file I/O subsystem, we'll just abstract the usual syscalls
+<code>open</code>, <code>close</code> in the same way as before.</p>
+<p>The parameters that are passed through the interface are also very
+important. You cannot usually leak a platform-specific structure. So here all
+the file descriptors are just an opaque handle, represented by a pointer to a
+structure defined only as a forward declaration in the header. This pattern,
+sometimes called the <a href="http://en.wikipedia.org/wiki/Opaque_pointer" hreflang="en">pimpl idiom</a>, enables use to really share the representation
+while implementing it differently.</p>
+<p>The header file is preserved as <code>fileiosys.h</code>, whereas the
+implementation is in the files <code>linux/fileiosys.cpp</code> and
+<code>win32/fileiosys.cpp</code></p>
+<h4><code>fileiosys.h</code></h4>
+<pre>
+// Define the forward declaration
+struct fis_filedesc;
+fis_filedesc* open(char* filename);
+int close(fileiosys_filedesc* fd);
+</pre>
+<h4><code>win32/fileiosys.cpp</code></h4>
+<pre>
+struct fis_filedesc {
+    HANDLE handle;
+};
+
+fis_filedesc* open(char* filename) {
+    fis_filedesc* fd = new fis_filedesc();
+    fd-&gt;handle = OpenFile(
+        filename,
+        GENERIC_READ | GENERIC_WRITE,
+        FILE_SHARE_READ | FILE_SHARE_WRITE,
+        NULL,
+    );
+
+    return fd;
+}
+
+int close (fis_filedesc* fd) {
+    int retval = CloseHandle(fd-&gt;handle) ? 0 : -1;
+    delete(fd);
+    return retval;
+}
+</pre>
+<h4><code>linux/fileiosys.cpp</code></h4>
+<pre>
+struct fis_filedesc {
+    int file_descriptor;
+};
+
+static fis_filedesc[32];
+
+fis_filedesc* open(char* filename) {
+    fis_filedesc* fd = new fis_filedesc();
+    fd-&gt;file_descriptor = open(filename, O_READ | O_WRITE, 0666);
+    return fd;
+}
+
+int close (fis_filedesc* fd) {
+    int retval = close(fd);
+    delete(fd);
+    return retval;
+}
+</pre>
+<h4>The build system : <code>Makefile</code></h4>
+<p>The makefile should take into account the different platforms, and only
+compile the needed implementation file. All the gluing magic will then be done
+at linking time instead of preprocessor time.</p>
+<h2>Conclusion</h2>
+<p>The interest of have multiple implementation files is obvious. It is
+<strong>much</strong> more straightforward to read and only marginally harder
+to write. But since most of the time code is read and not written, the choose
+is quite a no-brainer.</p>
+<p>The nicest part is that all this is possible even without the expensive
+run-time polymorphism and RTTI, since the choose is done at compile-time.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-467153-1" id="pnote-467153-1" name="pnote-467153-1">1</a>] actually when targeting Linux, you usually target all
+Unix-like systems since they already have POSIX as a common abstraction</p>
+<p>[<a href="#rev-pnote-467153-2" id="pnote-467153-2" name="pnote-467153-2">2</a>] The code is not real, it has been sweetened</p>
+</div>

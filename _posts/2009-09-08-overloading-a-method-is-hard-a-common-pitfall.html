@@ -1,0 +1,27 @@
+---
+layout: post
+title: "Overloading a method is hard : a common pitfall"
+date: 2009-09-08 13:21:10 +0100
+tags: []
+---
+
+<p>As I said in my <a href="/post/2009/06/Equality-in-Java-is-a-Hot-Topic-but-a-Hazardous-one">equality
+article</a>, overloading in Java<sup>[<a href="#pnote-439371-1" id="rev-pnote-439371-1" name="rev-pnote-439371-1">1</a>]</sup> is resolved by the
+<strong>static</strong> type of the argument, not the <strong>run-time</strong>
+type.</p>
+<p>It's a <strong>generic</strong> problem of most compiled OO languages since
+usually <strong>overloading resolution happens at compile-time and not at
+runtime</strong>.</p>
+<p>Now, <em>that</em> militates for the well known idiom :</p>
+<blockquote>
+<p>Never overload a method with one that has the same number of parameters.</p>
+</blockquote>
+<p>Actually, it should be enough to overload a method with one that accept
+parameters that are not inheritance-related : <code>String</code> and
+<code>Number</code> would be OK, but <code>MyClass</code> and
+<code>Object</code> would not.</p>
+<div class="footnotes">
+<h4>Notes</h4>
+<p>[<a href="#rev-pnote-439371-1" id="pnote-439371-1" name="pnote-439371-1">1</a>] It's not really a <em>Java</em>-ism, it's the same in
+other languages, such as C++ .</p>
+</div>

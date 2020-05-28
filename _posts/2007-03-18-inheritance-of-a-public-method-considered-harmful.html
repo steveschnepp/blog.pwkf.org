@@ -1,0 +1,90 @@
+---
+layout: post
+title: "Inheritance of a public method considered harmful"
+date: 2007-03-18 19:20:45 +0100
+tags: []
+---
+
+<p>I'm always wondering why all textbooks and reference material on the web
+always describe inheritance with the same kind of example :</p>
+<pre>
+class A {
+        public execute() {
+                // do something...
+        }
+}
+</pre>
+<pre>
+class B extends A {
+        public execute() {
+                // initialize for B
+                super.execute();
+        }
+}
+</pre>
+<pre>
+class C extends A {
+        public execute() {
+                // initialize for B
+                super.execute();
+        }
+}
+</pre>
+<p>One thing struck me : if I want to have some code executed
+<strong>before</strong> <code>execute()</code> in every class, such as
+preparing the graphic context for example, I have to write a protected method
+<code>initializeContext()</code> on the base class and call it from every
+derived <code>execute()</code> method. This is a good candidate for errors
+since it's manual and therefore not automatic.</p>
+<p>I prefer to go for an <a href="http://en.wikipedia.org/wiki/Inversion_of_control" hreflang="en">IoC</a>-like
+inheritance scheme, we could call it &quot;Inversion of Inheritance&quot;. The code would
+be something like :</p>
+<p>class A {</p>
+<pre>
+   protected executePre() {
+                // Default implementation
+                // does nothing
+        }
+</pre>
+<pre>
+   protected executePost() {
+                // Default implementation
+                // does nothing
+        }
+</pre>
+<pre>
+   protected executeInternal()     {
+                // do something
+        }
+
+        public final execute() {
+                executePre();
+                executeInternal();
+                executePost();
+        }
+}
+</pre>
+<pre>
+class B extends A {
+        protected executeInternal() {
+                // initialize for B
+        }
+}
+</pre>
+<pre>
+class C extends A {
+        protected executeInternal() {
+                // initialize for C
+        }
+}
+</pre>
+<p>There are 2 problems with this approach :</p>
+<ol>
+<li>There is a little performance penalty since every calls issues 3 virtual
+calls.</li>
+<li>If you want to add another interception function, you have to edit the base
+class.</li>
+</ol>
+<p>But the main purpose is that <strong>you</strong> are in control of the
+derived classes of your class since the creativity of the reuser is severly
+hampered. I think of it as the most easy way to enforce the <a href="http://en.wikipedia.org/wiki/Liskov_substitution_principle" hreflang="en">Liskov substitution principle</a>.</p>
