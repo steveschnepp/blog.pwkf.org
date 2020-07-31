@@ -20,15 +20,24 @@
 
 title: Personal Workflow Blog
 email: steve.schnepp@pwkf.org
+
+tagline: Thoughts from my journey in J2EE land.
 description: >- # this means to ignore newlines until "baseurl:"
   Some thoughts I encountered during my working day in the J2EE land.
   Originally a blog about PWKF, an easy-to-use workflow solution.
   Yet, as I have less time to work on PWKF than before, it morphed into a generic blog.
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://blog.pwkf.org" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: steve_schnepp
 github_username:  steveschnepp
+
+# SEO things
+twitter:
+  username: steve_schnepp
+  card: summary
+logo: https://www.gravatar.com/avatar/693f9a2f0eea07660d81e9690b6afd96
+
 
 # Build settings
 theme: minima
