@@ -8,11 +8,11 @@ all: .start
 	touch .start
 
 stop:
-	docker rm -f jekyll
-	rm .start
+	- docker rm -f jekyll
+	- rm .start
 
 clean:
 	docker exec -it jekyll jekyll clean -V
 
 serve:
-	docker run --rm -it -v "$(shell pwd):/srv/www" --name httpd busybox:musl httpd -vvf -p 8000 -u $(shell id -u) -h /srv/www/_site
+	docker run --rm -it -v "$(shell pwd):/srv/www" -p 8000:8000 --name httpd python:slim python -m http.server --directory /srv/www/_site
