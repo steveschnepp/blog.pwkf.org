@@ -2,6 +2,21 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 $base-font-family: "Computer Modern";
+$code-font-family: "TexGyreCursor", monospace !default;
+$code-font-weight: 300;
+$code-font-size:   90%;
+$code-line-height: 1.4;
+
+pre, code {
+  font-family: $code-font-family;
+  font-size: $code-font-size;
+  font-weight: $code-font-weight;
+  line-height: $code-line-height;
+}
+
+.highlight .o, .highlight .k {
+  font-weight: 200%;
+}
 
 @import "minima";
 @font-face {
@@ -51,4 +66,32 @@ $base-font-family: "Computer Modern";
         url('./fonts/woff/cmunsl-webfont.woff') format("woff"),
         url('./fonts/ttf/cmunsl-webfont.ttf') format("truetype");
         font-style: italic;
+}
+
+@font-face{
+    font-family:'TexGyreCursor';
+    src:
+	url('fonts/otf/texgyrecursor-regular.otf') format("opentype"),
+}
+
+@font-face{
+    font-family:'TexGyreCursor';
+    font-weight: bold;
+    src:
+	url('fonts/otf/texgyrecursor-bold.otf') format("opentype"),
+}
+
+@font-face{
+    font-family:'TexGyreCursor';
+    font-weight: bold;
+    font-style: italic;
+    src:
+	url('fonts/otf/texgyrecursor-bolditalic.otf') format("opentype"),
+}
+
+@font-face{
+    font-family:'TexGyreCursor';
+    font-style: italic;
+    src:
+	url('fonts/otf/texgyrecursor-italic.otf') format("opentype"),
 }
