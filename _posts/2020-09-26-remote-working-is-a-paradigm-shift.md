@@ -5,6 +5,8 @@ tags: [life, meetings]
 description: Distributed teams are significantly less productive than co-located ones, unless you change one thing.
 ---
 
+> 💡 As our daily life has been disrupted and work-from-home is slowly becoming the new normal, distributed teams are much more common. But normal work patterns don't translate immediatly, they have to be adjusted.
+
 We all know the infamous video about Conference Call in Real Life:
 
 [![Conference Call in Real Life](https://img.youtube.com/vi/kNz82r5nyUw/0.jpg)](https://youtu.be/kNz82r5nyUw "Conference Call in Real Life")
