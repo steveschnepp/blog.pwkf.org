@@ -32,3 +32,5 @@ Either through enough time via remote meetings, or simply via an initial onsite 
 Also, don’t underestimate the needed change here. **Remote-mostly working is a full paradigm shift** that is of the **same** order of **magnitude** than the **micro-service** & **serverless shift**.
 
 It **requires** a whole **new mindset**, won’t solve every problems, but **unlocks many potential opportunities** that one didn’t even know they existed.
+
+Follow-up of in my next post, [Fun Yet Effective Meetings]({% post_url 2020-09-27-we-should-only-have-fun-meetings %}).
