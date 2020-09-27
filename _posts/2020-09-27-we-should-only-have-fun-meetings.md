@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Fun Yet Effective Meetings"
-tags: [life]
+tags: [life, meetings]
+description: Try as hard as possible to avoid meetings, use textual IM instead, as meetings are where work goes to die
+
 ---
 
 > ⚠️ This article is extreme & satirical on the purpose of being thought-provoking. Therefore, please, do take it with some grain of salt.
@@ -11,8 +13,7 @@ tags: [life]
 # Why I hate work meetings
 
 My #1 advice about distributed teams is actually even the case in colocated teams:
-**Try as hard as possible to avoid meetings, use textual IM instead.**
-Nowadays, ideally Slack.
+**Try as hard as possible to avoid meetings, use textual IM instead ** as [meetings are where work goes to die](https://blog.codinghorror.com/meetings-where-work-goes-to-die/).
 I know it sounds pretty dull, but if you really think about it you’ll see that it’s usually wasted time.
 The usual pattern of decision taking is:
 

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Remote-mostly working is a paradigm shift"
-tags: [life]
+tags: [life, meetings]
+description: Distributed teams are significantly less productive than co-located ones, unless you change one thing.
 ---
 
 We all know the infamous video about Conference Call in Real Life:
