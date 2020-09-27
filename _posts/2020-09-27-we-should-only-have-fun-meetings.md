@@ -101,3 +101,5 @@ Now, one immediately notices the following:
 A final word of caution, the reference to scaling is **not about runtime performance**. It's more about **organisation size**. As Martin Fowler said : *don’t even consider microservices unless you have a system that’s too complex to manage as a monolith*.
 
 So, it usually makes very much sense to start with a small, colocated team, that has traditional meetings. The trick is to recognize the need to change the paradigm when the team grows, as it always done smoothly over the months. Just don't forget to have good meeting hygiene (written inputs & outputs), as **even monoliths should be nicely modular**.
+
+> I posted those 2 articles ([Remote-mostly working]({% post_url 2020-09-26-remote-working-is-a-paradigm-shift %}), [Effective Meetings]({% post_url 2020-09-27-we-should-only-have-fun-meetings %})) internally to my company some years ago, but I'm republishing those publicly to help others the same way it helped us.
