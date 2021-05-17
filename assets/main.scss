@@ -2,7 +2,6 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 $base-font-family: "Computer Modern";
-$code-font-family: "TexGyreCursor", monospace !default;
 $code-font-weight: 300;
 $code-font-size:   90%;
 $code-line-height: 1.4;
@@ -35,7 +34,7 @@ pre, code {
 @font-face {
     font-family: "Computer Modern";
     src:
-        url('./fonts/woff/cmunbi-webfont.woff') format("woff");
+        url('./fonts/woff/cmunsi-webfont.woff') format("woff");
         font-weight: bold;
         font-style: italic;
 
@@ -44,6 +43,6 @@ pre, code {
 @font-face {
     font-family: "Computer Modern";
     src:
-        url('./fonts/woff/cmunsl-webfont.woff') format("woff");
+        url('./fonts/woff/cmunsi-webfont.woff') format("woff");
         font-style: italic;
 }
