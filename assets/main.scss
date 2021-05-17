@@ -22,35 +22,20 @@ pre, code {
 @font-face {
     font-family: "Computer Modern";
     src:
-        url('./fonts/otf/cmunrm.otf') format("opentype"),
-        url('./fonts/eot/cmunrm-webfont.eot'),
-        url('./fonts/eot/cmunrm-webfont.eot?#iefix') format("embedded-opentype"),
-        url('./fonts/svg/cmunrm-webfont.svg') format("svg"),
-        url('./fonts/woff/cmunrm-webfont.woff') format("woff"),
-        url('./fonts/ttf/cmunrm-webfont.ttf') format("truetype");
+        url('./fonts/woff/cmunrm-webfont.woff') format("woff");
 }
 
 @font-face {
     font-family: "Computer Modern";
     src:
-        url('./fonts/otf/cmunbx.otf') format("opentype"),
-        url('./fonts/eot/cmunbx-webfont.eot'),
-        url('./fonts/eot/cmunbx-webfont.eot?#iefix') format("embedded-opentype"),
-        url('./fonts/svg/cmunbx-webfont.svg') format("svg"),
-        url('./fonts/woff/cmunbx-webfont.woff') format("woff"),
-        url('./fonts/ttf/cmunbx-webfont.ttf') format("truetype");
+        url('./fonts/woff/cmunbx-webfont.woff') format("woff");
         font-weight: bold;
 }
 
 @font-face {
     font-family: "Computer Modern";
     src:
-        url('./fonts/otf/cmunbi.otf') format("opentype"),
-        url('./fonts/eot/cmunbi-webfont.eot'),
-        url('./fonts/eot/cmunbi-webfont.eot?#iefix') format("embedded-opentype"),
-        url('./fonts/svg/cmunbi-webfont.svg') format("svg"),
-        url('./fonts/woff/cmunbi-webfont.woff') format("woff"),
-        url('./fonts/ttf/cmunbi-webfont.ttf') format("truetype");
+        url('./fonts/woff/cmunbi-webfont.woff') format("woff");
         font-weight: bold;
         font-style: italic;
 
@@ -59,39 +44,6 @@ pre, code {
 @font-face {
     font-family: "Computer Modern";
     src:
-        url('./fonts/otf/cmunsl.otf') format("opentype"),
-        url('./fonts/eot/cmunsl-webfont.eot'),
-        url('./fonts/eot/cmunsl-webfont.eot?#iefix') format("embedded-opentype"),
-        url('./fonts/svg/cmunsl-webfont.svg') format("svg"),
-        url('./fonts/woff/cmunsl-webfont.woff') format("woff"),
-        url('./fonts/ttf/cmunsl-webfont.ttf') format("truetype");
+        url('./fonts/woff/cmunsl-webfont.woff') format("woff");
         font-style: italic;
-}
-
-@font-face{
-    font-family:'TexGyreCursor';
-    src:
-	url('fonts/otf/texgyrecursor-regular.otf') format("opentype"),
-}
-
-@font-face{
-    font-family:'TexGyreCursor';
-    font-weight: bold;
-    src:
-	url('fonts/otf/texgyrecursor-bold.otf') format("opentype"),
-}
-
-@font-face{
-    font-family:'TexGyreCursor';
-    font-weight: bold;
-    font-style: italic;
-    src:
-	url('fonts/otf/texgyrecursor-bolditalic.otf') format("opentype"),
-}
-
-@font-face{
-    font-family:'TexGyreCursor';
-    font-style: italic;
-    src:
-	url('fonts/otf/texgyrecursor-italic.otf') format("opentype"),
 }
