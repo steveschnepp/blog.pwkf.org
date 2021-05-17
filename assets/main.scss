@@ -2,6 +2,7 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 $base-font-family: "Computer Modern";
+$code-font-family: monospace !default;
 $code-font-weight: 300;
 $code-font-size:   90%;
 $code-line-height: 1.4;
