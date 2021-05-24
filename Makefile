@@ -5,6 +5,9 @@ BUILD_CMD:=b -V
 all: .docker.started
 	docker exec -it jekyll jekyll ${BUILD_CMD} ${EXTRA}
 
+drafts: .docker.started
+	docker exec -it jekyll jekyll build -V -D ${EXTRA}
+
 .docker.started:
 	docker run --rm -d -v "$(shell pwd):/srv/jekyll" -e JEKYLL_UID=$(shell id -u) --name jekyll jekyll/jekyll sleep infinity
 	touch .docker.started
