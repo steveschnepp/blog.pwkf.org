@@ -4,7 +4,7 @@ all: .start
 	docker exec -it jekyll jekyll b -V
 
 .start:
-	docker run --rm -d -v "$(shell pwd):/srv/jekyll" -e JEKYLL_UID=$(shell id -u) -p 4000 --name jekyll jekyll/jekyll tail -f /dev/null
+	docker run --rm -d -v "$(shell pwd):/srv/jekyll" -e JEKYLL_UID=$(shell id -u) --name jekyll jekyll/jekyll tail -f /dev/null
 	touch .start
 
 stop:
