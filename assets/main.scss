@@ -7,6 +7,10 @@ $code-font-weight: 300;
 $code-font-size:   90%;
 $code-line-height: 1.4;
 
+p {
+  text-align: justify;
+}
+
 pre, code {
   font-family: $code-font-family;
   font-size: $code-font-size;
