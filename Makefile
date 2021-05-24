@@ -1,15 +1,17 @@
 .PHONY: all clean serve
 
-all: .start
-	docker exec -it jekyll jekyll b -V
+BUILD_CMD:=b -V
 
-.start:
+all: .docker.started
+	docker exec -it jekyll jekyll ${BUILD_CMD} ${EXTRA}
+
+.docker.started:
 	docker run --rm -d -v "$(shell pwd):/srv/jekyll" -e JEKYLL_UID=$(shell id -u) --name jekyll jekyll/jekyll sleep infinity
-	touch .start
+	touch .docker.started
 
 stop:
 	- docker rm -f jekyll
-	- rm .start
+	- rm .docker.started
 
 clean:
 	docker exec -it jekyll jekyll clean -V
