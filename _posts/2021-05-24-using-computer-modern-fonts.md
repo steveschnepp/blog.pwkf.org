@@ -9,7 +9,7 @@ I always tried to have a minimalist blog style. I almost totally agree with
 except on the part with "monotype fonts".
 
 As a matter of fact, I even started to use proportional fonts as my coding
-font. Which is not a common trait to say the last. But it seems [I'm not
+font. Which is not a common trait to say the least. But it seems [I'm not
 alone](https://storck.io/posts/proportional-programming-code-fonts/), in
 thinking it. And I totally agree with Martijn's statement that the terminal is
 **the** realm of monospaced fonts.
