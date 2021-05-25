@@ -22,7 +22,9 @@ Note that I agree that most of TeX appeal is due to its layout engine, more
 than its fonts. And that is something that isn't easily reproduced in a web
 browser. So for purists, there's some uncanny valley, as [it was mentioned on
 HN](https://news.ycombinator.com/item?id=24625678). But for me, it looks good
-enough.
+enough. And it does fulfill the primary goal I was after in choosing such 
+a font: *originality*. To have a distinct look, even if a little weird makes
+it stand out of the crowd.
 
 ## Reference
 
