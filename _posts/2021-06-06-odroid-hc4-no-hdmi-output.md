@@ -59,7 +59,7 @@ along with some creative shots in the dark.
 ## Working Screen !
 
 So, the single change that made the screen work is that we need to attach the
-console to `tty0` in addition to the default `ttyS0`.
+console to `tty1` in addition to the default `ttyS0`.
 
 Small rant : I'd argue that the `ttyS0` is very useless, since the UART pins
 are *inside* the HC4 box, and you have to unscrew it to access it. Also it is
@@ -72,13 +72,16 @@ Therefore the file `boot.ini` on the first VFAT partition needs to be changed fr
 
 to
 
-    setenv condev "console=tty0"
+    setenv condev "console=tty1"
 
 
 It will disable the serial console, but offer a much more convenient one on the
 HDMI screen. The autoconfiguration of the resolution worked very well. It
 showed in my old TV, and even on my 2007 LCD monitor that was connected via a
 HDMI-DVI cable.
+
+Note that it needs to be `tty1` and not `tty0` as the `tty0` is a special one
+that is the *current* one.
 
 ## Fixing the boot failure of Ubuntu
 
