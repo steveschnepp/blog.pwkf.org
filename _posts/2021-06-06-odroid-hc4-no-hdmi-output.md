@@ -26,7 +26,7 @@ My criterias didn't change :
 And at the time of my research (early 2021), the folks from Hardkernel just
 rewamped their offering with the
 [ODROID-HC4](https://www.hardkernel.com/shop/odroid-hc4-oled/). I settled with
-the OLED version, as, for 10$ more, why not?
+the OLED version, as, for $10 more, why not?
 
 ## Blank HDMI on boot
 
