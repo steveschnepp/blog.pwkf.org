@@ -2,8 +2,9 @@
 layout: post
 title: Fix the HDMI output in the ODROID-HC4
 tags:
-  - odroid
-  - nas
+- odroid
+- nas
+date: 2021-06-06 08:41 -0500
 ---
 ## Context
 
