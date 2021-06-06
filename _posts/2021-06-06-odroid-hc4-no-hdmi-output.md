@@ -10,7 +10,7 @@ date: 2021-06-06 08:41 -0500
 
 I'm the proud owner of 2 [Dlink
 DNS-320L](https://eu.dlink.com/uk/en/products/dns-320l-sharecenter-2-bay-cloud-storage-enclosure).
-As they are now unsupported, I searched some new ones.
+As they are now unsupported, I searched some new NAS boxes.
 
 My criterias didn't change :
 
