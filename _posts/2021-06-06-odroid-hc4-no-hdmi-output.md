@@ -31,7 +31,7 @@ the OLED version, as, for $10 more, why not?
 ## Blank HDMI on boot
 
 When I ordered it in February 2021, I unboxed it quickly, and was rather
-disapointed that it did seem to boot, but only figured a blank screen on the TV
+disappointed that it did seem to boot, but only figured a blank screen on the TV
 I connected it to.
 
 Well, not exactly. The "petitboot" loader was working perfectly fine, but the
