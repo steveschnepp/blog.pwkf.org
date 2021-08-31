@@ -12,7 +12,7 @@ to get into electronics. Not the digital one with micro-controllers, but the
 old-school analogic one, with transistors, resistors & condensators.
 
 The set itself is the French version of a Philips created one. There's actually
-a full collection of those at http://norbert.old.no/kits/6000abc/.
+a [full collection of those](http://norbert.old.no/kits/6000abc/).
 
 ### How it worked
 
