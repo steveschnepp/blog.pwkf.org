@@ -6,7 +6,7 @@ title: "DIY 4-digit Clock Hacking"
 
 ## Intro
 
-I got my hands on a [4-digit clock DYI kit](https://aliexpress.com/item/33004214555.html).
+I got my hands on a [4-digit clock DIY kit](https://aliexpress.com/item/33004214555.html).
 Soldering it is rather easy, and it works as advertised.
 
 One downside is its **power appetite** : it slurps a whopping 100mA
@@ -40,7 +40,7 @@ week before needing to recharge.  Not bad for such a small hack.
 
 ## Reprogramming
 
-### DYI Programmer
+### DIY Programmer
 
 That said, I do really like that the hour-minute separator blinks, as it shows
 it is working, that there's still enough battery. This requires to reprogram
