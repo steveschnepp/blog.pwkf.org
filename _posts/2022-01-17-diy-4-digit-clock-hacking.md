@@ -72,7 +72,7 @@ pretty nice feature-full version :
 
 Fortunately the lock bits were not set, so I could dump the firmware before to
 do some analysis.  I struggled for a while in not being able to dump the
-firmware via the programmer. But it turned out there's a [all timing bug](https://github.com/tardate/LittleArduinoProjects/issues/22).
+firmware via the programmer. But it turned out there's a [small timing bug](https://github.com/tardate/LittleArduinoProjects/issues/22).
 Once fixed, the dumping works flawlessly.
 
 	:100000000207DFFFFFFFFFFFFFFFFFE119D128C25B
