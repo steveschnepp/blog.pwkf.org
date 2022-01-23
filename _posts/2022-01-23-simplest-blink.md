@@ -57,7 +57,7 @@ So the schema is very simple.
 And indeed, the breadboard version is minimal.
 
 
-![simplest blink breadboard](/assets/images/Minimal NE555 Blink_schem.png)
+![simplest blink breadboard](/assets/images/Minimal NE555 Blink_bb.png)
 
 And for real.
 
