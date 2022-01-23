@@ -67,7 +67,6 @@ Mission accomplished!
 
 # Future Ideas
 
-It might be interesting to get all the ways to do Blink... I'm sure someone
-already thought about that also.
+The open collector output makes me think that it can be multiplexed with other blinks. I might toy with that idea.
 
 [^1]: Breadboards, Wires, Resistors, capacitors, LED.
