@@ -38,7 +38,7 @@ better version of it as mentioned in an [electronics.stackexchange.com
 answer](https://electronics.stackexchange.com/a/485461), since it lacks the R1
 that is connects TRIG to VCC.
 
-![LMC555 schematics](https://i.stack.imgur.com/byzFr.png)
+![LMC555 schematics](/assets/images/Minimal NE555 Blink_lmc555.png)
 
 It works since the LMC555 is much more closer to have a rail-to-rail OUTPUT
 than the regular bipolar NE555, but as we aren't interested in accuracy, we can
