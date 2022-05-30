@@ -90,6 +90,8 @@ The simplest way to do an astable is to go for the Schmitt trigger version.
 Now, as we can have variations of the individual components, we can also create
 new circuits out of it. But that will be another post.
 
+---
+
 {::comment}
 ### Classic Astable with Discrete RTL NOT gates
 
