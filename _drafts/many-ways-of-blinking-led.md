@@ -43,7 +43,9 @@ the awesome [interactive simulation from Falstad](https://falstad.com/circuit)
 to illustrate my circuits.
 
 
-### Classic Astable with 2 NPN
+### Classic Circuits
+
+#### Astable with 2 NPN
 
 The oscillator circuit that usually everyone encounter at first is the famous
 "astable NPN" with its perfect symetry of 2 NPN & 2 condensators.
@@ -54,7 +56,7 @@ manufacturing error margin.
 
 ![Classic Astable with 2 NPN Schematics](../../../assets/images/circuit-20220515-1716.svg)
 
-### Classic NE555 Astable
+#### Classic NE555
 
 The most classic way of doing it would be to leverage the venerable NE555 in its
 "datasheet" astable configuration.
@@ -63,18 +65,27 @@ The most classic way of doing it would be to leverage the venerable NE555 in its
 ![Classic NE555 Astable](../../../assets/images/circuit-20220515-1739.svg)
 
 
-### Classic Astable with IC NOT gates
+#### Classic with 3 NOT gates
 
-This is also a classic, as it is the most often used in CMOS technology. 
+This is also the classic that is the most often used in CMOS technology. It
+uses 3 NOT gates, but is always oscillating, and the period and cycle duty
+doesn't depend on the voltage.
+
+![Classic Astable with 3 NOT gates](../../../assets/images/circuit-20220530-2107.svg)
+
+#### Classic with 2 NOT gates
+
+A variation of the previous one. Only using 2 NOT gates, but not always oscillating.
 
 ![Classic Astable with IC NOT gates](../../../assets/images/circuit-20220515-1810.svg)
 
-### Classic Astable with a Schmitt Inverter
+#### Classic with a Schmitt Inverter
 
 The simplest way to do an astable is to go for the Schmitt trigger version.
 
 ![Classic Astable with Schmitt Inverter](../../../assets/images/circuit-20220515-1815.svg)
 
+{::comment}
 ### Classic Astable with Discrete RTL NOT gates
 
 Once we craft the NOT gates version with [RTL technology](https://en.wikipedia.org/wiki/Resistor%E2%80%93transistor_logic), we can have a 2 NPN
@@ -82,5 +93,5 @@ version that has only 1 condensator.
 
 
 #### Schmitt Buffer with NOT gates
+{:/comment}
 
-We can 
