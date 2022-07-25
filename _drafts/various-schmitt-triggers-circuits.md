@@ -15,21 +15,21 @@ the biggest issue for increasting frequency, therefore performance.
 
 A good passive noise isolation is mitigating most of it, but it usually isn't enough.
 
-## Classic with AmpOp
+## Classic with OpAmp
 
 Many different circuits do exists, but the first one that is encoutered
-is the one that comes with ampop.
+is the one that comes with OpAmp.
 
 [
-![Schmitt with AmpOP](../../../assets/images/circuit-20220605-1810.svg)
+![Schmitt with OpAmp](../../../assets/images/circuit-20220605-1810.svg)
 ](
 https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKACcQAWPKlPPLjxDZCAqmHjwWAd0G9OVbr35R2ckHwEJiKDSqq5JMijr1bTKFJ1Wztuy9cJWNzyCwDm6kQKXC81qjdZXzQfbHt8VQA3LnCNSOwReLFwLjhUwKhoBBYAJWEk0LNkqFSFDWyKpEDslm9YiLDdME4A1Q4QlWx-YvFJODy-a01hBHt9UvLq0pgcgEN1BxN7Zy1SiX6QBhhE7E4UHRRmbgROYi5YJyxODEJmf1Pm-rrRZZdrO3BbmbUna1xHM56n0Bp4-sJXuDum03GAnCBwUsoZBhiAACZ0ABmcwArgAbAAuDDxdDRGRmsFYAHsQOdCG0FMQBBIEdAGbThOBsOtudgWEA
 )
 
 The basic working principle is that
 
-* The ampop is configured in comparator mode. This means that there is no
-  feeback loop, and the ampop has its full gain[^1].
+* The OpAmp is configured in comparator mode. This means that there is no
+  feeback loop, and the OpAmp has its full gain[^1].
 * The comparison is done with a different reference depending on waiting
   for rising or lowering edge.
 
@@ -48,7 +48,7 @@ lowering edge (that is when output is low)
 
 # Using an Open Collector Comparator
 
-It is very similar than the AmpOp.
+It is very similar than the OpAmp.
 
 Usually a comparator has a open collector output, therefore it needs an
 additional pull-up resistor. Note that the hyrestesis of the schmitt
