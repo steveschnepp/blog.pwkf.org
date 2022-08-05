@@ -2,6 +2,7 @@
 layout: post
 title: "Humble Beginnings in Electronics"
 tags: [ electronics, learning ]
+author: Steve SCHNEPP
 ---
 
 ## The Electronics Lab Box

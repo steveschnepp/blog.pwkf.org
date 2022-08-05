@@ -2,6 +2,7 @@
 layout: post
 title: "Many ways to Blink a LED"
 tags: electronics blink 
+author: Steve SCHNEPP
 ---
 
 ## Intro

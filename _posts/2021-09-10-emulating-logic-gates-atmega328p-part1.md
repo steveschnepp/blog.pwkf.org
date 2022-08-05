@@ -4,6 +4,7 @@ title: Emulating Logic Gates with an ATmega328P MCU - Part 1
 tags:
 - electronics
 - ATmega328P
+author: Steve SCHNEPP
 ---
 ## Why ?
 

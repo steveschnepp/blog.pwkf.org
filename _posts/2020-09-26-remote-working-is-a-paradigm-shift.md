@@ -3,6 +3,7 @@ layout: post
 title: "Remote-mostly working is a paradigm shift"
 tags: [life, meetings]
 description: Distributed teams are significantly less productive than co-located ones, unless you change one thing.
+author: Steve SCHNEPP
 ---
 
 > 💡 As our daily life has been disrupted and work-from-home is slowly becoming the new normal, distributed teams are much more common. But normal work patterns don't translate immediatly, they have to be adjusted.

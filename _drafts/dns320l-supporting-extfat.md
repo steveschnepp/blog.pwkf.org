@@ -3,6 +3,7 @@ layout: post
 title: Supporting exFAT on a DNS-320L
 tags:
 - dns-320l
+author: Steve SCHNEPP
 ---
 ## Context
 

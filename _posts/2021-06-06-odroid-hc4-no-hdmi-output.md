@@ -5,6 +5,7 @@ tags:
 - odroid
 - nas
 date: 2021-06-06 08:41 -0500
+author: Steve SCHNEPP
 ---
 ## Context
 

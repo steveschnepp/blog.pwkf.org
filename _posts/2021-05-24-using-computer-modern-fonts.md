@@ -2,6 +2,7 @@
 layout: post
 title: "Using Computer Modern Fonts"
 tags: [blog]
+author: Steve SCHNEPP
 ---
 
 I always tried to have a minimalist blog style. I almost totally agree with

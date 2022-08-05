@@ -2,6 +2,7 @@
 layout: post
 title: "Various Schmitt Triggers"
 tags: electronics schmitt transistors
+author: Steve SCHNEPP
 ---
 
 ## Intro

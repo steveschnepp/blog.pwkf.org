@@ -2,6 +2,7 @@
 layout: post
 title: "Dynamic Typing in Java : why & when"
 tags: []
+author: Steve SCHNEPP
 ---
 
 ## Basics of dynamic typing

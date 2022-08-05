@@ -2,6 +2,7 @@
 layout: post
 title: "DIY 4-digit Clock Hacking"
 #date: 2021-11-01
+author: Steve SCHNEPP
 ---
 
 ## Intro

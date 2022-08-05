@@ -4,6 +4,7 @@ title: "Fun Yet Effective Meetings"
 tags: [life, meetings]
 description: Try as hard as possible to avoid meetings, use textual IM instead, as meetings are where work goes to die
 
+author: Steve SCHNEPP
 ---
 
 > ⚠️ This article is extreme & satirical on the purpose of being thought-provoking. Therefore, please, do take it with some grain of salt.

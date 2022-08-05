@@ -3,6 +3,7 @@ layout: post
 title: Recent customization of a DNS-320L
 tags:
 - dns-320l
+author: Steve SCHNEPP
 ---
 ## Context
 
