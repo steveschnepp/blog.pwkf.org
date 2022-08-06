@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "\"Data Is King\" or \"Code Is King\" ?"
-date: 2009-06-03 08:30:55 +0100
 tags: [sql, database]
 author: Steve SCHNEPP
 ---
