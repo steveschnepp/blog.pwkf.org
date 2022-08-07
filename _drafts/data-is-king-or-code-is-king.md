@@ -1,28 +1,39 @@
 ---
 layout: post
-title: "\"Data Is King\" or \"Code Is King\" ?"
+title: A Tale of 2 Programming Religions
 tags: [sql, database]
 author: Steve SCHNEPP
 ---
 
-An often overlooked secret of **computing** is that it
-**is** all and mostly about 2 things : **data** and
-**algorithms**.
+The obvious but overlooked secret of **computing** is that it
+is always about only 2 things:
 
-The resulting 2 kinds of programmers differ in their relationship with the
-code they produce, especially in how it handles data.
+* Datas
+* Algorithms
 
-## Code is King
+This binary divide translates itself into a partition of 2 kinds of
+programmers. They differ in the architecture style of the code they produce.
+Which exhibits itself in how they treat data.
 
-Several key points :
+## What do you worship?
 
-* The most important asset is the code. Special care is taken to put layer
-upon layer in order to be able for the code to survive any change outside
-itself.
+### Holy Code
+
+Key points:
+
+* Application Architecture Modeling is the biggest time investment.
+* Coding speed is paramount, but needs more experience
+* Onboarding of new devs is slower, as code is more complex and usually takes advantage of all syntax sugar.
 * Databases are mostly taken as a glorified data dump.
 * Data constraints (unicity &amp; nullness) are enforced at the application
 level.
-* Coding speed is paramount.
+
+Everything is done to ensure that **every change is only changing a small area**.
+
+One's most important asset is the code. As it is fully debugged & testest, it
+therefore should not change much. Additions are welcome for added features.
+Special care is taken to put layer upon layer in order to be able for the code
+to survive any outside change, usually via anticorruption patterns.
 
 The PHP/MySQL tandem is a typical example of this philosophy, I think this
 has precisely led to the common understanding that MySQL is a database that is
@@ -32,19 +43,26 @@ The various J2EE stacks is also a good example with the ubiquitous ORM
 solutions, such a Hibernate that tries very hard to reproduce the joining and
 data checks in the Java.
 
-The current NoSQL meme turns also around this. Data is quite cheap, and can
-be
+The NoSQL trend is strong in that mindset. Data is quite cheap, and can
+be cleaned or transformed to cope with any code refactoring.
 
-## Data is King
+This religion is usually encountered when one can loose some data, typically
+for statistical flows.
 
-* Developper-centric / DBA centric
-* fast ROI, long investment
-* "Data is King" makes you vendor independent, since code can always be
+### Holy Data
+
+Key points:
+
+* Data Modeling is the biggest time investment
+* Coding speed is not that important, and needs less experience
+* Onboarding of new devs is easier, as code is simpler
+* Data constraints (unicity & nullness) are enforced in the Storage layer.
+* Transactional behaviors are a must
+
+Everything is done to ensure that **Data always remains consistent**.
+
+*Holy Data* usually makes you vendor independent, since code can always be
 rewritten. Data on the other hand, isn't that easily converted.
 
-## AJAX is a modern version of the same divide
-
-More and more we put more and more code inside the browser with the help of
-JavaScript. In the end, the application server tend to be not much more than a
-way to relay Ajax/JSON requests to the database, the extreme rationalization of
-this is [CouchDB](http://en.wikipedia.org/wiki/CouchDB).
+This religion is usually encountered when one cannot loose data, typically
+financials or auditable flows.
