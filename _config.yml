@@ -42,9 +42,12 @@ logo: https://www.gravatar.com/avatar/693f9a2f0eea07660d81e9690b6afd96
 
 # Build settings
 theme: minima
+
+# We use the same ones as GithubPages, in order to be able to build locally.
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-relative-links
 
 # Exclude from processing.
 # The following items will not be processed, by default.
