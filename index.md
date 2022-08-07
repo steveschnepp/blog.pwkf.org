@@ -5,9 +5,9 @@
 layout: home
 ---
 
-Originally a blog about [PWKF, an easy-to-use
-workflow](post/2008/01/05/A-Little-History-of-PWKF) solution, but as my
-interest in PWKF faded, it evolved into a generic blog.
+Originally a blog about
+[PWKF, an easy-to-use workflow](post/2008/01/05/A-Little-History-of-PWKF)
+solution, but as my interest in PWKF faded, it evolved into a generic blog.
 
 Therefore now it is more about random thoughts,
 [Munin](https://munin-monitoring.org/) or even low-level techy stuff I'm doing
