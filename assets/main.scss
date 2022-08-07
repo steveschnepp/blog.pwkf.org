@@ -4,8 +4,10 @@
 $base-font-family: "Computer Modern";
 $code-font-family: monospace !default;
 $code-font-weight: 300;
-$code-font-size:   90%;
+$code-font-size:   80%;
 $code-line-height: 1.4;
+
+@import "minima";
 
 p {
   text-align: justify;
@@ -13,16 +15,11 @@ p {
 
 pre, code {
   font-family: $code-font-family;
-  font-size: $code-font-size;
+  font-size:   $code-font-size;
   font-weight: $code-font-weight;
   line-height: $code-line-height;
 }
 
-.highlight .o, .highlight .k {
-  font-weight: 200%;
-}
-
-@import "minima";
 @font-face {
     font-family: "Computer Modern";
     src:
@@ -39,7 +36,7 @@ pre, code {
 @font-face {
     font-family: "Computer Modern";
     src:
-        url('./fonts/woff/cmunse-webfont.woff') format("woff");
+        url('./fonts/woff/cmunbxo-webfont.woff') format("woff");
         font-weight: bold;
         font-style: italic;
 
