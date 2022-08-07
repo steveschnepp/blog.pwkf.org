@@ -13,6 +13,10 @@ layout: default
       {%- if page.author -%}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
       {%- endif -%}</p>
+
+      {%- assign tag_urlprefix = "../../../" -%}
+      {%- assign ctags = page.tags -%}
+      {%- include tags-cloud.md -%}
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">

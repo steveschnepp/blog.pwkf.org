@@ -58,3 +58,12 @@ table {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+/* Tags Clouds */
+
+.tags-cloud {
+	text-align: justify;
+}
+.tags-cloud > a > code {
+	white-space: nowrap;
+}
