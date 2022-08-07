@@ -3,7 +3,6 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
-author: Steve SCHNEPP
 ---
 
 Originally a blog about [PWKF, an easy-to-use
