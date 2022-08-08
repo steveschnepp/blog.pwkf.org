@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A Tale of 2 Programming Religions
+title: A Tale of Two Programming Religions
 tags: [sql, database]
 author: Steve SCHNEPP
 ---
