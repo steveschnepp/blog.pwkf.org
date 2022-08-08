@@ -5,8 +5,6 @@ tags: ne555 blink electronics
 author: Steve SCHNEPP
 ---
 
-## Intro
-
 My son recreated the "blink" with a NE555 and tried to remove the wire from
 RESET pin to VCC.  It actually worked well, and we wondered "what's the minimal
 BOM for a NE555 blink ?".

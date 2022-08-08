@@ -7,7 +7,10 @@ tags:
 date: 2021-06-06 08:41 -0500
 author: Steve SCHNEPP
 ---
-## Context
+
+I bought an [ODROID-HC4](https://www.hardkernel.com/shop/odroid-hc4-oled/), but it didn't work with my TV. Let's fix it.
+
+# Context
 
 I'm the proud owner of 2 [Dlink
 DNS-320L](https://eu.dlink.com/uk/en/products/dns-320l-sharecenter-2-bay-cloud-storage-enclosure).

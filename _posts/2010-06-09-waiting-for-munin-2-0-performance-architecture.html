@@ -5,9 +5,8 @@ date: 2010-06-09 20:26:24 +0100
 tags: [munin, munin20]
 permalink: /post/2010/06/Waiting-for-Munin-2%2e0-Performance-Introduction-Architecture
 author: Steve SCHNEPP
+excerpt_separator: </p>
 ---
-
-<h2>A little intro/refresh on munin's architecture on the master</h2>
 <p>Munin has a very simple architecture on the master : <code>munin-cron</code>
 is launched via cron every 5 minutes. Its only job is to launch in order
 <code>munin-update</code>, <code>munin-graph</code>, <code>munin-html</code>

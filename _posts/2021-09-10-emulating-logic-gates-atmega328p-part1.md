@@ -6,7 +6,6 @@ tags:
 - logic gates
 author: Steve SCHNEPP
 ---
-## Why ?
 
 I'm discovering the world of electronics with my son. We encountered to some
 nice videos that are about recreating a whole CPU with only logic gates. The

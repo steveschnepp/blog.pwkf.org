@@ -5,12 +5,13 @@ tags: [ electronics, learning ]
 author: Steve SCHNEPP
 ---
 
-## The Electronics Lab Box
 
 When I was this summer at my parents, I rediscovered a long-forgotten
 "electronics lab box". I was super glad, since it was that box that enabled me
-to get into electronics. Not the digital one with micro-controllers, but the
+to get into electronics. Not the digital kind with micro-controllers, but the
 old-school analogic one, with transistors, resistors & condensators.
+
+## The Electronics Lab Box
 
 The set itself is the French version of a Philips created one. There's actually
 a [full collection of those](http://norbert.old.no/kits/6000abc/).

@@ -8,8 +8,6 @@ tags:
 author: Steve SCHNEPP
 ---
 
-## Intro
-
 As Wikipedia stated it, [Schmitt
 trigger](https://en.wikipedia.org/wiki/Schmitt_trigger) are typically used in
 to remove noise from signals used in digital circuits.

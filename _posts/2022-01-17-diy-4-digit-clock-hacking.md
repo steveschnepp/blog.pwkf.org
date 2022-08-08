@@ -5,8 +5,6 @@ title: "DIY 4-digit Clock Hacking"
 author: Steve SCHNEPP
 ---
 
-## Intro
-
 I got my hands on a [4-digit clock DIY kit](https://aliexpress.com/item/33004214555.html).
 Soldering it is rather easy, and it works as advertised.
 

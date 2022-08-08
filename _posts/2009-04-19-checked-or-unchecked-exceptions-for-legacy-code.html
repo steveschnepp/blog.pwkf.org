@@ -5,11 +5,12 @@ date: 2009-04-19 12:32:30 +0100
 tags: []
 permalink: /post/2009/07/Checked-or-Unchecked-Exceptions-for-Legacy-Code
 author: Steve SCHNEPP
+excerpt_separator: </p>
 ---
 
-<h2>Checked Exceptions are breaking encapsulation</h2>
-<p>In theory it's quite nice since the called code can communicate with it's
+<p>In theory checked exceptions are quite nice since the called code can communicate with it's
 caller when something unexpected happened.</p>
+<h2>Checked Exceptions are breaking encapsulation</h2>
 <p>The key word here is <em><ins>unexpected</ins></em>. If you have to
 explicitly know the exceptions that could occur, it's not really unexpected.
 And if it's not unexpected, using exception handling just add an

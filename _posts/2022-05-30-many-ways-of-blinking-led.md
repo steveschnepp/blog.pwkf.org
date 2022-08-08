@@ -10,8 +10,6 @@ tags:
 author: Steve SCHNEPP
 ---
 
-## Intro
-
 [Blinking a LED](https://docs.arduino.cc/built-in-examples/basics/Blink) is the
 electronics equivalent of the famous "Hello World!". Therefore it has a very
 special meaning, and it is also the basis of "clocks" which are very imprtant
