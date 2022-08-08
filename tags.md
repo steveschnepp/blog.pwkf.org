@@ -12,13 +12,14 @@ h3.tag > a {
 	text-decoration: none; /* no underline */
 }
 </style>
-
-{% for tag in site.tags %}
+{% assign stags = site.tags | sort %}
+{% for tag in stags %}
   <h3 class="tag" id="{{ tag[0] | url_encode }}">
      {{ tag[0] }}
   </h3>
   <ul>
-    {% for post in tag[1] %}
+    {% assign plist = tag[1] | sort: url | reverse %}
+    {% for post in plist %}
       <li><a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
