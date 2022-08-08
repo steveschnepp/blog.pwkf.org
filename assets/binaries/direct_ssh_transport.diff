@@ -1,0 +1,102 @@
+Index: common/lib/Munin/Common/Config.pm
+===================================================================
+--- common/lib/Munin/Common/Config.pm	(revision 3101)
++++ common/lib/Munin/Common/Config.pm	(working copy)
+@@ -33,6 +33,7 @@
+ 	"palette", "realservname", "cdef_name", "graphable", "process",
+ 	"realname", "onlynullcdef", "group_order", "pipe", "pipe_command",
+ 	"unknown_limit", "notify_countdown", "dropdownlimit",
++	"remote_connection_cmd",
+ );
+ 
+ my %bools = map { $_ => 1} qw(yes no true false on off 1 0);
+Index: master/lib/Munin/Master/Node.pm
+===================================================================
+--- master/lib/Munin/Master/Node.pm	(revision 3101)
++++ master/lib/Munin/Master/Node.pm	(working copy)
+@@ -25,7 +25,8 @@
+         port    => $port,
+         host    => $host,
+         tls     => undef,
+-        socket  => undef,
++        reader  => undef,
++        writer  => undef,
+         master_capabilities => qw(multigraph),
+         io_timeout => 5,
+ 	configref => $configref,
+@@ -54,8 +55,15 @@
+ 
+     LOGCROAK("[FATAL] No address!  Did you forget to set 'update no' or to set 'address <IP>' ?")
+ 	if !defined($self->{address});
+-
+-    if (! ( $self->{socket} = IO::Socket::INET->new(
++    # Check if it's an SSH-host
++    if ( $self->{configref}{remote_connection_cmd} ) {
++        # Open an infamous "double pipe"
++        use IPC::Open2;
++        $self->{reader} = new IO::Handle();
++        $self->{writer} = new IO::Handle();
++        my $pid = open2($self->{reader}, $self->{writer}, $self->{configref}{remote_connection_cmd});
++        ERROR "Failed to connect to node $self->{address}:$self->{port}/tcp : $!" unless $pid;
++    } elsif (! ( $self->{reader} = $self->{writer} = IO::Socket::INET->new(
+ 		PeerAddr  => $self->{address},
+ 		PeerPort  => $self->{port},
+ 		LocalAddr => $config->{local_address},
+@@ -94,7 +102,7 @@
+     $self->{tls} = Munin::Common::TLSClient->new({
+         DEBUG        => $config->{debug},
+         logger       => \&logger,
+-        read_fd      => fileno($self->{socket}),
++        read_fd      => fileno($self->{reader}),
+         read_func    => sub { _node_read_single($self) },
+         tls_ca_cert  => $config->{tls_ca_certificate},
+         tls_cert     => $config->{tls_certificate},
+@@ -102,7 +110,7 @@
+         tls_priv     => $config->{tls_private_key},
+         tls_vdepth   => $config->{tls_verify_depth},
+         tls_verify   => $config->{tls_verify_certificate},
+-        write_fd     => fileno($self->{socket}),
++        write_fd     => fileno($self->{writer}),
+         write_func   => sub { _write_socket_single($self, @_) },
+     });
+ 
+@@ -118,8 +126,10 @@
+ sub _do_close {
+     my ($self) = @_;
+ 
+-    close $self->{socket};
+-    $self->{socket} = undef;
++    close $self->{reader};
++    close $self->{writer};
++    $self->{reader} = undef;
++    $self->{writer} = undef;
+ }
+ 
+ 
+@@ -431,7 +441,7 @@
+                 or exit 9;
+         }
+         else {
+-            print { $self->{socket} } $text;
++            print { $self->{writer} } $text;
+         }
+     });
+     if ($timed_out) {
+@@ -451,7 +461,7 @@
+           $res = $self->{tls}->read();
+       }
+       else {
+-          $res = readline $self->{socket};
++          $res = readline $self->{reader};
+       }
+       chomp $res if defined $res;
+     });
+@@ -472,7 +482,7 @@
+         while (1) {
+             my $line = $self->{tls} && $self->{tls}->session_started()
+                 ? $self->{tls}->read()
+-                : readline $self->{socket};
++                : readline $self->{reader};
+             last unless defined $line;
+             last if $line =~ /^\.\n$/;
+             chomp $line;
