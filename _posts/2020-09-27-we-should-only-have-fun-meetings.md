@@ -27,7 +27,7 @@ Postponing the decision is usually what one really wants, even unknowingly: “*
 
 It’s a very very fair humane reaction, I also fell myself into that trap.
 
-![Thrown out of the fence for proposing an textual chat](/assets/images/out-of-window.jpg)
+![Thrown out of the fence for proposing an textual chat](../../../assets/images/out-of-window.jpg)
 
 # Stop Wasting Time
 

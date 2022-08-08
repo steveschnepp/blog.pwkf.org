@@ -18,7 +18,7 @@ battery indeed, but only to retain the time, as it cannot power the LED, nor
 the alarm. I specifically didn't want the alarm to sound, so i didn't solder
 the PNP, nor the buzzer.
 
-![Schematics](/assets/images/893663.jpg)
+![Schematics](../../../assets/images/893663.jpg)
 
 ## Quick hack to reduce the power usage
 

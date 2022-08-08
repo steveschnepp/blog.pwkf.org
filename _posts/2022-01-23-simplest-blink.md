@@ -12,6 +12,8 @@ BOM for a NE555 blink ?".
 This made sense as "Blink" is the "Hello World" equivalent of
 electronics, and the latter is used to compare programming languages.
 
+<!-- -->
+
 # Rules of engagement
 
 The rules are :
@@ -37,7 +39,7 @@ better version of it as mentioned in an [electronics.stackexchange.com
 answer](https://electronics.stackexchange.com/a/485461), since it lacks the R1
 that is connects TRIG to VCC.
 
-![LMC555 schematics](/assets/images/Minimal NE555 Blink_lmc555.png)
+![LMC555 schematics](../../../assets/images/Minimal NE555 Blink_lmc555.png)
 
 It works since the LMC555 is much more closer to have a rail-to-rail OUTPUT
 than the regular bipolar NE555, but as we aren't interested in accuracy, we can
@@ -51,16 +53,16 @@ load.
 
 So the schema is very simple.
 
-![simplest blink schematics](/assets/images/Minimal NE555 Blink_schem.png)
+![simplest blink schematics](../../../assets/images/Minimal NE555 Blink_schem.png)
 
 And indeed, the breadboard version is minimal.
 
 
-![simplest blink breadboard](/assets/images/Minimal NE555 Blink_bb.png)
+![simplest blink breadboard](../../../assets/images/Minimal NE555 Blink_bb.png)
 
 And for real.
 
-![simplest blink photo](/assets/images/IMG_20220122_195549986.jpg)
+![simplest blink photo](../../../assets/images/IMG_20220122_195549986.jpg)
 
 Mission accomplished!
 
