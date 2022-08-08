@@ -1,7 +1,12 @@
 ---
 layout: post
 title: "Many ways to Blink a LED"
-tags: electronics blink 
+tags:
+- electronics
+- opamp
+- schmitt trigger
+- transistor
+- blink
 author: Steve SCHNEPP
 ---
 
