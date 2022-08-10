@@ -80,7 +80,7 @@ implementation is in the files <code>linux/fileiosys.cpp</code> and
 // Define the forward declaration
 struct fis_filedesc;
 fis_filedesc* open(char* filename);
-int close(fileiosys_filedesc* fd);
+int close(struct fis_filedesc* fd);
 </pre>
 <h4><code>win32/fileiosys.cpp</code></h4>
 <pre>
@@ -100,7 +100,7 @@ fis_filedesc* open(char* filename) {
     return fd;
 }
 
-int close (fis_filedesc* fd) {
+int close (struct fis_filedesc* fd) {
     int retval = CloseHandle(fd-&gt;handle) ? 0 : -1;
     delete(fd);
     return retval;
@@ -120,7 +120,7 @@ fis_filedesc* open(char* filename) {
     return fd;
 }
 
-int close (fis_filedesc* fd) {
+int close (struct fis_filedesc* fd) {
     int retval = close(fd);
     delete(fd);
     return retval;
