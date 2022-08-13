@@ -20,7 +20,7 @@ h3.tag > a {
   <ul>
     {% assign plist = tag[1] | sort: url | reverse %}
     {% for post in plist %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
 {% endfor %}
