@@ -14,6 +14,7 @@ layout: default
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
       {%- endif -%}</p>
 
+      <p>
       {%- assign tag_urlprefix = "../../../" -%}
       {%- assign ctags = page.tags -%}
       {%- include tags-cloud.md -%}
@@ -29,3 +30,88 @@ layout: default
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
+
+<p>
+{%- include prev-next.html -%}
+
+<div class="related-posts">
+<h3 class="related-posts-header">Related Posts</h3>
+
+{% assign MAX_RELATED_POSTS = 4 %}
+{% assign MIN_COMMON_TAGS   = 2 %}
+
+{% assign num_related_counter = 0 %}
+{% for post in site.posts %}
+   {% if post == page %}
+      {% continue %}
+   {% endif %}
+
+   {% assign related_tag_count = 0 %}
+   <!-- Find Related Tags Collection -->
+   {% assign ctags = "" %}
+   {% for tag in post.tags %}
+       {% if page.tags contains tag %}
+           {% assign ctags = ctags | join:' ' | append:' ' | append: tag | split:' ' %}
+       {% endif %}
+   {% endfor %}
+
+   {% assign nb_related_tags = ctags | size %}
+   {% if nb_related_tags >= MIN_COMMON_TAGS %}
+   <div class="related-posts-item navigation"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      {%- include tags-cloud.md -%}
+      {% assign num_related_counter = num_related_counter | plus: 1 %}
+      {% if num_related_counter >= MAX_RELATED_POSTS %}
+        {% break %}
+      {% endif %}
+   </div>
+    {% endif %}
+
+  {% endfor %}
+</div>
+
+
+{% if num_related_counter == 0 %}
+<!-- No related posts found. Hiding Block -->
+<style>
+.related-posts {
+	display: none;
+}
+</style>
+{% endif %}
+
+<style>
+.related-posts-header {
+}
+
+.related-posts {
+    border-top: 3px solid #333;
+    border-top: 0px;
+    padding-top: 15px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.related-posts-item {
+    width: 23%;
+    display: inline-grid;
+    padding: 5px;
+}
+
+.related-posts-item > .tags-cloud {
+    text-align: center;
+}
+
+.navigation {
+    opacity: 1;
+    font-size: small;
+}
+
+.navigation:hover {
+    opacity: 1;
+}
+
+.previous-next {
+	margin: 4 auto;
+}
+
+</style>
