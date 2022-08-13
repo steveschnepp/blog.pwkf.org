@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Test Markdown Formatting"
-tags: markdown
+tags: blog
 author: Steve SCHNEPP
 ---
 
