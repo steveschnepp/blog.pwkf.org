@@ -7,7 +7,7 @@ author: Steve SCHNEPP
 ---
 
 Several AT89C2051 programmers exists. The most advanced one being [the one from
-tardate](https://leap.tardate.com/8051/at89c2051/programmer/), as it is fully
+Paul Gallagher](https://leap.tardate.com/8051/at89c2051/programmer/), as it is fully
 constrainted. Even generating the 12V onboard with a charge pump.
 
 As I did want to remain on a small breadboard from the perfboard header, I
@@ -44,6 +44,8 @@ PWM specific pins.
 
 ![Neat arduino AT89C2051 programmer](../../../assets/images/IMG_20220828_173336535.jpg)
 
-[^2]: Those 3 LED do lit themselves up nicely when RST is 5V. So upon every read, but not on 12V. Which is unfortunate. 🤷
+[^2]: Those 3 LED do lit themselves up nicely when RST is 5V. So upon every
+      read, but not on 12V. Which is unfortunate. 🤷
 
-[^1]: Code available upon request. It is very hacky at the moment and I don't have much incentive to clean it up, unless asked. 😉
+[^1]: Code available upon request. It is very hacky at the moment and I don't
+      have much incentive to clean it up, unless asked. 😉
