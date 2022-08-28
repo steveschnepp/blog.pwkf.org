@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Minimal NE555 Blink"
-tags: ne555 blink electronics
+tags: electronics ne555
 author: Steve SCHNEPP
 ---
 

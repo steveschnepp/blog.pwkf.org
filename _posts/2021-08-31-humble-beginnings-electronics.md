@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Humble Beginnings in Electronics"
-tags: [ electronics, learning ]
+tags: electronics ne555
 author: Steve SCHNEPP
 ---
 

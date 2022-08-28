@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Simple AT89C2051 programmer with Arduino
-tags:
-- electronics
+tags: electronics arduino 8051
 author: Steve SCHNEPP
 ---
 

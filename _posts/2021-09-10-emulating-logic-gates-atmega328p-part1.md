@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Emulating Logic Gates with an ATmega328P MCU - Part 1
-tags:
-- electronics
+tags: electronics avr
 author: Steve SCHNEPP
 ---
 
