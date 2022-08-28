@@ -35,7 +35,7 @@ I obviously changed the RST code[^1]. Note I also shutdown all power to every pi
 connected to the AT89C2051 between 2 operations. This enables hot plugging the
 target MCU, which is a very nice timesaver.
 
-As I also reused PIN13 (LED_BUILTIN) to power the AT89C2051 instead of
+I also reused PIN13 (LED_BUILTIN) to power the AT89C2051 instead of
 connecting it to a solid 5V. As it is the first & last one to be switched on &
 off, it nicely shows when there is some voltage applied to the socket. I don't expect
 huge current needs. The datasheet says 5mA while active at 0Hz and powered by 5V. 
