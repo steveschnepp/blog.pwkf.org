@@ -32,7 +32,8 @@ The result is a very simple 0/5/12V selector circuit.
 
 
 I obviously changed the RST code[^1]. Note I also shutdown all power to every pin
-connected to the AT89C2051 between 2 operations.
+connected to the AT89C2051 between 2 operations. This enables hot plugging the
+target MCU, which is a very nice timesaver.
 
 As I also reused PIN13 (LED_BUILTIN) to power the AT89C2051 instead of
 connecting it to a solid 5V. As it is the first & last one to be switched on &
