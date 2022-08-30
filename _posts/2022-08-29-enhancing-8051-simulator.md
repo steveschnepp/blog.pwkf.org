@@ -53,7 +53,7 @@ here also the fact that the 8051 is a standard (NE555-like) makes those
 plentiful.
 
 I selected [emu8051](https://github.com/jarikomppa/emu8051) from [Jari
-Kompa](http://iki.fi/sol/8051.html ) which did not require any libraries
+Komppa](http://iki.fi/sol/8051.html ) which did not require any libraries
 outside ncurses. The others being too cumbersome. I love the terminal, but a
 visual UI is still a must.
 
