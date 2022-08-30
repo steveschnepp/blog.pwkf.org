@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Enhance an 8051 Simulator
-tags: 8051
+tags: electronics 8051
 author: Steve SCHNEPP
 ---
 
@@ -41,7 +41,7 @@ any other issue with them. But are obviously fakes.
 
 The only **real** pain point for the AT89C2051 is the 12V high-voltage
 requirement for its programming, as it needs a HVPP[^2]. Which I have solved
-in my [previous post](_posts/2022-08-27-simple-at89c2051-programmer.md).
+in my [previous post]({{ site.baseurl }}{% post_url 2022-08-27-simple-at89c2051-programmer %}).
 
 ## Simulation
 
