@@ -2,6 +2,7 @@
 layout: post
 title: "Adding Comments to a Github Pages Blog"
 author: Steve SCHNEPP
+tags: blog jekyll
 excerpt_separator: <!-- -->
 ---
 

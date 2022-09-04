@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Test Markdown Formatting"
-tags: blog
+tags: blog jekyll
 author: Steve SCHNEPP
 ---
 

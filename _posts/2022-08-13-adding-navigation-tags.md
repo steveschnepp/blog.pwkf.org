@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Adding Navigation Links"
-tags: blog
+tags: blog jekyll
 author: Steve SCHNEPP
 ---
 

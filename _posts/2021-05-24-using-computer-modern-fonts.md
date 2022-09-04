@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Using Computer Modern Fonts"
-tags: [blog]
+tags: blog jekyll
 author: Steve SCHNEPP
 ---
 
