@@ -1,5 +1,5 @@
 # Personal Workflow Blog
-My Blog site, hosted at http://blog.pwkf.org/
+My Blog site, hosted at https://blog.pwkf.org/
 
 Some thoughts I encountered during my working day in the J2EE land.
 Originally a blog about PWKF, an easy-to-use workflow solution.
