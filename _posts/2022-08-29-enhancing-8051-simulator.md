@@ -5,8 +5,10 @@ tags: electronics 8051
 author: Steve SCHNEPP
 ---
 
-As a followup of my clock kit, I'm growing a genuine interest into 8051. It is
-more on the verge of "retroputing", as more modern MCU are vastly more powerful.
+As a followup of my clock kit, I'm growing a genuine interest into the 8051. It is
+more on the verge of *retroputing*[^3]. More modern MCU are vastly more powerful.
+
+[^3]: Contraction of "Retro Computing"
 
 ## Simplicity is everything
 
@@ -14,7 +16,7 @@ That said, there is a very interesting trait in looking into very simple
 things. And the 8051, simple, it is. Yet also just complex enough to be useful.
 That's a sweet spot.
 
-Now, in that 8051 family, there's a lot of diversity. As said
+Nowadays, in that 8051 family, there's a lot of diversity. As said
 [elsewhere](https://leap.tardate.com/8051/at89c2051/programmer/), the [8051
 will not be
 extinct](https://www.microcontrollertips.com/intels-mcs-51-microcontroller-family-stay/)
@@ -48,8 +50,8 @@ in my [previous post]({{ site.baseurl }}{% post_url 2022-08-27-simple-at89c2051-
 Now, as I'm learning about the architecture, relying on
 programming/test/reprog/retest cycles only goes for a while.
 
-As there is no debugging tool on the hardware part, I searches an emulator. And
-here also the fact that the 8051 is a standard (NE555-like) makes those
+As there is no debugging tool on the hardware part, I searched for an emulator.
+Here also, the fact that the 8051 is a standard part (such as NE555) makes those
 plentiful.
 
 I selected [emu8051](https://github.com/jarikomppa/emu8051) from [Jari
@@ -62,7 +64,7 @@ readability and accuracy was the decisive factor.
 
 I implemented a rustic [TX
 serial](https://github.com/jarikomppa/emu8051/pull/14) to be able to easily
-see what was send.
+see what was sent.
 
 [^1]: for example `1C 20` instead of the official `1E 21`
 
