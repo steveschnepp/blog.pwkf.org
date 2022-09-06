@@ -9,13 +9,13 @@ As a followup of my clock kit, I'm growing a genuine interest into the 8051.
 While more modern MCU are vastly more powerful, the 8051 is just barely as complex as needed to be useful.
 That's a sweet spot that makes it invaluable for learning purposes.
 
-It is more on the verge of *retroputing*[^3], but I'm more on the side tha
+It is more on the verge of *retroputing*[^3], but I'm more on the side that
 one should learn simple things first, even if long past due date.
 
 It always helped me to have the full process of invention. Every step 
 is obvious in retrospect, and I can remember much more easily.
 
-Programming should be done in logic gates first, then assembly than higher.
+Programming should be done in logic gates first, then assembly, then higher and higher.
 Starting with Stratch is a nonsense. That said, if it makes younger people interested 
 in programming, I can see its usefulness. Just not for the *learning* 
 part.
