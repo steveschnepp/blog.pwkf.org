@@ -26,12 +26,12 @@ to 4 digit clocks kits for the AT89C2051 and the Arduino UNO for the ATmega328P.
 We need to assign pins. I'm trying to keep the functionality the same, even if
 it means to move bits around when programming.
 
-A major difference is we assign a specific PIN to RST for the 8051, so we can
+A major difference is to assign a specific PIN to RST for the 8051, so we can
 reset the emulated 8051 without resetting the AVR.
 
- 8051 | AVR | Function
+ 8051 | AVR | 51 Function
 ------|-----|---------
- RST  | PB2 | RST 51
+ RST  | PB2 | RST51
 XTAL1 | PB6 | OSC1
 XTAL2 | PB7 | OSC2
  P3.0 | PD0 | RX
@@ -49,9 +49,10 @@ XTAL2 | PB7 | OSC2
  P1.5 | PC1 |
  P1.6 | PC2 |
  P1.7 | PC3 |
-      | PC4 | SLOW
 
-Finally, I'm thinking about reusing a GPIO (PC4/SLOW) to signal that the
+Some emulator-related PINS are also used.
+
+I'm thinking about reusing a GPIO (PC4/SLOW) to signal that the
 emulation is lagging from realtime. The idea being that emulator should be
 running at a precise clock divider from the main clock.  Prescaling as much as
 needed to cope with the emulation tax, and also adding as much delay as needed
@@ -61,6 +62,17 @@ If there is an instruction that is expensive to emulate, I'm planning to
 "borrow" delay cycles from the following fast instructions in order to be
 accurate *on average*. And have the SLOW pin to signal that 'borrowing' state
 while active.
+
+
+
+ AVR | EMU       | Comment
+-----|-----------|------
+ PB3 | SLOW/MOSI |
+ PB4 | MISO      |
+ PB5 | SCK       |
+ PC4 | SDA       |
+ PC5 | SCL       |
+
 
 ### Emulation Software
 
