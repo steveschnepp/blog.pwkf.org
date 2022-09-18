@@ -218,7 +218,7 @@ int middle(int aMin, int aValue, int aMax) {
     return aMax;
 }
 
-int update(int aDx, int aDy) {
+void update(int aDx, int aDy) {
 	gPlayerX = middle(gMinX, gPlayerX + aDx, gMaxX);
 	gPlayerY = middle(gMinY, gPlayerY + aDy, gMaxY);
 }
@@ -243,7 +243,7 @@ int middle(int min, int value, int max) {
     return max;
 }
 
-int update(int dx, int dy) {
+void update(int dx, int dy) {
 	int new_player_x = player_x + dx;
 	int new_player_y = player_y + dy;
 
