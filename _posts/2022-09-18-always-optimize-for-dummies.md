@@ -212,10 +212,10 @@ int gMaxX;
 int gMaxY;
 
 /* Return the middle number */
-int middle(int aFirst, int aSecond, int aThird) {
-    if (aFirst <= aSecond && aSecond <= aThird) return aSecond;
-    if (aSecond <= aFirst && aFirst <= aThird) return aFirst;
-    return aThird;
+int middle(int aMin, int aValue, int aMax) {
+    if (aMin <= aValue && aValue <= aMax) return aValue;
+    if (aValue <= aMin && aMin <= aMax) return aMin;
+    return aMax;
 }
 
 int update(int aDx, int aDy) {
