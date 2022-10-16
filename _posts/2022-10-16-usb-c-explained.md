@@ -3,14 +3,11 @@ layout: post
 title: USB-C Connectors Explained
 tags: electronics usb
 author: Steve SCHNEPP
-excerpt_separator: <!-- -->
 ---
 
 Having a USB-C device that only works when the cable is *inserted on one side* ?
 Having a USB-C device that only works *with USB-A to USB-C cables* ?
 While USB-C is a wonderful standard, it has its little quirks.
-
-<!-- -->
 
 ## USB-C is an evolution, not a revolution
 
