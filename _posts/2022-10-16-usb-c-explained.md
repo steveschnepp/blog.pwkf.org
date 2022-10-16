@@ -92,22 +92,23 @@ Notice the 2 resistors ? Those are the CC1 & CC2 pulldowns.
 
 ### USB-C flaw for USB2 upgraded devices : missing orientation pulldowns
 
-Therefore, some USB-C *upgraded* devices missed that. And they don't have those
+Therefore, some USB-C *upgraded from a USB2.0 micro-B* devices missed that. And they don't have those
 pulldown resistors.
 
 ![CH340G-Module-TYPE-C.jpg](../../../assets/images/CH340G-Module-TYPE-C.jpg)
 
-And then it magically doesn't work, as USB-C aren't using voltage sensing on
+And then it does not work, as the USB-C host isn't using voltage sensing on
 the D+/D- anymore to detect something is connected, but those CC lines. 
-
 Even more, as the strength of those pulldowns signals the voltage needed on
 VBUS, without something on those CC lines, you will not even have any power in
 VBUS.
 
-If you use a USB-A to USB-C cable, it works perfectly fine, as the USB-A host
-cannot leverage the CC1 and CC2 lines, therefore relies on D+/D- detection.
+So, if one tests with a USB-A to USB-C cable, it works perfectly fine.
+This is because as the USB-A host cannot leverage the CC1 and CC2 lines,
+therefore relies on D+/D- detection. And I fear that most
+of the (cheap) devices manufacturer won't even think about testing otherwise.
 
-But using a native USB-C cable does't even power the device. 
+Using a native USB-C cable does not even power the device, as expected.
 
 Now I'm wondering if I could make an USB-C to USB-C adapter that emulates the
 CCx lines.
