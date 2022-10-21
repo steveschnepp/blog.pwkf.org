@@ -24,6 +24,7 @@ pre, code {
     font-family: "Computer Modern";
     src:
         url('./fonts/woff/cmunrm-webfont.woff') format("woff");
+    font-display: swap;
 }
 
 @font-face {
@@ -31,6 +32,7 @@ pre, code {
     src:
         url('./fonts/woff/cmunbx-webfont.woff') format("woff");
         font-weight: bold;
+    font-display: swap;
 }
 
 @font-face {
@@ -39,7 +41,7 @@ pre, code {
         url('./fonts/woff/cmunbxo-webfont.woff') format("woff");
         font-weight: bold;
         font-style: italic;
-
+    font-display: swap;
 }
 
 @font-face {
@@ -47,6 +49,8 @@ pre, code {
     src:
         url('./fonts/woff/cmunsi-webfont.woff') format("woff");
         font-style: italic;
+
+    font-display: swap;
 }
 
 /* Tables are a little smaller than the body, and centered */
