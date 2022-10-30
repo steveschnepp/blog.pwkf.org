@@ -256,5 +256,5 @@ void update(int dx, int dy) {
 ```
 
 The last `player_x = clamped_player_x` is particularly interesting, as it
-clearly shows that this assigment is a some specific one. Therefore it has its
+clearly shows that this assigment is one to a different scope. Therefore it has its
 own line with the 1SLOC rule number 3.
