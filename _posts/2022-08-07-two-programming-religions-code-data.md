@@ -66,3 +66,15 @@ rewritten. Data on the other hand, isn't that easily converted.
 
 This religion is usually encountered when one cannot loose data, typically
 financials or auditable flows.
+
+## What is better ?
+
+That last sentence makes it very easy to choose. It simply **boils down to
+the expected longevity of the code** you are writing. The longer you'll have 
+to maintain it, the more you need to take care of the data. 
+
+Which is the current plague of our current "go fast & break things" motto.
+
+We do not plan fo the long term anymore. Which is fine, as it enables agility.
+Just always remind yourself, that after a while, you might need to convert
+yourself to another religion. And *that* doesn't come for free.
