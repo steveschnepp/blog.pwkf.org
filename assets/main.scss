@@ -56,10 +56,16 @@ table {
 }
 
 /* Tags Clouds */
-
 .tags-cloud {
 	text-align: justify;
 }
 .tags-cloud > a > code {
 	white-space: nowrap;
+}
+
+/* We don't want to print things that are usless on paper */
+@media print {
+    nav, footer, .give-comments, div.navigation, div.related-posts {
+         display: none !important;
+    }
 }
