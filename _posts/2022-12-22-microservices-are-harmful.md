@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Microservices are Mostly Harmful in Your Case
+title: Micro-services are Mostly Harmful in Your Case
 tags: best-practices architecture
 author: Steve SCHNEPP
 ---
 
-Microservices are very fashionable nowadays but the real questions are:
+Micro-services are very fashionable nowadays but the real questions are:
 * What do they really bring to you?
 * What is their hidden price?
 * Can you avoid paying that price?
@@ -13,9 +13,9 @@ Microservices are very fashionable nowadays but the real questions are:
 > Again, this article is a little bit on the satire side of things. <br/>
 > Yet, I promise you'll have a different view on your situation at the end of it.
 
-# Microservices Are Magic. They Do Solve Real Problems
+# Micro-services Are Magic. They Do Solve Real Problems
 
-Microservices are highly praised nowadays because **they are actually solving
+Micro-services are highly praised nowadays because **they are actually solving
 very real problems**.
 
 Those benefits are the following (by order of importance):
@@ -32,9 +32,9 @@ doesn't usually have all those qualities it is a quick sell.
 Note that some monoliths are well designed. And therefore have those qualities.
 But then the question isn't even asked in the first place.
 
-# Magic Has a Price. Microservices Are Not Cheap
+# Magic Has a Price. Micro-services Are Not Cheap
 
-Microservices are inherently a distributed architecture.
+Micro-services are inherently a distributed architecture.
 
 Any distributed architectures have known costs :
 
@@ -52,12 +52,12 @@ also.
 This looks very compelling until you look at the sponsor of those conferences,
 and understand that books author want to sell books.
 
-The fact that microservices are the future has become a self-fullfilling
+The fact that micro-services are the future has become a self-fulfilling
 prophecy. As more people speak about it, more people are interested in it.
 Perpetuating its hype. We'll still in a period where critics are shut down, but
 it will soon change, when everyone wakes up from that mass hysteria.
 
-To me microservices look like drugs. I mean, the more you are using them, the
+To me micro-services look like drugs. I mean, the more you are using them, the
 more you tolerate them, the more you are efficient in their usage. And the more
 you think you need them as, again, they *do* have some real benefits.
 
@@ -69,25 +69,25 @@ Some burden you wouldn't have otherwise. 😉
 
 # Avoiding to Pay the Price
 
-Let's now see each benefits that microservices have one by one, and see if we
-can solve them without going full microservices.
+Let's now see each benefits that micro-services have one by one, and see if we
+can solve them without going full micro-services.
 
 ## Implementation teams independence
 
 
 That's the most well known benefit.
 
-Everyone has ugly war stories of late synchronisations between teams that derailed
+Everyone has ugly war stories of late synchronizations between teams that derailed
 projects dates, and I'm sure you do either.
 
 ### A Typical Story down the rabbit hole
 
 Yet, let's try with the following analogy :
 - The release is a car.
-- As more and more teams are onboarded, more and more passengers are car-pooling.
+- As more and more teams are on-boarded, more and more passengers are car-pooling.
 - This is very easy at first, since it the car is already here and you just need to make one more stop to go somewhere.
 - But soon, as soon as more passengers are pooled, the car needs to make many stops to fetch every passengers, and wait for late ones.
-- This leads to synchronisation delays, as everyone needs to get on board.
+- This leads to synchronization delays, as everyone needs to get on board.
 - So you start to plan upfront for everyone to be ready at their doorstep on time.
 - Which means that everyone needs to prep oneself with enough buffer time to ensure to be on time.
 - Which leads to a huge pipeline that really looks like the old waterfall.
@@ -97,18 +97,18 @@ Sounds familiar ?
 Wait for the next steps! 😂
 
 Now, a very natural tendency is to say *"everyone gets its own car"*. Which is
-all nice & well, until you realise that it is much more expensive. Yet as you
+all nice & well, until you realize that it is much more expensive. Yet as you
 are only remembering the "single car hell", you still think you are is way better now.
 
-*Welcome to a world of microservices!*
+*Welcome to a world of micro-services!*
 
 If you let it go for a while, you'll end up with a gazillion cars, and
 therefore huge operating costs, but also lots of traffic jams.
 
 But fear not! There are many companies that do make nice money out of managing
 those traffic jams for you. And if you remembered correctly, those are the same
-ones that massively invest into the microservices ecosystem marketing, funding
-all those article & confereneces. But, let's not feed too much into the
+ones that massively invest into the micro-services ecosystem marketing, funding
+all those article & conferences. But, let's not feed too much into the
 conspiracy theory, I just think that it is capitalism at work by simply offering
 what customers want.
 
@@ -116,7 +116,7 @@ what customers want.
 
 ### Mass transportation to the Rescue!
 
-Overcrowded car transit is the exact problem that many european cities have.
+Overcrowded car transit is the exact problem that many European cities have.
 Therefore they invested heavily into mass transportation.
 
 And that's what I propose : **mass-transportation to the rescue!**
@@ -128,9 +128,9 @@ In that paradigm:
 * Every team that contributes to that monolith can simply push its code to a
   "release branch".
 * Which gets automatically deployed.
-* Without any synchonisation from other teams.
+* Without any synchronization from other teams.
 * Inter-team communications still goes via well defined API, so it is as smooth
-  as independant microservices deployement.
+  as independent micro-services deployment.
 
 Therefore, instead of having to "car pool", which means having an extensive
 sync among the passengers, one can just hop on and hop off the train that
@@ -139,15 +139,15 @@ passes at :
 * well defined stops (internal API).
 
 Now you have the benefit of "asynchronous teams" without the operating costs of
-the microservices architecture.
+the micro-services architecture.
 
 I won't lie. It does take some discipline, but if you organize yourself around
-"modules" that are owned by teams, it is the same as microservices, just on a
+"modules" that are owned by teams, it is the same as micro-services, just on a
 much more integrated scale.
 
-## Faster Restarts are acutally not needed
+## Faster Restarts are actually not needed
 
-A microservice is smaller, as the "micro" moniker implies. Therefore the
+A micro-service is smaller, as the "micro" moniker implies. Therefore the
 restart time is much smaller also.  Typical figures are 10s versus 2 min.
 So, indeed, a mighty 10x decrease which is significant.
 
@@ -159,10 +159,10 @@ My question would then be :
 
 > Do you **really** deploy 300 times per hour?
 
-If you're really in the need of that much deployements due to your org size,
+If you're really in the need of that much deployments due to your org size,
 then I stand corrected, you need to indeed divide your monolith.
 
-But the vast majority of the organisations don't need that, as they already
+But the vast majority of the organizations don't need that, as they already
 have actually several (but not more than a handful) monoliths.  And therefore,
 they never cross that threshold. I mean, even deploying *once per hour* is
 already a huge stretch for many.
@@ -172,19 +172,19 @@ execute anyway.
 
 ## Robustness
 
-It is true that microservices are usually more robust than monoliths. But
+It is true that micro-services are usually more robust than monoliths. But
 funnily it is not because a monolith isn't. It is more because that distributed
 architectures are hard and less forgiving.
 
 Therefore, you'll spend more time coping with distributed failures as it is
-much more apparent immediatly.
+much more apparent immediately.
 
-If it isn't yet the case in your organisation, beware! It will come soon, and
+If it isn't yet the case in your organization, beware! It will come soon, and
 it always comes in a *catastrophic* way.
 
 The usual solution is to have redundancy all over the place. Which can also be
 applied in monoliths. Just have more instances of the monoliths, and you'll be
-as robust as microservices.
+as robust as micro-services.
 
 
 Do you remember the glory days of PHP ? Vast arrays of Apache servers with
@@ -194,28 +194,28 @@ the language itself.
 
 ## Performance Scaling
 
-Microservices scale better than monoliths. Which is also true up to a certain point.
+Micro-services scale better than monoliths. Which is also true up to a certain point.
 
 Scaling comes with sharding data & multiplying computing instances. Period.
 
-As with Microservices you do shard, usually by business domain, you scale
+As with Micro-services you do shard, usually by business domain, you scale
 better in the beginning. Well, unless you realize that monoliths have less
 inherent overhead in the first place, but that's another story.
 
 And here also, sharding has to be done on the data level. Not on the business
 domain level. Otherwise you won't really scale.
 
-Now that you scale on the data level, each microservice looks like a monolith.
+Now that you scale on the data level, each micro-service looks like a monolith.
 
-> Every microservice is effectively a monoliths in isolation, so the same
+> Every micro-service is effectively a monoliths in isolation, so the same
 > patterns apply.
 
 Which means that nothing prevents you from scaling a monolith exactly the same
-way you'd scale a microservice.
+way you'd scale a micro-service.
 
 ## Starting is more rewarding that finishing
 
-Now, a more insidious reason for microservices is not well known. Yet I think it is the deciding reason for the whole industry move.
+Now, a more insidious reason for micro-services is not well known. Yet I think it is the deciding reason for the whole industry move.
 
 **It is not technical. It is human.**
 
@@ -229,7 +229,7 @@ The rationale is very simple:
 
 * In the beginning of a new project, everything is always smooth, gives great
   successes very quickly, and leverages a honeymoon period.
-* Patching something existing is more complex and timeconsuming, while results
+* Patching something existing is more complex and time-consuming, while results
   are expected faster as, precisely, we don't start from scratch.
 
 Now, the sad part is that :
@@ -240,20 +240,20 @@ Now, the sad part is that :
 
 ## No-one wants to be seen in a sinking ship
 
-The biggest benefit of microservices is again, not technical.
+The biggest benefit of micro-services is again, not technical.
 
-It is that they **feel** like a future-proof carreer move. No-one wants to be
+It is that they **feel** like a future-proof career move. No-one wants to be
 left on the bench while everyone has left.
 
 Unless monoliths are made cool again... 🤔🤣
 
 # What did we learn ?
 
-* Microservices are solving your problems
+* Micro-services are solving your problems
 * So do monoliths
 
 Therefore it might be more efficient to spend the budget on evolving your
-monoliths that are already battle proven into than to drink the microservice
+monoliths that are already battle proven into than to drink the micro-service
 Kool-Aid.
 
 Yet, drinking that gives you an immediate nice cool attitude. Which might have
