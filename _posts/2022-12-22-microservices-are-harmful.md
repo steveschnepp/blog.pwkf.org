@@ -259,3 +259,6 @@ Kool-Aid.
 Yet, drinking that gives you an immediate nice cool attitude. Which might have
 the nice benefit of keeping your team happy. Not as efficient in theory, but
 happier. So maybe more efficient in practice.
+
+But I'm still hoping that everyone will wake up from that collective dream before
+it becomes a nightmare. Or be proven wrong and be able to live the dream myself. 
