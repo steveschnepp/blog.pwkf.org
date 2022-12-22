@@ -247,7 +247,7 @@ left on the bench while everyone has left.
 
 Unless monoliths are made cool again... 🤔🤣
 
-# Conclusion
+# What did we learn ?
 
 * Microservices are solving your problems
 * So do monoliths
