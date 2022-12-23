@@ -98,7 +98,7 @@ Wait for the next steps! 😂
 
 Now, a very natural tendency is to say *"everyone gets its own car"*. Which is
 all nice & well, until you realize that it is much more expensive. Yet as you
-are only remembering the "single car hell", you still think you are is way better now.
+are only remembering the "single car hell", you still think you are way better now.
 
 *Welcome to a world of micro-services!*
 
@@ -108,15 +108,15 @@ therefore huge operating costs, but also lots of traffic jams.
 But fear not! There are many companies that do make nice money out of managing
 those traffic jams for you. And if you remembered correctly, those are the same
 ones that massively invest into the micro-services ecosystem marketing, funding
-all those article & conferences. But, let's not feed too much into the
-conspiracy theory, I just think that it is capitalism at work by simply offering
+all those articles & conferences. But, let's not feed too much into the
+conspiracy theory, I think that it is simply capitalism at work by just offering
 what customers want.
 
 **That said, it is a local optimum only.**
 
 ### Mass transportation to the Rescue!
 
-Overcrowded car transit is the exact problem that many European cities have.
+Overcrowded car transit is the *exact problem* that many European cities have.
 Therefore they invested heavily into mass transportation.
 
 And that's what I propose : **mass-transportation to the rescue!**
@@ -129,14 +129,15 @@ In that paradigm:
   "release branch".
 * Which gets automatically deployed.
 * Without any synchronization from other teams.
-* Inter-team communications still goes via well defined API, so it is as smooth
-  as independent micro-services deployment.
+* Inter-team communications still goes via a well defined API, so it is as smooth
+  as independent micro-services deployment. That API has all the properties that
+  micro-services API have, which boils down to an official lifecycle.
 
 Therefore, instead of having to "car pool", which means having an extensive
 sync among the passengers, one can just hop on and hop off the train that
 passes at :
 * regular schedule (rollout cadence)
-* well defined stops (internal API).
+* well defined stops (internal API with lifecycle).
 
 Now you have the benefit of "asynchronous teams" without the operating costs of
 the micro-services architecture.
