@@ -69,3 +69,36 @@ table {
          display: none !important;
     }
 }
+
+// Panels
+
+.panel_ {
+	box-shadow: 0px 0px 18px 0px rgba(0,0,0,.1), 0 4px 4px 0 rgba(0,0,0,.09);
+	border-block-style: solid;
+	border-block-width: 1px;
+	padding: 0.5em;
+}
+
+.warning {
+	@extend .panel_;
+	background: #fff8f7;
+	border-block-color: #d04437;
+}
+
+.note {
+	@extend .panel_;
+	background: #fffdf6;
+	border-block-color: #ffeaae;
+}
+
+.tip {
+	@extend .panel_;
+	background: #f3f9f4;
+	border-block-color: #91c89c;
+}
+
+.info {
+	@extend .panel_;
+	background: #fcfcfc;
+	border-block-color: #4a6785;
+}
