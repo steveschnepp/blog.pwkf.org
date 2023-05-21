@@ -95,6 +95,13 @@ good thing.
       happens at convenient ones, noone is remembering those, as they are
       quickly dealt with and become non-events.
 
+Besides, even your future self is another person given enough time.
+{: .panel .tip}
+
+[
+![XKCD: Future Self](../../../assets/images/future_self_2x.png)
+](https://xkcd.com/1421/)
+
 A side-effect of that implementation is that some patterns will emerge that one
 can solidify in rules in order to speedup & streamline the process upfront.
 
