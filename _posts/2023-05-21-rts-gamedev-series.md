@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Starting a GameDev Series
-tags: gamedev learning opengl developement
+tags: gamedev learning opengl c developement
 author: Steve SCHNEPP
 ---
 
@@ -17,7 +17,7 @@ I'm leading by example and therefore [writing a mission log]({{ site.baseurl
 }}{% post_url 2023-02-15-mission-logs %}) on my recent trip in graphics
 programming.
 
-## Wine as the Starting Point
+## Wine as the starting point
 
 ### The Bug
 
@@ -92,7 +92,7 @@ is still very easy to find.
 Therefore after some initial struggle with d3d, I settled with OpenGL as my
 learning journey.
 
-## Departing from my Initial goal
+## Departing from my initial goal
 
 Now, with the journey destination revisited, I decided that rewriting a simple
 RTS game could be much more interesting than a synthetic testing application.
