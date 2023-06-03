@@ -1,6 +1,6 @@
 ---
 layout: post
-title: glCombat - Week 1 - Mapping
+title: glCombat - Week 1 - Map
 tags: opengl gamedev c development
 author: Steve SCHNEPP
 ---
