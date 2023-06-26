@@ -1,10 +1,4 @@
-{% capture read_time %}
-  {{ page.content | number_of_words | divided_by: 180 }}
-{% endcapture %}
-<div id="reading-time">
-About {% if read_time != '0' %}
-  {{ read_time }}
-{% else %}
-  1
-{% endif %} min read
+{%- assign read_time = include.content | number_of_words | divided_by: 120 | at_least: 1 -%}
+<div class="read-time">
+About {{ read_time }} min read
 </div>

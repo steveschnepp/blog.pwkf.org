@@ -21,12 +21,13 @@ layout: default
             {{ post.title | escape }}
           </a>
         </h3>
+        {%- include read-time.html content=post.content -%}
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
         {%- endif -%}
         <a class="post-detail" href="{{ post.url | relative_url }}">
             Read More...
-          </a>
+        </a>
       </li>
       {%- endfor -%}
     </ul>

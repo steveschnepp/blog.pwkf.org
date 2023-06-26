@@ -109,3 +109,20 @@ table {
 	font-style: italic;
 	font-size: 80%;
 }
+
+a.post-detail {
+        font-size: 90%;
+}
+
+.post-header {
+	margin-bottom: 1em;
+}
+
+div.read-time {
+	@extend .post-meta;
+}
+
+h3 + div.read-time {
+        margin-top: -1em;
+        margin-bottom: .5em;
+}

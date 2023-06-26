@@ -18,9 +18,8 @@ layout: default
       {%- assign tag_urlprefix = "../../../" -%}
       {%- assign ctags = page.tags -%}
       {%- include tags-cloud.md -%}
-      {%- include read-time.html -%}
+      {%- include read-time.html content=page.content -%}
   </header>
-
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
