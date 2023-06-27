@@ -102,3 +102,10 @@ table {
 	background: #fcfcfc;
 	border-block-color: #4a6785;
 }
+
+.legend + p {
+	margin-top: -1em;
+	text-align: center;
+	font-style: italic;
+	font-size: 80%;
+}
