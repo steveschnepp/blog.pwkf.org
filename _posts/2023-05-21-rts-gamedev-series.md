@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Starting a GameDev Series
-tags: gamedev learning opengl c developement
+tags: gamedev learning opengl c development
 author: Steve SCHNEPP
 ---
 
