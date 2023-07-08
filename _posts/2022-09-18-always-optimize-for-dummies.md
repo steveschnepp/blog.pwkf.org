@@ -271,3 +271,13 @@ void update(int dx, int dy) {
 The last `player_x = clamped_player_x` is particularly interesting, as it
 clearly shows that this assigment is one to a different scope. Therefore it has its
 own line with the 1SLOC rule number 3.
+
+One can also pedantically argue about the `middle()` function breaking 1SLOC,
+and I agree. I didn't notice at first, but upon reading the code some months
+later I admit that it took me longer than expected to understand it. Sure,
+the function is pretty obvious in itself, but still.
+
+That previous statement is a testament to the fact that **naming things correctly**
+is what helps understanding the most. Which is the whole point of 1SLOC.
+
+Q.E.D.
