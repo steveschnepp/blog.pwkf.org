@@ -279,5 +279,6 @@ the function is pretty obvious in itself, but still.
 
 That previous statement is a testament to the fact that **naming things correctly**
 is what helps understanding the most. Which is the whole point of 1SLOC.
+{: .panel .tip}
 
 Q.E.D.
