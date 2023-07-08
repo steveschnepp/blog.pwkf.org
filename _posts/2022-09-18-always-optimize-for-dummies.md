@@ -142,6 +142,12 @@ reader's needed context.
 3. Assigments to temporary variables don't count towards the 1SLOC, but
    assigments towards ones with a different scope do.
 
+The most important item is the *meaningful* name of variables.
+It is the item that improves understanding the most.
+And usually a compiler does optimize them away,
+as it would with an unamed, temporary, variable.
+{: .panel .tip}
+
 
 Instead of
 
