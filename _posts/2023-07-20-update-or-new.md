@@ -7,7 +7,7 @@ author: Steve SCHNEPP
 
 URLs shall be immutable. But what about the post content itself?
 
-## Posts are Immutable
+## If Posts are Immutable
 
 The most common trend is to treat posts as immutable records.
 {: .panel .tip}
@@ -19,11 +19,11 @@ The biggest merit is that everyone is notified when updates are available. It al
 Changing content transparently is taxing everyone's memory sanity, and therefore erodes trust the fastest.
 {: .panel .warning}
 
-## Posts are Updated
+## If Posts are Updated
 
-On the other hand, the internet is filled with, at best, obsolete informations and, at worst, plain wrong information. Therefore some cleanup is usually very beneficial.
+On the other hand, the internet is filled with obsolete informations or, at worst, plain wrong informations. Therefore **some** cleanup is very beneficial.
 
-Having to jump through several updates isn't great either, and updating all the previous posts to point to the latest one won't be done.
+Having to jump through several updates isn't great either. Updating all the previous posts to always point to the latest one will not work, as I'm lazy and I might even miss some.
 
 ## A blog is like a GIT history
 
@@ -33,11 +33,11 @@ And incidently, `git rebase` has the same pros and cons.
 
 Therefore I will apply the following rationale :
 
-* transparently update a post is fine if it didn't reach many users yet. So a few days is okay, as noone reads my blog anyway ;-)
-* it is better to update it, unless there is historical value, or significant changes
+* Transparently update a post is fine if it didn't reach many users yet. So a few days is okay, as noone reads my blog anyway ;-)
+* It is better to update it, unless there is historical value, or significant changes
 * Hinting that the post was updated, and when, is a very good practice that avoids eroding trust
 * Having only 1 URL for the whole, updated, content is best.
-* If some significant changes happen later, add a small post referencing the old URL.
+* If some significant changes happen later, simply add a small post referencing the old URL with some teaser on what to expect now.
 
-So, I'll be in the *pragmatic updates camp* that seems to be the norm for online newspapers.
+I'll be in the *pragmatic updates* group that actually seems to be the norm for online newspapers. So I may not be totally crazy.
 {: .panel .tip}
