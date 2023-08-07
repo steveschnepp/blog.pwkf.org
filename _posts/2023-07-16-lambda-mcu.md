@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Serverless MCU Lambdas
-tags: electronics
+tags: electronics risc-v
 author: Steve SCHNEPP
 ---
 
