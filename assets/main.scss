@@ -71,47 +71,71 @@ table {
 }
 
 // Panels
-
-.panel_ {
+.shadows {
 	box-shadow: 0px 0px 18px 0px rgba(0,0,0,.1), 0 4px 4px 0 rgba(0,0,0,.09);
+}
+
+.panel {
+	@extend .shadows;
+
 	border-block-style: solid;
 	border-block-width: 1px;
 	padding: 0.5em;
+	margin: 1%;
 }
 
 .warning {
-	@extend .panel_;
 	background: #fff8f7;
-	border-block-color: #d04437;
+	border-color: #d04437;
 }
 
 .note {
-	@extend .panel_;
 	background: #fffdf6;
-	border-block-color: #ffeaae;
+	border-color: #ffeaae;
 }
 
 .tip {
-	@extend .panel_;
 	background: #f3f9f4;
-	border-block-color: #91c89c;
+	border-color: #91c89c;
 }
 
 .info {
-	@extend .panel_;
 	background: #fcfcfc;
-	border-block-color: #4a6785;
+	border-color: #4a6785;
+}
+
+.small-caps {
+	font-variant-caps: small-caps;
+}
+
+.box {
+	@extend .center;
+	@extend .shadows;
+
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-top: 1em;
+	padding-bottom: 1em;
+
+	border-radius: 8px;
+	border-width: 1px;
+	border-style: solid;
+	font-family: monospace;
+}
+
+.center {
+	text-align: center;
 }
 
 .legend + p {
+	@extend .center;
 	margin-top: -1em;
-	text-align: center;
 	font-style: italic;
 	font-size: 80%;
 }
 
 a.post-detail {
-        font-size: 90%;
+	font-size: 90%;
 }
 
 .post-header {
@@ -123,6 +147,20 @@ div.read-time {
 }
 
 h3 + div.read-time {
-        margin-top: -1em;
-        margin-bottom: .5em;
+	margin-top: -1em;
+	margin-bottom: .5em;
+}
+
+// Footnotes
+.footnotes {
+	border-block-style: dotted;
+	border-block-width: .5px;
+
+	margin-top: 2em;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.footnotes > ol {
+	margin-bottom: -10px;
 }
