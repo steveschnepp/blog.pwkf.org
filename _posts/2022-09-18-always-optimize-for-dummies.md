@@ -126,7 +126,8 @@ I obviously gathered some coding-style idiosyncraties that fit very well in
 that context. It also has the nice side effect of making wrong code *obviously*
 wrong.
 
-### 1SLOC - One Statement per Line of Code
+### 1SLOC - One Statement per Line of Code {#sloc}
+
 
 This enables a very good understanding of what is currently done.
 
