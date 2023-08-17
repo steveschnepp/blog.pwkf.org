@@ -101,7 +101,7 @@ Simple, because I don't have much skills in art, and I don't want to spend all
 my time on eye candy. And it should still eventually serve as a benchmark for
 Wine if I port it to Direct3D.
 
-### Choosing the tech stack & the overall design
+### Choosing the tech stack & the overall design {#tech-stack}
 
 The language is C. No particular version, but it should be very easy to
 understand for beginners. Therefore avoiding new syntax, but still using
