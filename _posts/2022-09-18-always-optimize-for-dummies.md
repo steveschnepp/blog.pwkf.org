@@ -128,6 +128,13 @@ wrong.
 
 ### 1SLOC - One Statement per Line of Code {#sloc}
 
+This has its [own post]({% post_url 2023-08-17-one-sloc %}#sloc) now.
+The concept is also now known as 1OPS which conveys better the idea.
+{: .panel .warning }
+
+Here is the rest for historical purposes according to my
+[Immutability Rules]({% post_url 2023-07-20-update-or-new %}).
+{: .panel .info }
 
 This enables a very good understanding of what is currently done.
 
