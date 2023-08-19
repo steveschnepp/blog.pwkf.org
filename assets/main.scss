@@ -55,11 +55,19 @@ table {
 	margin-right: auto;
 }
 
+
+
 /* Tags Clouds */
 .tags-cloud {
 	text-align: justify;
 }
 .tags-cloud > a > code {
+	font-size:  80%;
+	white-space: nowrap;
+}
+
+/* No wrapping for inline code */
+p > code {
 	white-space: nowrap;
 }
 
