@@ -17,11 +17,11 @@ languages, but here by using multiple electronics components and circuits.
 
 There's 2 basic electronics components that allow for a response that varies in time:
 
-* Condensators
+* Capacitors
 * Inductors
 
 So, every Blink almost always comes down to using one of those 2 components.
-Yet, condensators are much more using in reality[^1], as they have a voltage
+Yet, capacitors are much more using in reality[^1], as they have a voltage
 response whereas inductors have a current response.
 
 Storing current being much less practical than storing voltage, as current
@@ -33,7 +33,7 @@ is more cumbersome than storing static energy with a spring.
 [^2]: The comparison is rather accurate. In electronics, inductors have exactly the same usage as flywheels: avoiding current *variations*, not *storing* current. Springs on the other hand, are very good as energy restitution when needed.
 
 This means that Blink usually always comes down to charging and discharging a
-condensator.
+capacitor.
 
 ## Circuits 
 
@@ -47,7 +47,7 @@ to illustrate my circuits.
 #### Astable with 2 NPN
 
 The oscillator circuit that usually everyone encounter at first is the famous
-"astable NPN" with its perfect symetry of 2 NPN & 2 condensators.
+"astable NPN" with its perfect symmetry of 2 NPN & 2 capacitors.
 
 It actually starts to oscillate only because it is in instable equilibrium, and
 each component is not identical, even if having the same value, due to the
@@ -95,7 +95,7 @@ new circuits out of it. But that will be another post.
 ### Classic Astable with Discrete RTL NOT gates
 
 Once we craft the NOT gates version with [RTL technology](https://en.wikipedia.org/wiki/Resistor%E2%80%93transistor_logic), we can have a 2 NPN
-version that has only 1 condensator.
+version that has only 1 capacitor.
 
 
 #### Schmitt Buffer with NOT gates

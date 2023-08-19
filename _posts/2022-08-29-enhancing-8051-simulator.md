@@ -33,7 +33,7 @@ will not be
 extinct](https://www.microcontrollertips.com/intels-mcs-51-microcontroller-family-stay/)
 soon.
 
-I also think that the AT89C2051 hits the very sweet spot for hobbists.  Its
+I also think that the AT89C2051 hits the very sweet spot for hobbyists.  Its
 rather small DIP-20 form factor makes it super easy to insert to almost any
 design. And while its more recent editions versions (AT89S2051 & AT89LP2052)
 are much faster (1T instead of 12T) and have more features, they are much more
@@ -41,7 +41,7 @@ expensive.
 
 Having less features makes it also easier to learn. As one has to revert to
 more creative ways. It is even possible to use multiple MCU to achieve what we
-want, leaning into the world of multichip computing.
+want, leaning into the world of multi-chip computing.
 
 In addition, the fact that the AT89C2051 is used is almost every cheap DIY
 clock kit is a guarantee of very cheap availability, because it give incentives
@@ -49,7 +49,7 @@ to provide clones that are binary compatible, if not recycling original
 chips from obsolete hardware.
 
 Funnily, each clock model I encountered has a different chip signature[^1],
-whereas the markings are looking like the orignal AT89C2051. I didn't detect
+whereas the markings are looking like the original AT89C2051. I didn't detect
 any other issue with them. But are obviously fakes.
 
 The only **real** pain point for the AT89C2051 is the 12V high-voltage

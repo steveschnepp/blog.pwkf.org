@@ -76,7 +76,7 @@ while active.
 
 ### Emulation Software
 
-The choosed software is [emu8051](https://github.com/jarikomppa/emu8051) that
+The chosen software is [emu8051](https://github.com/jarikomppa/emu8051) that
 we covered in [a previous post]({{ site.baseurl }}{% post_url
 2022-08-29-enhancing-8051-simulator %}). It is hackable enough to be useful,
 and not using any library outside standard C.

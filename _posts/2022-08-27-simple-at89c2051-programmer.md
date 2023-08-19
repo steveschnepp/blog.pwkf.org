@@ -7,7 +7,7 @@ author: Steve SCHNEPP
 
 Several AT89C2051 programmers exists. The most advanced one being [the one from
 Paul Gallagher](https://leap.tardate.com/8051/at89c2051/programmer/), as it is fully
-constrainted. Even generating the 12V onboard with a charge pump.
+constrained. Even generating the 12V onboard with a charge pump.
 
 As I did want to remain on a small breadboard from the perfboard header, I
 didn't have space to add the charge pump.

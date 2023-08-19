@@ -53,7 +53,7 @@ The ROM and IN file are R/O, the RAM is R/W and the OUT file is W/O.
 
 The idea being that everything can be mmap inside the emulator address space so it offers nice memory protection, along with adequate performance since no copy takes place.
 
-The emulator can then use those files inplace and not worry about the filesystem. It is up to the caller to have correct file sizes.
+The emulator can then use those files in place and not worry about the filesystem. It is up to the caller to have correct file sizes.
 
 Initial size is 32MiB for every file. The files are zero-padded or zero-truncated.
 

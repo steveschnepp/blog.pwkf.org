@@ -6,7 +6,7 @@ description: Distributed teams are significantly less productive than co-located
 author: Steve SCHNEPP
 ---
 
-> 💡 As our daily life has been disrupted and work-from-home is slowly becoming the new normal, distributed teams are much more common. But normal work patterns don't translate immediatly, they have to be adjusted.
+> 💡 As our daily life has been disrupted and work-from-home is slowly becoming the new normal, distributed teams are much more common. But normal work patterns don't translate immediately, they have to be adjusted.
 
 We all know the infamous video about Conference Call in Real Life:
 

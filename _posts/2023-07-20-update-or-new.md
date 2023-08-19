@@ -21,7 +21,7 @@ Changing content transparently is taxing everyone's memory sanity, and therefore
 
 ## If Posts are Updated
 
-On the other hand, the internet is filled with obsolete informations or, at worst, plain wrong informations. Therefore **some** cleanup is very beneficial.
+On the other hand, the internet is filled with obsolete information or, at worst, plain wrong information. Therefore **some** cleanup is very beneficial.
 
 Having to jump through several updates isn't great either. Updating all the previous posts to always point to the latest one will not work, as I'm lazy and I might even miss some.
 
@@ -29,11 +29,11 @@ Having to jump through several updates isn't great either. Updating all the prev
 
 If you think about it, one can map a set of blog posts as git commits. Those are also immutable, but can be updated via `git rebase`.
 
-And incidently, `git rebase` has the same pros and cons.
+And incidentally, `git rebase` has the same pros and cons.
 
 Therefore I will apply the following rationale :
 
-* Transparently update a post is fine if it didn't reach many users yet. So a few days is okay, as noone reads my blog anyway ;-)
+* Transparently update a post is fine if it didn't reach many users yet. So a few days is okay, as no-one reads my blog anyway ;-)
 * It is better to update it, unless there is historical value, or significant changes
 * Hinting that the post was updated, and when, is a very good practice that avoids eroding trust
 * Having only 1 URL for the whole, updated, content is best.

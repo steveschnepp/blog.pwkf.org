@@ -13,7 +13,7 @@ author: Steve SCHNEPP
 
 # Why I hate work meetings
 
-My #1 advice about distributed teams is actually even the case in colocated teams:
+My #1 advice about distributed teams is actually even the case in collocated teams:
 **Try as hard as possible to avoid meetings, use textual IM instead** as [meetings are where work goes to die](https://blog.codinghorror.com/meetings-where-work-goes-to-die/).
 I know it sounds pretty dull, but if you really think about it you’ll see that it’s usually wasted time.
 The usual pattern of decision taking is:
@@ -56,17 +56,17 @@ I end up having the following workflow:
 
 In a record-everything scenario, context switch is just a matter of reading back some previous messages. Otherwise you’ll spend numerous times “explaining the context” in a meeting to everyone. And then everyone will just move to something else, and you’ll have pitiful engagement, while still spending time on it.
 
-**A company that use its time effectively, is a company that moves much faster than its competitors**, no matter the skillsets in that company. Even if you have the brightest minds, if you waste their talents in boring activities, you'll dry them up. And either they'll leave, or worse, they [quit & stay](https://www.sbnonline.com/article/the-quit-and-stay-syndrome-a-business-epidemic-thats-a-silent-profit-killer/).
+**A company that use its time effectively, is a company that moves much faster than its competitors**, no matter the skill sets in that company. Even if you have the brightest minds, if you waste their talents in boring activities, you'll dry them up. And either they'll leave, or worse, they [quit & stay](https://www.sbnonline.com/article/the-quit-and-stay-syndrome-a-business-epidemic-thats-a-silent-profit-killer/).
 
 > 💡 This enabled me to scale to a reasonable multitasking ability while curbing its overhead to a manageable level
 
 **That’s why “startups” are so effective** : they are small and therefore very fast. Being fast brings capacity to try & fail, and therefore agility.
 
-> 💡 **time is the only really scarse resource in a company** : you can’t buy it back, no matter the price.
+> 💡 **time is the only really scarce resource in a company** : you can’t buy it back, no matter the price.
 
 ## Why you should only have fun ones
 
-That said, I do agree that travelling is necessary. But we should name the real usecase of travelling : having *fun* **together**.
+That said, I do agree that traveling is necessary. But we should name the real use case of traveling : having *fun* **together**.
 
 The nicest part of that purpose is :
 
@@ -97,10 +97,10 @@ Now, one immediately notices the following:
 
 > 💡 Now, let’s travel only for “team building” purposes.
 >
-> You can plan them in advance, and you won’t have over-budget ones. As their outcome is predictable, and if there’s someone missing, it won’t jeopardy the whole travelling.
+> You can plan them in advance, and you won’t have over-budget ones. As their outcome is predictable, and if there’s someone missing, it won’t jeopardy the whole traveling.
 
 A final word of caution, the reference to scaling is **not about runtime performance**. It's more about **organisation size**. As Martin Fowler said : *don’t even consider microservices unless you have a system that’s too complex to manage as a monolith*.
 
-So, it usually makes very much sense to start with a small, colocated team, that has traditional meetings. The trick is to recognize the need to change the paradigm when the team grows, as it always done smoothly over the months. Just don't forget to have good meeting hygiene (written inputs & outputs), as **even monoliths should be nicely modular**.
+So, it usually makes very much sense to start with a small, collocated team, that has traditional meetings. The trick is to recognize the need to change the paradigm when the team grows, as it always done smoothly over the months. Just don't forget to have good meeting hygiene (written inputs & outputs), as **even monoliths should be nicely modular**.
 
 > I posted those 2 articles ([Remote-mostly working]({% post_url 2020-09-26-remote-working-is-a-paradigm-shift %}), [Effective Meetings]({% post_url 2020-09-27-we-should-only-have-fun-meetings %})) internally to my company some years ago, but I'm republishing those publicly to help others the same way it helped us.

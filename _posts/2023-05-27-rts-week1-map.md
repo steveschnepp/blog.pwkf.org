@@ -26,7 +26,7 @@ Remember that I want to only use OpenGL 1.2.
 
 # Findings
 
-Camera positionning is hard to understand.
+Camera positioning is hard to understand.
 {: .panel .warning}
 
 I spend a huge amount of time trying to implement a simple moving camera
@@ -38,7 +38,7 @@ Lighting has some surprises.
 
 I'm drawing objects with a simple `glBegin(TRIANLE_LIST)` and `glEnd()` pair
 that contains a huge loop of `glVertex3f()` for the vertices and
-`glColor3f()` for the color of that vertice.
+`glColor3f()` for the color of that vertex.
 
 It works nicely, but When I switched the lights on, everything went dark.
 The `LIGHT0` has correct default values, but the normals are **mandatory** for

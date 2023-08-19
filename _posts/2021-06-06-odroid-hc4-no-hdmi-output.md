@@ -80,7 +80,7 @@ to
 
 
 It will disable the serial console, but offer a much more convenient one on the
-HDMI screen. The autoconfiguration of the resolution worked very well. It
+HDMI screen. The auto-configuration of the resolution worked very well. It
 showed in my old TV, and even on my 2007 LCD monitor that was connected via a
 HDMI-DVI cable.
 
@@ -99,7 +99,7 @@ It makes sense since we wrote it directly to the sdcard via `dd`. But somehow
 petitboot translates that into `rootfs=/dev/mmcblk1p2` which is the correct
 naming in petitboot, as it recognizes both the SPI flash, and the SD card.
 
-Ubuntu doesn't recognise the SPI flash, therefore doesn't end up with the same
+Ubuntu doesn't recognize the SPI flash, therefore doesn't end up with the same
 device name, triggering the bug.
 
 A very simple fix is to leverage the new naming scheme : `/dev/disk/by-uuid/dead...beef`.
@@ -118,7 +118,7 @@ This isn't translated by petitboot, and won't be remapped inside Ubuntu.
 
 There is also a setting that configured the default elevator to `noop`. While
 this is usually a very good idea with an eMMC, it isn't in the case of SD
-cards. Specially with a journaling filesystem such as EXT4 that inserts
+cards. Specially with a journaling file system  such as EXT4 that inserts
 barriers.
 
 So, either we mount the root filesystem with the `nobarrier` option, or we
@@ -133,5 +133,5 @@ Therefore replacing the `elevator=noop` with `elevator=deadline` in the same
 line as before with the `rootfs` parameter does the trick nicely.
 
 Note that if you don't want to loose the lines, you can simply copy paste the
-line and modify it on the 2nd occurence, as it will override the previous
+line and modify it on the 2nd occurrence, as it will override the previous
 value.

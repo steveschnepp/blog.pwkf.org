@@ -15,12 +15,12 @@ That said, as anyone soon notices, all the combinations of the logic gates becom
 enormous very soon. Therefore, Ben showed a very nice trick : [replacing
 combined logic gates with a simple EEPROM](https://youtu.be/BA12Z7gQ4P0).
 
-The idea itself is brilliant, and is the famous space versus time optimisation.
-Effectively precalculation of all the poasible iutputs, and sorting them. Note
+The idea itself is brilliant, and is the famous space versus time optimization.
+Effectively precalculation of all the possible inputs, and sorting them. Note
 that using an EEPROM has several drawbacks. Regular 74HCxx logic gates operate
 in the 5ns range, which is very fast. Beware that if you have multiple stages
 of logic, which is the case here, you have to multiply by at least the number
-of stagss. The EEPROM reads in about 150ns, so we can afford 30 stages. Not so
+of stages. The EEPROM reads in about 150ns, so we can afford 30 stages. Not so
 bad.
 
 But that assumes a parallel EEPROM, and the one that Ben uses is the
@@ -56,7 +56,7 @@ The EEPROM can be reduced to 4 buses at runtime, since we don't write to it. We 
   * Data
 
 The Chip Enable & the address are IN, and Data is OUT.
-Also, the Data needs to be 8-bit wide, otherwise it will be too complext.
+Also, the Data needs to be 8-bit wide, otherwise it will be too complex.
 
 We want to keep the control pins, such as the RESET & TOSC1/TOSC2.
 
@@ -107,7 +107,7 @@ Which fits perfectly, as we have 8 bits in (A) and 8 bits out (D).
 
 In case we'd need a pin for carry, we could reuse either the TX/RX or the TOSCx
 ones. I'd prefer to leverage the TX/RX ones as having an external oscillator is
-easier to program, since the UART is much more precise, and the bootloader can
+easier to program, since the UART is much more precise, and the boot-loader can
 still leverage TX/RX while programming.
 
 #### Carry (Optional)

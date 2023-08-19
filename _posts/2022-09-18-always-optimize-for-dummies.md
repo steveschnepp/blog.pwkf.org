@@ -12,9 +12,9 @@ experience, give the *biggest bang for the buck*.
 
 **Code is usually optimized for readability**.
 
-Yet it always takes the seniors devs perspective. Syntaxic sugar is used &
+Yet it always takes the seniors devs perspective. Syntactic sugar is used &
 abused, since it does enable very terse code. Since less code is usually lauded
-for its lower bug ratio, it looks like a good idea. A percieved side-effect
+for its lower bug ratio, it looks like a good idea. A perceived side-effect
 is that it will even educate juniors devs by emulation & example.
 
 And, a very good idea it is. *At first*.
@@ -37,14 +37,14 @@ replace them is hard, it's much easier to find juniors ones. Bigger pool, and
 smaller costs. Happier Management.
 
 Also, let's face it, seniors devs can be very performant, but most of them are
-not that flexible anymore. The vast majory do come with their habits, which enables
-them to leverage their performance, but unfortunatly quickly ends up as a tech
+not that flexible anymore. The vast majority do come with their habits, which enables
+them to leverage their performance, but unfortunately quickly ends up as a tech
 patchwork. Only very few, super awesome ones, are *blending in*. They tend to follow
 the existing code patterns, changing it only when it makes absolute no sense. And
 even then, in a global & coherent manner.
 
 It is not really a popular opinion, but that's exactly one of the reasons why
-the whole industry is moving towards "locode/nocode" solutions : To be able to
+the whole industry is moving towards "low-code/no-code" solutions : To be able to
 quickly onboard junior devs.
 
 A nice side effect is that, as junior devs don't have much technical baggage,
@@ -92,7 +92,7 @@ good thing.
 > investigations/fixes when the whole team is back.
 
 [^1]: It *always* happens at inconvenient moments. Mostly because when it
-      happens at convenient ones, noone is remembering those, as they are
+      happens at convenient ones, no-one is remembering those, as they are
       quickly dealt with and become non-events.
 
 Besides, even your future self is another person given enough time.
@@ -108,7 +108,7 @@ can solidify in rules in order to speedup & streamline the process upfront.
 ### Pair programming isn't dead
 
 It sounds like the death of pair-programming, but the latter serves a different
-need. Its execution is similiar but needs to be adjusted with knowledge from
+need. Its execution is similar but needs to be adjusted with knowledge from
 the previous section.
 
 * *Pair programming enables more creativity*. This means that one can pair 2
@@ -122,7 +122,7 @@ missing" would be lost.
 
 ## Relevant coding-style examples
 
-I obviously gathered some coding-style idiosyncraties that fit very well in
+I obviously gathered some coding-style idiosyncrasies that fit very well in
 that context. It also has the nice side effect of making wrong code *obviously*
 wrong.
 
@@ -147,13 +147,13 @@ The rule very simple :
    name. This enables to follow what is done very nicely as it reduce the
 reader's needed context.
 
-3. Assigments to temporary variables don't count towards the 1SLOC, but
-   assigments towards ones with a different scope do.
+3. Assignments to temporary variables don't count towards the 1SLOC, but
+   assignments towards ones with a different scope do.
 
 The most important item is the *meaningful* name of variables.
 It is the item that improves understanding the most.
 And usually a compiler does optimize them away,
-as it would with an unamed, temporary, variable.
+as it would with an unnamed, temporary, variable.
 {: .panel .tip}
 
 
@@ -277,7 +277,7 @@ void update(int dx, int dy) {
 ```
 
 The last `player_x = clamped_player_x` is particularly interesting, as it
-clearly shows that this assigment is one to a different scope. Therefore it has its
+clearly shows that this assignment is one to a different scope. Therefore it has its
 own line with the 1SLOC rule number 3.
 
 One can also pedantically argue about the `middle()` function breaking 1SLOC,

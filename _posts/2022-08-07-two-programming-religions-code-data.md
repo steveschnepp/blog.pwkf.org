@@ -30,10 +30,10 @@ level.
 
 Everything is done to ensure that **every change is only changing a small area**.
 
-One's most important asset is the code. As it is fully debugged & testest, it
+One's most important asset is the code. As it is fully debugged & tested, it
 therefore should not change much. Additions are welcome for added features.
 Special care is taken to put layer upon layer in order to be able for the code
-to survive any outside change, usually via anticorruption patterns.
+to survive any outside change, usually via anti-corruption patterns.
 
 The PHP/MySQL tandem is a typical example of this philosophy, I think this
 has precisely led to the common understanding that MySQL is a database that is
@@ -65,7 +65,7 @@ Everything is done to ensure that **Data always remains consistent**.
 rewritten. Data on the other hand, isn't that easily converted.
 
 This religion is usually encountered when one cannot loose data, typically
-financials or auditable flows.
+financial or auditable flows.
 
 ## What is better ?
 

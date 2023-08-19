@@ -9,7 +9,7 @@ author: Steve SCHNEPP
 When I was this summer at my parents, I rediscovered a long-forgotten
 "electronics lab box". I was super glad, since it was that box that enabled me
 to get into electronics. Not the digital kind with micro-controllers, but the
-old-school analogic one, with transistors, resistors & condensators.
+old-school analogic one, with transistors, resistors & capacitors.
 
 ## The Electronics Lab Box
 
@@ -37,7 +37,7 @@ But the _real_ gem was the manual next to it
     1. Starting with the LED and a resistor.
     1. Then gradually becoming more complex, with a RC couple. Trying various
        combinations with R in series, parallel. C in series & parallel.
-    1. Going via the transistor, staturated at first and amplifying next.
+    1. Going via the transistor, saturated at first and amplifying next.
     1. At the end you had *the* IC. Which is actually an op amp.
 
 This was a real eye opener to my son. Specially since it was written in French.
@@ -53,7 +53,7 @@ various configurations. ;-)
 ## Next steps - NE555
 
 I then got my hands on a NE555, due to an electronic kit for soldering
-upskilling. My son wasn't super interested in soldering as breadboards are
+up-skilling. My son wasn't super interested in soldering as breadboards are
 reusable, and he doesn't like to "waste" some parts :D
 
 As his breadboarding skills were now rather optimal, I could feed him with some

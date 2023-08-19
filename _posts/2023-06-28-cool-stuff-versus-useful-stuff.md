@@ -52,7 +52,7 @@ focused on that technical aspect. This foundation layer in return, should also b
 
 Therefore the business logic can (therefore should) be done in a synchronous,
 single threaded & transactional way. Doing it that way enables us to make many
-assumptions that totally ease the implemenation by several orders of magnitude.
+assumptions that totally ease the implementation by several orders of magnitude.
 It therefore lowers the entry barrier to cooperation in that ecosystem, which
 is [very important for the long term]({{ site.baseurl }}{% post_url
 2022-09-18-always-optimize-for-dummies %}).
@@ -66,14 +66,14 @@ For the transactional part, one should not really bother with all the details of
 ACID. Just understanding that **either the call fully works, or not at all**, is
 the common thinking, and actually what the ACID properties are about.
 
-### Adding the Asynchonous trait to any existing API
+### Adding the Asynchronous trait to any existing API
 
-An Asynchonous API can be layered on top of every already existing API. This
+An Asynchronous API can be layered on top of every already existing API. This
 will provide a *unified & scalable* standard way of interacting with our things.
 
-That *asynchronous layer is fully agnostic to the underlaying payloads*. It will
+That *asynchronous layer is fully agnostic to the underlying payloads*. It will
 only define the strict minimum that is needed to work in an async manner, and
-delegate all the business payload to the underlaying API, which is still synchronous.
+delegate all the business payload to the underlying API, which is still synchronous.
 
 The real bonus is that the ASYNC API is in addition to the SYNC one, and it is
 up to the caller to use the correct one based on his use case.
@@ -257,9 +257,9 @@ In the very exact same vein, the whole transaction stuff should be delegated.
 It should be assumed that in the current unit of work (UoW), one is always in a
 transaction.  The only way to abort a transaction is to throw an exception. If
 returning, it is assumed that everything went OK, and the eventual changes are
-to be commited.
+to be committed.
 
-This enables a very nice behaviour: transparent batching.
+This enables a very nice behavior: transparent batching.
 
 A well known fact is that batching is much more efficient than unit processing.
 But then with batching, we loose nice transaction capabilities. Moreover,

@@ -28,7 +28,7 @@ I started with **mini-rv32ima** at first, as it is a *tiny C header-only risc-v
 emulator* therefore looked like a good fit.  It is actually rather well
 written, but after a while, I discovered that it is really geared to running
 Linux NOMMU.  Which means that it has some quirks, notably not emulating a MCU,
-but a full featured CPU with periphericals.  The amount of work that went into
+but a full featured CPU with peripherals.  The amount of work that went into
 it is rather amazing as it delivers on its promised.*
 
 ### Rv32iEmulator
@@ -81,9 +81,9 @@ output of `objcopy -O binary`.
       even the [ELF](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)
       format might be supported in the future, but for now __simplicity__ is key.
 
-The `ram` file is intended to be an __opaque__ statefile. __It shall not be
+The `ram` file is intended to be an __opaque__ state file. __It shall not be
 parsed or generated outside of the emulator__, but can be examined for
-debugging purposes.  No compatibility garanties are provided. It is always safe
+debugging purposes.  No compatibility guaranties are provided. It is always safe
 to zero-fill it in doubt.  It does serve as a *state* between calls. Subsequent
 calls have to be implemented as if the `RST` pin was lowered on a real MCU.
 This will lead to some tricks later as we see, mostly about handling static
@@ -92,7 +92,7 @@ vars initial values.
 The `in` file is simple. It can contain a little endian `uint32_t` as header to
 indicate the size of the file.  The header is only useful if you want to
 leverage the standard tooling on the area.  You can simply ignore it or use
-another header. Any buffer overrun is safe, as there's an unmmaped zone just
+another header. Any buffer overrun is safe, as there's an un-mmaped zone just
 behind it.  Therefore the <u>only</u> harmful effect is a `SIGSEGV` that will
 brutally kill the emulator process.
 

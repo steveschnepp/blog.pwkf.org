@@ -9,7 +9,7 @@ I got my hands on a [4-digit clock DIY kit](https://aliexpress.com/item/33004214
 Soldering it is rather easy, and it works as advertised.
 
 One downside is its **power appetite** : it slurps a whopping 100mA
-constanly, which means that operating it from a battery is going to be an
+constantly, which means that operating it from a battery is going to be an
 very tedious & expensive proposition.
 
 Upon close look, there is actually a 5V DC connector and a 3V one.
@@ -29,10 +29,10 @@ done via pulling the IO pin low, sourcing the current via the IO pin instead of
 via the LED. Very simple but not very efficient.
 
 So, I changed the pull-up 470&#x2126; resistor array to a 10k&#x2126; one to
-limit the current passing via the LED or the IO pins. This worked by immediatly
+limit the current passing via the LED or the IO pins. This worked by immediately
 lowering the 100mA to 7 mA. The luminosity was rather low, but I don't mind as
 this works perfectly in a dark room. As it is the purpose of that clock, and
-before it was too bright anwyay.
+before it was too bright anyway.
 
 That enabled a pack of 3 AA NiMH cells (2000mAh) to last a little less than a
 week before needing to recharge.  Not bad for such a small hack.
@@ -59,7 +59,7 @@ projects that do parts of the programming. The most promising version is the
 [AT89C2051 Programmer](https://leap.tardate.com/8051/at89c2051/programmer/)
 from [Paul Gallagher](https://github.com/tardate).
 
-It ticks mostly all of my needs, smashing many of the existings projects into a
+It ticks mostly all of my needs, smashing many of the existing projects into a
 pretty nice feature-full version :
 
 * On board 12V DC generation.

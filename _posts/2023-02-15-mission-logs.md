@@ -8,7 +8,7 @@ Exploratory work is often needed when trying a novel idea. As a good idea at
 first might end up highly impractical in reality. Which is why when doing a
 PoC, the outcome is not always a success. If it was, it would be a *prototype*.
 
-There is often pushback against those PoC failures as it means "wasted effort".
+There is often push back against those PoC failures as it means "wasted effort".
 This is a common misconception, and is mostly due to lack of proper knowledge
 safeguarding.
 {: .panel .warning}
@@ -16,18 +16,17 @@ safeguarding.
 A common statement from a failed PoC is:
 
 > We spent a week to explore many options, but we have learned a lot
-> of useful informations by working on it.
+> of useful information by working on it.
 
 While this is **exactly** the purpose of doing those PoC in the first place,
-often those *useful informations* are not retained in a sustainable manner, not
+often those *useful information* are not retained in a sustainable manner, not
 broadcasted to others.
 
 I always suggest to keep a “mission log” along
 the journey. It will prove itself quite valuable to the rest of the team.
 {: .panel .tip}
 
-# "Mission Logs" as "Capitain’s Log" 
-
+# "Mission Logs" as "Captain's Log"
 
 Ancient tribes traditions of “*oral transmission around a campfire*" are a quite
 awesome and friendly manner of information dissemination, but those **cannot
@@ -40,14 +39,14 @@ evolution of those ancient campfires. That makes them invaluable for mood sharin
 uncharted territories of new features & PoC. 
 
 Those journeys are much more similar to the *exploration across seas* from the
-past. Which naturally leads us to the need of a *Capitain’s Log* that was the
+past. Which naturally leads us to the need of a *Captain's Log* that was the
 adequate way to record those.
 
-![Capitain's Log](../../../assets/images/Captain%27s_log_on_monitor.jpg)
+![Captain's Log](../../../assets/images/Captain%27s_log_on_monitor.jpg)
 
-A *Capitain’s Log* had actually various use cases:
+A *Captain's Log* had actually various use cases:
 
-- The log was used to **inform the captain’s superiors** of what was happening on a
+- The log was used to **inform the captain's superiors** of what was happening on a
   mission and to record historical facts for future generations.
 
 - In the case that space pirates attack us, here will be a record of what we
@@ -55,10 +54,10 @@ A *Capitain’s Log* had actually various use cases:
 
 But my real use is:
 
-> In the Captain’s Log you will find a detailed description of what our
+> In the Captain's Log you will find a detailed description of what our
 > product team is building and the intention behind our product decisions.
-> The audience of the Captain’s Log is future Captains.
-> The intention is to write the Captain’s Log to help the future me recall what
+> The audience of the Captain's Log is future Captains.
+> The intention is to write the Captain's Log to help the future me recall what
 > has happened and to write as if no one is watching.
 
 I actually do write mission logs in a pure selfish mood. To allow myself to

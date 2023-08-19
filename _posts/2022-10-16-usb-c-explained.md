@@ -41,8 +41,8 @@ Downgrading an USB3.0 to USB2.0 is very easy, and only requires to simply ignore
 
 Despite the usual confusion, USB-C isn't always associated with USB 3.x. It is
 first and foremost a **connector format**.  It even acknowledges one of the
-main usage of USB nowadays : power delivery, wihtout even the need of a data
-transfert.
+main usage of USB nowadays : power delivery, without even the need of a data
+transfer.
 
 This was possible in the USB2.0 era since the vast majority of the USB-A
 connecters where not 100% to the specifications, and happily delivered much
@@ -54,26 +54,26 @@ a somewhat future-proof usage.
 
 ![USB-C Connector](../../../assets/images/1920px-USB_Type-C_Receptacle_Pinout.svg.png)
 
-The layout of the wiring is also mostly symetrical, in order to ensure that
+The layout of the wiring is also mostly symmetrical, in order to ensure that
 the connector can be inserted in any side.
 
 ## USB-C in detail
 
-### USB 2.0 is fully symetrical
+### USB 2.0 is fully symmetrical
 
 We can see that the USB2.0 wires (VBUS, GND, D+ & D-) are **strictly**
-symetrical.  Which means that it indeed can be inserted in any side and still
+symmetrical.  Which means that it indeed can be inserted in any side and still
 have exactly the same connectivity. And most of the devices that upgraded from
 the B connector to the C one fully leverage that.
 
 ### USB-C connectivity quirk : orientation sensing
 
 Yet, a close examination shows that the other connectivity is not exactly
-symetrical. And that makes sense, as otherwise we would have needed twice the
+symmetrical. And that makes sense, as otherwise we would have needed twice the
 amount of pins. 
 
 Which means that the USB-C host needs a way to know which side the device is
-connected as. In order to simply multiplex in reverse the non symetrical pins.
+connected as. In order to simply multiplex in reverse the non symmetrical pins.
 
 This is done by the CC1 & CC2 pins. As in a native USB-C cable, there is only 1
 wire from CC1 to CC1, and none from CC2 to CC2.  Coupled with only a resistor
@@ -84,13 +84,13 @@ in the vast majority of the cases it is 56k.
 This "orientation sensing" is one of the most overlooked fact in USB-C. And
 more precisely the fact that it is *mandatory*. To signal a USB 2.0 compatible
 device, it simply needs to have both CC1 and CC2 pulled to GND, in a fully
-symetric fashion.
+symmetric fashion.
 
 ![USB-C Adapter to USB 2.0](../../../assets/images/USB-3-1-Type-C-Connector-Male-Socket-USB-2-0.jpg)
 
-Notice the 2 resistors ? Those are the CC1 & CC2 pulldowns.
+Notice the 2 resistors ? Those are the CC1 & CC2 pulldown.
 
-### USB-C flaw for USB2 upgraded devices : missing orientation pulldowns
+### USB-C flaw for USB2 upgraded devices : missing orientation pulldown
 
 Therefore, some USB-C *upgraded from a USB2.0 micro-B* devices missed that. And they don't have those
 pulldown resistors.
@@ -99,7 +99,7 @@ pulldown resistors.
 
 And then it does not work, as the USB-C host isn't using voltage sensing on
 the D+/D- anymore to detect something is connected, but those CC lines. 
-Even more, as the strength of those pulldowns signals the voltage needed on
+Even more, as the strength of those pulldown signals the voltage needed on
 VBUS, without something on those CC lines, you will not even have any power in
 VBUS.
 

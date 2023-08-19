@@ -62,7 +62,7 @@ which could lead to even more performance increase, and not only for that
 particular use case.
 {: .panel .info}
 
-I didn't know at first that writing that simple application would prove itfself
+I didn't know at first that writing that simple application would prove itself
 much more complicated than anticipated. Yet it was a incredible learning experience.
 
 ## Learning 3D
@@ -83,7 +83,7 @@ what GC used at the time.
 At first I tried to write some D3D. It became soon apparent that the lack of a
 working environment to develop makes everything harder to learn.
 
-Indeed, Microsoft evolved from d3d7 to d3d11 and d3d12 that dont have fixed
+Indeed, Microsoft evolved from d3d7 to d3d11 and d3d12 that do not have fixed
 pipelines anymore.  Very much like OpenGL 3.1+ hasn't support of it either.
 
 Yet, while old D3D stuff mostly disappeared from the internet, old OpenGL one
@@ -110,7 +110,7 @@ niceties, but is somehow overwhelming to enter a new C++ codebase. And I'm much
 more fluent in C than C++, so let's not mix all the learning curves at once.
 
 The codebase from Wine is very well written, which will serve as my reference
-for codestyle.
+for code style.
 
 Also, modern compilers have gone a long way in optimizations, so that pointer
 juggling is not always needed. Even using a functional style and passing
@@ -121,7 +121,7 @@ So, the code will be always naive at first, and then optimized once it makes
 sense.
 {: .panel .info}
 
-Also, some modding should be possible, but not via the usual lua extensibilty,
+Also, some modding should be possible, but not via the usual lua extensibility,
 but via the quake2 native DLL model. Some SDK should be provided so that
 building a mod without rebuilding the whole source code is possible. Very much
 like how one can build Linux Modules out of the source tree.
