@@ -98,7 +98,8 @@ $ curl -sk -0 -X POST -d ean=9780201633610 https://eshop.com/rest/v1/carts/curre
 Now, imagine we could stack an asynchronous API right on top of it.
 Its URL would have exactly the same semantic, just the __webroot__ would be
 `/async/rest/` instead of simply `/rest/`.
-Also its return would be completely different, yet still generic & technical.
+Also its return would be completely different. Not business oriented,
+but generic & technical.
 
 
 ```
