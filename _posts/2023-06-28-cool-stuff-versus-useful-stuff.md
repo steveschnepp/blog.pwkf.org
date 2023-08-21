@@ -96,7 +96,7 @@ $ curl -sk -0 -X POST -d ean=9780201633610 https://eshop.com/rest/v1/carts/curre
 ```
 
 Now, imagine we could stack an asynchronous API right on top of it.
-Its URL would have exactly the same semantic, just the `webroot` would be
+Its URL would have exactly the same semantic, just the __webroot__ would be
 `/async/rest/` instead of simply `/rest/`.
 Also its return would be completely different, yet still generic & technical.
 
@@ -139,7 +139,7 @@ $ curl -sk -0 -X GET https://eshop.com/async?id=XOIKXBQC
 ```
 
 They key part is that once the processing is finished, the output of the job will *always* be available
-to fetch. Until it is purged after a while. At that time you'll get a ``04 Not Found` HTTP status reply.
+to fetch. Until it is purged after a while. At that time you'll get a `404 Not Found` HTTP status reply.
 
 Once the processing is finished, the output of the job will always be available
 to fetch, until it is purged, where you'll get a `404 Not Found` HTTP status
