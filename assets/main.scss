@@ -59,14 +59,51 @@ pre, code, .highlighter-rouge .highlight
 	font-display: auto;
 }
 
-/* Tables are a little smaller than the body, and centered */
-table {
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
+/* LaTeX like tables
+   Taken from https://github.com/vincentdoerig/latex-css/blob/master/style.css
+*/
+
+// Remove Base & Minima styling
+table, table th, table tr, table td, table tr:nth-child(2n) {
+	background-color: inherit;
+	border: inherit;
 }
 
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: auto;
+	max-width: 100%;
+	border-top: 2.27px solid;
+	border-bottom: 2.27px solid;
+	/* display: block; */
+	overflow-x: auto; /* does not work because element is not block */
+	/* white-space: nowrap; */
+	counter-increment: caption;
+}
 
+/* add bottom border on column table headings  */
+table tr > th[scope='col'] {
+	border-bottom: 1.36px solid;
+}
+/* add right border on row table headings  */
+table tr > th[scope='row'] {
+	border-right: 1.36px solid;
+}
+table > tbody > tr:first-child > td,
+table > tbody > tr:first-child > th {
+	border-top: 1.36px solid;
+}
+table > tbody > tr:last-child > td,
+table > tbody > tr:last-child > th {
+	border-bottom: 1.36px solid;
+}
+
+th, td {
+	text-align: left;
+	padding: 0.5rem;
+	line-height: 1.1;
+}
 
 /* Tags Clouds */
 .tags-cloud {
