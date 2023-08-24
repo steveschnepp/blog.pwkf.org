@@ -135,7 +135,7 @@ p > code {
 	text-align: center;
 }
 
-.legend + p {
+.legend {
 	@extend .center;
 	margin-top: -1em;
 	font-style: italic;

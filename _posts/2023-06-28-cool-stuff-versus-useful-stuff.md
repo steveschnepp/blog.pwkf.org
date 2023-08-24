@@ -218,9 +218,8 @@ public interface StateService {
     clear(Object key);
 }
 ```
-{: .legend }
-
 An example in Java
+{: .legend }
 
 This service is really simple on purpose, and can feed its state from parsing
 URL query params into `ThreadLocalStorage`, various call-backs or a full-blown

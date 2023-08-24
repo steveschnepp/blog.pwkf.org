@@ -52,23 +52,22 @@ This is a warning panel with `{: .panel .warning }`.
 
 ## Legend
 
-Legends are a little special. You need to put the class modifier before the legend paragraph.
+Legends are similar.
 
 ```
 << 1 SWAP / 1 + >>
 ```
-{: .legend }
-
 Sample RPL code
+{: .legend }
 
 is produced by
 
     ```
     << 1 SWAP / 1 + >>
     ```
+    Sample RPL code
     {: .legend }
 
-    Sample RPL code
 
 
 ## Internal hyperlinks {#internal}
