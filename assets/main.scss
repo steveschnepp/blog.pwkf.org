@@ -70,6 +70,7 @@ table, table th, table tr, table td, table tr:nth-child(2n) {
 }
 
 table {
+	@extend .center;
 	border-collapse: collapse;
 	border-spacing: 0;
 	width: auto;
@@ -164,6 +165,12 @@ p > code {
 	font-variant-caps: small-caps;
 }
 
+.center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .box {
 	@extend .center;
 	@extend .shadows;
@@ -179,15 +186,16 @@ p > code {
 	font-family: monospace;
 }
 
-.center {
-	text-align: center;
-}
-
 .legend {
 	@extend .center;
 	margin-top: -1em;
 	font-style: italic;
 	font-size: 80%;
+}
+
+// After a table, reduce the margin even more.
+table + .legend {
+	margin-top: -2em;
 }
 
 a.post-detail {

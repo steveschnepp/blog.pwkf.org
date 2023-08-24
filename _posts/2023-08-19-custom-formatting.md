@@ -68,7 +68,17 @@ is produced by
     Sample RPL code
     {: .legend }
 
+## Tables
 
+Tables are LaTeX styled. But still fully defined in Markdown.
+
+| Column A | B | C |
+|----------|--:|:-:|
+| Left Aligned | Right | Center |
+| short | This is a Filler | This is another Filler |
+
+Example of some table
+{: .legend }
 
 ## Internal hyperlinks {#internal}
 
