@@ -25,6 +25,12 @@ pre, code {
 	line-height: $code-line-height;
 }
 
+/* B/w code blocks */
+pre, code, .highlighter-rouge .highlight
+{
+	background-color: whitesmoke;
+}
+
 @font-face {
 	font-family: "Computer Modern";
 	src: url('./fonts/woff/cmunrm-webfont.woff') format("woff");
