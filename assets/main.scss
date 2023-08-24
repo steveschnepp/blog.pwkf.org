@@ -9,8 +9,13 @@ $code-line-height: 1.4;
 
 @import "minima";
 
+body {
+	text-rendering: optimizeLegibility;
+}
+
 p {
 	text-align: justify;
+	hyphens: auto;
 }
 
 pre, code {
