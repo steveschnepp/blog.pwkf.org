@@ -27,6 +27,9 @@ page.
 | Simple to setup | No visibility for comments on the blog post |
 | No posting overhead | No guidance on how to write comments  |
 
+__Update__: I finally removed the Ribbon in favor of a [simple static page]({% link comments.md %}).
+{: .panel .warning }
+
 ## Implementation of the Ribbon
 
 It is very simple. It mainly consists of an include file that is injected in the `default.html` layout.
