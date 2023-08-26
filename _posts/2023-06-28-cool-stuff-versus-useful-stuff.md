@@ -202,7 +202,9 @@ Statelessness comes with a price, there's no free meal.
 
 Now, to achieve a stateless service, one has basically 2 options :
 
-send the whole context during the call callback something to retrieve the state
+* send the whole context during the call
+* callback something to retrieve the state
+
 While both options have their strong and weak points, I'd propose to use the
 same idiom as for the asynchronous one : **delegate statelessness to a
 dedicated layer, and forget about it**.
