@@ -229,9 +229,9 @@ URL query params into `ThreadLocalStorage`, various call-backs or a full-blown
 
 | Strategy            | Type  | Initial Latency | Runtime latency | Transport overhead |
 |---------------------|-------|-----------------|-----------------|--------------------|
+| Inbound (URL, POST) | Eager | LOW             | LOW             | HIGH               |
 | Callback            | Lazy  | LOW             | HIGH            | MEDIUM             |
 | Central Session     | Eager | HIGH            | LOW             | LOW                |
-| Inbound (URL, POST) | Eager | LOW             | LOW             | HIGH               |
 
 #### Inbound (URL, POST)
 
