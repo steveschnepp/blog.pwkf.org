@@ -128,7 +128,7 @@ wrong.
 
 ### 1SLOC - One Statement per Line of Code {#sloc}
 
-This has its [own post]({% post_url 2023-08-17-one-sloc %}#sloc) now.
+__1SLOC has its [own post]({% post_url 2023-08-17-one-sloc %}#sloc) now__.
 The concept is also now known as 1OPS which conveys better the idea.
 {: .panel .warning }
 
