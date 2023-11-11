@@ -17,8 +17,9 @@ The set itself is the French version of a Philips created one. There's actually
 a [full collection of those](http://norbert.old.no/kits/6000abc/).
 
 ![Image of electronics lab box](../../../assets/images/LELECTRONIQUE-LABO-DU-PROFESSIONNEL-D-jeux-Laffont-Schuco.jpg)
-(image taken from ebay)
 
+Image taken from ebay
+{: .legend }
 
 ### How it worked
 
