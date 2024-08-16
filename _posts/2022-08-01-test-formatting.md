@@ -9,7 +9,7 @@ Formatting is important!
 
 This post is a sample one for formatting.
 <!-- -->
-It uses the famous [Lorem Ipsum](https://lipsum.com/) dummy text to exhibit formatting rules.
+It uses the famous [Lorem Ipsum](https://en.wikipedia.org/wiki/Lorem_ipsum) dummy text to exhibit formatting rules.
 
 ## Big Header
 
@@ -24,7 +24,7 @@ et malesuada ante.
     Nulla sapien massa, finibus sed mattis dignissim, bibendum
     non dui. In scelerisque lectus dapibus, commodo tortor nec, commodo felis.
 
-[Aenean eget](https://lipsum.com/) euismod lacus. Nulla imperdiet tempus orci, non auctor augue. Nulla
+Aenean eget euismod lacus. [Nulla imperdiet tempus orci](https://en.wikipedia.org/wiki/Lorem_ipsum), non auctor augue. Nulla
 nisl justo, iaculis id eros eget, consectetur bibendum nisi.
 
 * Praesent vel velit ac massa euismod tempor. 
