@@ -48,6 +48,11 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-paginate
+  - jekyll-readme-index
+  - jekyll-titles-from-headings
+  - jekyll-relative-links
 
 # Add Excerpts
 show_excerpts: true
