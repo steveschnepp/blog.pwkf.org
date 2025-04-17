@@ -16,6 +16,10 @@ actually desirable.
 The [Nudge theory](https://en.wikipedia.org/wiki/Nudge_theory) is a simple
 concept that leverages the unconscious bias in each individual.
 
+> A nudge makes it more likely that an individual will make a particular
+> choice, or behave in a particular way, by altering the environment so that
+> automatic cognitive processes are triggered to favour the desired outcome.
+
 Each individual will usually favor the least painful way to do something.
 {: .panel .tip }
 
