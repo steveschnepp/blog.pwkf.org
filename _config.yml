@@ -57,6 +57,10 @@ plugins:
 # Add Excerpts
 show_excerpts: true
 
+# Default permalinks is /:categories/:year/:month/:day/:title:output_ext
+# But we don't want to have the day of month
+#permalink: /:categories/:year/:month/:title:output_ext
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
