@@ -223,7 +223,7 @@ what's important. Yet leaving the full converstation context intact.
 
 Let's see how that last email would look like
 
-> Sed sollicitudin urna vitae dictum.
+> > Sed sollicitudin urna vitae dictum.
 >
 > Ut ultrices, orci sagittis tempor ornare, diam.
 {: .ident }
