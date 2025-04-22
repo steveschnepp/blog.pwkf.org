@@ -47,12 +47,13 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
   - jekyll-relative-links
   - jekyll-optional-front-matter
   - jekyll-paginate
   - jekyll-readme-index
   - jekyll-titles-from-headings
-  - jekyll-relative-links
+  - jekyll-redirect-from
 
 # Add Excerpts
 show_excerpts: true
