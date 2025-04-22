@@ -5,6 +5,8 @@ tags:
     - design
     - best-practices
 author: Steve SCHNEPP
+permalink: /:categories/:year/:month/:title:output_ext
+redirect_from: /2025/04/17/water-flows-down.html
 ---
 
 I'm always frustrated by heavy processes. They usually feel like unneeded
