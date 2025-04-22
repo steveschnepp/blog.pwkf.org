@@ -3,6 +3,8 @@ layout: post
 title: Replying Inline Emails Considered Harmful
 tags:
 author: Steve SCHNEPP
+permalink: /:categories/:year/:month/:title:output_ext
+alias: /2025/04/18/reply-inline-is-harmful.html
 ---
 
 Do you feel drowning in useless emails that are are to follow ?  Search no
