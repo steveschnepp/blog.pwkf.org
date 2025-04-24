@@ -76,15 +76,21 @@ Which means that the USB-C host needs a way to know which side the device is
 connected as. In order to simply multiplex in reverse the non symmetrical pins.
 
 This is done by the CC1 & CC2 pins. As in a native USB-C cable, there is only 1
-wire from CC1 to CC1, and none from CC2 to CC2.  Coupled with only a resistor
-from CC1 to GND on the device side, it enables the host to know the orientation
-of the insertion and act accordingly. The value of those are standardized, but
-in the vast majority of the cases it is 56k.
+wire from CC1 to CC1, and none from CC2 to CC2.  A dumb USB 2.0 compatible
+device can simoly pull both CC1 and CC2 to GND via a 5.1k resistor in a fully
+symmetric fashion. This will ensure detection of a device regardless of the
+orientation.
 
-This "orientation sensing" is one of the most overlooked fact in USB-C. And
-more precisely the fact that it is *mandatory*. To signal a USB 2.0 compatible
-device, it simply needs to have both CC1 and CC2 pulled to GND, in a fully
-symmetric fashion.
+Yet, in those dumb USB devices both D+ and D- connectors are respectively
+shorted together. This again enables working regardless of orientation. But it
+creates a long extra wire which distorts the signal. Therefore, the device can
+opt in to orientation sensing in order to only connect one pair of d-/D+ via
+comparing the CC1 and CC2 voltages.
+
+More details are explained in note
+[AN1914](https://ww1.microchip.com/downloads/en/AppNotes/00001914B.pdf) from
+Microchip. This "orientation sensing" is one of the most overlooked fact in
+USB-C,
 
 ![USB-C Adapter to USB 2.0](../../../assets/images/USB-3-1-Type-C-Connector-Male-Socket-USB-2-0.jpg)
 
@@ -92,8 +98,8 @@ Notice the 2 resistors ? Those are the CC1 & CC2 pulldown.
 
 ### USB-C flaw for USB2 upgraded devices : missing orientation pulldown
 
-Therefore, some USB-C *upgraded from a USB2.0 micro-B* devices missed that. And they don't have those
-pulldown resistors.
+Therefore, some USB-C *upgraded from a USB2.0 micro-B* devices missed that. And
+they don't have those pulldown resistors.
 
 ![CH340G-Module-TYPE-C.jpg](../../../assets/images/CH340G-Module-TYPE-C.jpg)
 
