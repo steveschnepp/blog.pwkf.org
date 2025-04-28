@@ -9,7 +9,7 @@ redirect_from:
     - /2025/04/reply-inline-is-harmful.html
 ---
 
-Do you feel drowning in useless emails that are are to follow ?  Search no
+Do you feel drowning in useless emails that are difficult to follow ? Search no
 more, simply blame the "*my replies are below*". Let's see how you can improve
 the situation.
 
