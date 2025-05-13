@@ -18,6 +18,7 @@ This page is mostly aimed at my own usage. So I will add more when my need arise
 | 😉    |  `:wink:` |
 | 🙂    |  `:slight_smile:` |
 | 🤔    |  `:thinking:` |
+| 🤦    |  `:facepalm:` | 
 | ™️    |  `:tm:` |
 
 # Various Symbols
