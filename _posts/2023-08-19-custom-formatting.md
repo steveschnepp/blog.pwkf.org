@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Adding some Color
-tags: blog jekyll
+tags: blog jekyll cheat-sheet
 author: Steve SCHNEPP
 ---
 
