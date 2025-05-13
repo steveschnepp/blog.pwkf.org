@@ -19,7 +19,7 @@ vestibulum risus ut dignissim. Nulla ullamcorper venenatis magna eget interdum.
 ### Smaller Header
 
 Nam elementum gravida lacus eu vestibulum. Pellentesque quis malesuada mauris,
-et malesuada ante. 
+et malesuada ante.
 
     Nulla sapien massa, finibus sed mattis dignissim, bibendum
     non dui. In scelerisque lectus dapibus, commodo tortor nec, commodo felis.
@@ -27,11 +27,11 @@ et malesuada ante.
 Aenean eget euismod lacus. [Nulla imperdiet tempus orci](https://en.wikipedia.org/wiki/Lorem_ipsum), non auctor augue. Nulla
 nisl justo, iaculis id eros eget, consectetur bibendum nisi.
 
-* Praesent vel velit ac massa euismod tempor. 
+* Praesent vel velit ac massa euismod tempor.
 * Pellentesque molestie gravida purus.
-* Pellentesque laoreet hendrerit lacus, id fermentum lacus finibus non. 
-Donec fermentum felis eget commodo varius. 
+* Pellentesque laoreet hendrerit lacus, id fermentum lacus finibus non.
+Donec fermentum felis eget commodo varius.
 
-Pellentesque id viverra quam. 
+Pellentesque id viverra quam.
 
 
