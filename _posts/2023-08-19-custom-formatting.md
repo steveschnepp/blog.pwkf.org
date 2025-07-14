@@ -70,19 +70,19 @@ is produced by
 
 ## Footnotes
 
-This has[^1] a[^2] footnote[^foot] attached.
+This has[^2] a[^3] footnote[^foot] attached.
 
-[^1]: First footnote.
 [^2]: Second footnote.
-[^foot]: Other footnote.
+[^3]: Third footnote.
+[^foot]: Other footnote. Better since it cannot clash if you move content around.
 
 is produced by
 
-    This has[^1] a[^2] footnote[^foot] attached.
+    This has[^2] a[^3] footnote[^foot] attached.
 
-    [^1]: First footnote.
     [^2]: Second footnote.
-    [^foot]: Other footnote.
+    [^3]: Third footnote.
+    [^foot]: Other footnote. Better since it cannot clash if you move content around.
 
 ## Tables
 
