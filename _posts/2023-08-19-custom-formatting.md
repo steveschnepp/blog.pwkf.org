@@ -68,6 +68,22 @@ is produced by
     Sample RPL code
     {: .legend }
 
+## Footnotes
+
+This has[^1] a[^2] footnote[^foot] attached.
+
+[^1]: First footnote.
+[^2]: Second footnote.
+[^foot]: Other footnote.
+
+is produced by
+
+    This has[^1] a[^2] footnote[^foot] attached.
+
+    [^1]: First footnote.
+    [^2]: Second footnote.
+    [^foot]: Other footnote.
+
 ## Tables
 
 Tables are LaTeX styled. But still fully defined in Markdown.
