@@ -83,7 +83,7 @@ innovate rapidly and ensuring sustainable, high-quality software delivery.
 |--|--|
 | Confusion | You need to plan carefully to avoid confusion. Make sure that everyone knows what's going on.
 |--|--|
-| Disagreements | Keeping the mutual respect between EFT and STT is key to making things work.
+| Disagreements | Keep the mutual respect between EFT and STT to making things work.
 
 Remember that even if the responsabilities are different, the **final objective
 is the same**.
