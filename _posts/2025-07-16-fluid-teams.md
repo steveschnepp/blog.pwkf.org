@@ -38,7 +38,7 @@ to be able to design, develop, and *fully* deliver project-based features.
 What the feature teams brings in flexibility, Stable Technology Teams brings in
 robustness of the codebase.
 
-A STT is formed by *experts* directly responsible for *areas of code*.
+A STT is formed by a *experts* directly responsible for *areas of code* with a *long term perspective*.
 {: .panel .tip }
 
 This team single purpose is to oversees the integrity of the codebase.  Those
@@ -91,7 +91,7 @@ is the same**.
 Usually the STT is seen as *impeding the release* from the EFT, and the EFT is
 seen as *short term coders*.
 
-A good working model is to have a promotion path **from EFT to STT**. This
+A good working model is to have a **promotion path from EFT to STT**. This
 preserves the creativity of newcomers, but nutures them nicely into the rules
 of the organisation by "trial and error" when merging their features.
 {: .panel .tip}
