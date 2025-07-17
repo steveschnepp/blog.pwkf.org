@@ -38,7 +38,7 @@ to be able to design, develop, and *fully* deliver project-based features.
 What the feature teams brings in flexibility, Stable Technology Teams brings in
 robustness of the codebase.
 
-A STT is formed by a *experts* directly responsible for *areas of code* with a *long term perspective*.
+A STT is formed by several *experts* directly responsible for *areas of code* with a *long term perspective*.
 {: .panel .tip }
 
 This team single purpose is to oversees the integrity of the codebase.  Those
