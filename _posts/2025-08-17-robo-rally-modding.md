@@ -30,13 +30,13 @@ comparison is equal, move to the next one.
 
 The effects of the handicap are:
 
-Handicap | Effects
----|---
--1 | **Player can swap cards**. Just before executing a register the player can swap its content with a yet unplayed one.
-0 | **Nothing special**. It's the regular game rules.
-1 | **The player keeps its dicarded cards for the next round**. They are not put back in the deck. Just waiting for the next round. This is similar to the Flash Memory upgrade, but mandatory. Even for SPAM & others nasty cards.
-2 | **Damage Points**. Each time the player gets hit with any damage, he adds a damage point. He can only draw 9 minus damage points cards from the deck. If he has more than 4 damage points, he fills his registers with the small amount of cards he draw, and places SPAM in each empty one.
-3 | Same as level 2 but the forced empty SPAM are always in the beginning and not in the register of the player's chosing
+Handicap | Name |  Effects
+---|---|---
+-1 | **Player can swap cards** | Just before executing a register the player can swap its content with a yet unplayed one.
+0 | **Nothing special** | It's the regular game rules.
+1 | **The player keeps its dicarded cards for the next round** | They are not put back in the deck. Just waiting for the next round. This is similar to the Flash Memory upgrade, but mandatory. Even for SPAM & others nasty cards.
+2 | **Damage Points** | Each time the player gets hit with any damage, he adds a damage point. He can only draw 9 minus damage points cards from the deck. If he has more than 4 damage points, he fills his registers with the small amount of cards he draw, and places SPAM in each empty one.
+3 | **Spam Lover** | Same as level 2 but the forced empty SPAM are always in the beginning and not in the register of the player's chosing
 
 Each time a player resets, he fully repairs, so he removes his damage points.
 He still gets 2 SPAM added to his discard pile if he does not have the
