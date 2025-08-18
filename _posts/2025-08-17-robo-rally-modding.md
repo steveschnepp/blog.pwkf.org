@@ -1,18 +1,18 @@
 ---
 layout: post
-title: RoboRally Mods
+title: RoboRally Mods - Handicap
 tags:
 author: Steve SCHNEPP
 ---
 
-With my kids, we gifted ourselves [RoboRally](https://en.wikipedia.org/wiki/RoboRally),
-an old but iconic game involving some programming and lots of fun dealing with bugs.
+I introduced my kids to [RoboRally](https://en.wikipedia.org/wiki/RoboRally) some time ago.
+It's an old but iconic game involving some programming and lots of fun dealing with bugs.
 We added our own additional rules set, effectively *modding* the game.
 
 # Handicap
 
-Since my oldest son was almost always way ahead in his victory points, I
-crafted an handicap system.
+Since my oldest son was often winning, I
+designed an handicap system to help balance the game.
 
 * The winner of a game increase his handicap.
 * The looser of a game decrease his handicap.
