@@ -7,7 +7,7 @@ $code-font-weight: 300;
 $code-font-size:   100%;
 $code-line-height: 1.4;
 
-@import "minima";
+@import "{{ site.theme }}";
 
 body {
 	text-rendering: optimizeLegibility;
