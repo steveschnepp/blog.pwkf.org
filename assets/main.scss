@@ -29,7 +29,7 @@ pre, code {
 /* B/w code blocks */
 pre, code, .highlighter-rouge .highlight
 {
-	background-color: whitesmoke;
+	background-color:$code-background-color;
 }
 
 @font-face {
