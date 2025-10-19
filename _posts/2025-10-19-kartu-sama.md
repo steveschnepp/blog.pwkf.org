@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Cartu Sama - Rules
+title: Kartu Sama - Rules
 tags: card-game
 author: Steve SCHNEPP
 ---
 
-Cartu Sama is a card game I invented with my children. It’s similar to UNO but played with a regular 54-card deck.
+Kartu Sama is a card game I invented with my children. It’s similar to UNO but played with a regular 54-card deck.
 It’s designed to be quick and fun, but not as hectic as UNO since there are no time-sensitive actions.
 
 ## Setup
