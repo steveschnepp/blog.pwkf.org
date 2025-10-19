@@ -26,9 +26,22 @@ La partie peut etre jouee avec ou sans joker. Les regles sont les memes, mais le
 1. Poser une carte de sa main sur la defausse, face visible. elle doit avoir un point commun avec la carte sur le dessus de la defausse. Soit meme valeur, soit meme symbole.
 2. Si le joueur n'a pas de carte a poser, il poche 2 cartes et passe son tour
 3. Si le joueur n'avait qu'une carte avant de piocher, il pioche nbj-1 carte en plus.
-4. La manche se termine lorsqu'un joueur doit encore piocher mais que la pioche est vide.
+4. La manche se termine lorsqu'un joueur doit encore piocher mais que la pioche est vide ou qu'un joueur pose sa derniere carte.
 5. Elle se termine immediatement. Les cartes pioches comptent.
-6. On fait le cumul des points dans les mains des joueurs.
+6. On fait le cumul des points restant dans les mains des joueurs.
 
 ### Decompte des points
+
+* Chaque carte rapporte le nombre de points de sa valeur
+* Une figure rapporte 1 point
+* Un AS rapporte 11 points
+* Un Joker rapporte 20 points
+
+En cas de partie a points, on additionne les points des joueurs respectivement.
+
+En case de partie a victoires, on determine le vainqueur de la manche par
+
+1. Le joueur ayant le plus petit nombre de points
+2. Si egalite, le joueur ayant le plus grand nombre de cartes
+3. Si egalite, le joueur ayant la plus faible carte maitresse
 
