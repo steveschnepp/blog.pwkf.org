@@ -45,3 +45,7 @@ En case de partie a victoires, on determine le vainqueur de la manche par
 2. Si egalite, le joueur ayant le plus grand nombre de cartes
 3. Si egalite, le joueur ayant la plus faible carte maitresse
 
+### Variante avec Jokers
+
+* Un joueur peux defausser un Joker sur n'importe quelle carte. Mais il doit alors se defausser de nbj cartes supplementaires qui respectent les regles de defausse. Les jokers sont cumulables.
+* Si le joueur ne peux pas poser de carte supplementaire, il pioche nbj*2 cartes.
