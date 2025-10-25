@@ -8,7 +8,7 @@ author: Steve SCHNEPP
 Almost everyone uses Dark Themes by now, myself included.
 Either permanently or just at night.
 My blog didn't have one, and it is actually very easy to setup
-on the minimal theme of jekyll.
+on the `minima` theme of jekyll.
 
 ## Prerequisites 
 
