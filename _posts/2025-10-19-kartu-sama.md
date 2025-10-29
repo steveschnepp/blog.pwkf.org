@@ -55,14 +55,14 @@ leverage to adjust the playing experience to its audience.
 * If the player cannot play the required additional cards, they draw *nb_players × 2* cards.
 * Jokers score 20 points 
    
-### Using a 32 card deck
+### Using a 32-card cards deck
 
-Using a 32 card deck has the same rules, but leads to much shorter rounds.
+Using a 32-card deck has the same rules, but leads to much shorter rounds.
 Since only the higher number values are present, so it is a little more intense. 
 
-### Using multiple 52 decks
+### Using multiple 54-card decks
 
-One can also use multiple 52 decks to enable longer rounds, or when there are a significant amount of players.
+One can also use multiple 54-card decks to enable longer rounds, or when there are a significant amount of players.
 Ideally the hidden side of the cards should be identical, but that's not really required as having different
 back coloring gives away some information that can be strategically used.
 
