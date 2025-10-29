@@ -18,8 +18,7 @@ It’s designed to be quick and fun, but not as hectic as UNO since there are no
 
 ## Gameplay
 
-A game can be played for points or by counting the number of rounds won.
-It can be played with or without Jokers. The rules are the same, but Jokers have specific effects.
+A game can be played by counting the accumlated points or by simply counting the number of rounds won.
 
 ### Start of Turn
 
@@ -45,11 +44,30 @@ In a **victory game**, the winner of a round is determined as follows:
 2. If tied, the player with the most cards.
 3. If still tied, the player with the lowest master card.
 
+## Variants
+
+The core tenet of rules is rather flexible, and does accomodate nicely with some variants that one can
+leverage to adjust the playing experience to its audience.
+
 ### Joker Variant
 
-* A player may discard a Joker on any card, but must then discard *nb_players* additional cards that follow the discard rules. Jokers can be stacked.
+* A player may discard a Joker on any card, but must then discard *nb_players* additional cards that
+  follow the discard rules. Jokers can be stacked.
 * If the player cannot play the required additional cards, they draw *nb_players × 2* cards.
+
+### Using a 32 card deck
+
+Using a 32 card deck has the same rules, but leads to much shorter rounds.
+Since only the higher number values are present, so it is a little more intense. 
+
+### Using multiple 52 decks
+
+One can also use multiple 52 decks to enable longer rounds, or when there are a significant amount of players.
+Ideally the hidden side of the cards should be identical, but that's not really required as having different
+back coloring gives away some information that can be strategically used.
+
 
 ## Naming explanation
 
-"Kartu Sama" means "Same Card" in Indonesian, which nicely fits the theme of the game & the blog since the Java island is in Indonesia.
+"Kartu Sama" means "Same Card" in Indonesian, which nicely fits the theme of the game & the blog since
+the Java island is in Indonesia.
