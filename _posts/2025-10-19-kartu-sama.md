@@ -35,7 +35,6 @@ A game can be played by counting the accumlated points or by simply counting the
 * Number cards score their face value.
 * Face cards (J, Q, K) score 1 point.
 * Aces score 11 points.
-* Jokers score 20 points.
 
 In a **points game**, players add up their points each round.
 In a **victory game**, the winner of a round is determined as follows:
@@ -54,7 +53,8 @@ leverage to adjust the playing experience to its audience.
 * A player may discard a Joker on any card, but must then discard *nb_players* additional cards that
   follow the discard rules. Jokers can be stacked.
 * If the player cannot play the required additional cards, they draw *nb_players × 2* cards.
-
+* Jokers score 20 points 
+   
 ### Using a 32 card deck
 
 Using a 32 card deck has the same rules, but leads to much shorter rounds.
