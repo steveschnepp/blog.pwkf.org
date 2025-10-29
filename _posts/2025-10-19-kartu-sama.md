@@ -26,7 +26,7 @@ It can be played with or without Jokers. The rules are the same, but Jokers have
 1. Play one card from your hand onto the discard pile, face up.
    It must share a common trait with the top discard card — either the same rank or the same suit.
 2. If the player has no valid card to play, they draw 2 cards and skip their turn.
-3. If the player had only one card before drawing, they draw *nbj − 1* additional cards.
+3. If the player had only one card before drawing, they draw *nb_players − 1* additional cards.
 4. The round ends when a player must draw but the deck is empty, or when a player plays their last card.
 5. It ends immediately. Drawn cards still count.
 6. Players total the points of the cards remaining in their hands.
@@ -47,5 +47,9 @@ In a **victory game**, the winner of a round is determined as follows:
 
 ### Joker Variant
 
-* A player may discard a Joker on any card, but must then discard *nbj* additional cards that follow the discard rules. Jokers can be stacked.
-* If the player cannot play the required additional cards, they draw *nbj × 2* cards.
+* A player may discard a Joker on any card, but must then discard *nb_players* additional cards that follow the discard rules. Jokers can be stacked.
+* If the player cannot play the required additional cards, they draw *nb_players × 2* cards.
+
+## Naming explanation
+
+"Kartu Sama" means "Same Card" in Indonesian, which nicely fits the theme of the game & the blog since the Java island is in Indonesia.
