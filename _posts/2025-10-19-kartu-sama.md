@@ -63,7 +63,7 @@ Since only the higher number values are present, so it is a little more intense.
 ### Using multiple 54-card decks
 
 One can also use multiple 54-card decks to enable longer rounds, or when there are a significant amount of players.
-Ideally the hidden side of the cards should be identical, but that's not really required as having different
+Ideally the back side of the cards should be identical, but that's not really required as having different
 back coloring gives away some information that can be strategically used.
 
 
