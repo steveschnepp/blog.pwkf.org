@@ -18,11 +18,17 @@ I therefore created a [script that generates debian packages](https://github.com
 
 Usage:
 ```sh
-./build-sdl2-mingw.sh "" 2.30.2           # core SDL2
-./build-sdl2-mingw.sh image 2.8.2         # SDL_image
-./build-sdl2-mingw.sh mixer 2.8.0         # SDL_mixer
-./build-sdl2-mingw.sh ttf 2.22.0          # SDL_ttf
-./build-sdl2-mingw.sh net 2.2.0           # SDL_net
+sh build-sdl2-mingw.sh "" 2.30.2           # core SDL2
+sh build-sdl2-mingw.sh image 2.8.2         # SDL_image
+sh build-sdl2-mingw.sh mixer 2.8.0         # SDL_mixer
+sh build-sdl2-mingw.sh ttf 2.22.0          # SDL_ttf
+sh build-sdl2-mingw.sh net 2.2.0           # SDL_net
+
+sudo dpkg -i sdl2-mingw-w64-i686-dev_2.30.2.deb sdl2-mingw-w64-x86-64-dev_2.30.2.deb \
+sdl2image-mingw-w64-i686-dev_2.8.2.deb sdl2image-mingw-w64-x86-64-dev_2.8.2.deb \
+sdl2mixer-mingw-w64-i686-dev_2.8.0.deb sdl2mixer-mingw-w64-x86-64-dev_2.8.0.deb \
+sdl2net-mingw-w64-i686-dev_2.2.0.deb sdl2net-mingw-w64-x86-64-dev_2.2.0.deb \
+sdl2ttf-mingw-w64-i686-dev_2.22.0.deb sdl2ttf-mingw-w64-x86-64-dev_2.22.0.deb
 ```
 
 Note that for distribution, the `SDL2.dll` and friends still
