@@ -8,13 +8,13 @@ author: Steve SCHNEPP
 SDL2 is an awesome library for a portable game. Yet
 cross-compiling with it for Windows on Linux is tricky.
 
-Debian ships with the `minggw-w64` packages that provide a nice
+Debian ships with the `mingw-w64` packages that provide a nice
 cross compiler toolchain.
 
 Yet SDL2 and its extensions don't ship ready-made Debian
 packages for MinGW-w64.
 
-I therefore created a [script that generates debian packages](https://github.com/steveschnepp/sdl2-mingw-w64-debian/blob/master/build-sdl2-mingw.sh). It downloads the windows version and installa them in the correct directory so that the mingw-w64 toolkit picks it up.
+I therefore created a [script that generates debian packages](https://github.com/steveschnepp/sdl2-mingw-w64-debian/blob/master/build-sdl2-mingw.sh). It downloads the windows version and installs them in the correct directory so that the mingw-w64 toolkit picks it up.
 
 Usage:
 ```sh
