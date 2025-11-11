@@ -17,6 +17,7 @@ packages for MinGW-w64.
 I therefore created a [script that generates debian packages](https://github.com/steveschnepp/sdl2-mingw-w64-debian/blob/master/build-sdl2-mingw.sh). It downloads the windows version and installs them in the correct directory so that the mingw-w64 toolkit picks it up.
 
 Usage:
+
 ```sh
 sh build-sdl2-mingw.sh "" 2.30.2           # core SDL2
 sh build-sdl2-mingw.sh image 2.8.2         # SDL_image
