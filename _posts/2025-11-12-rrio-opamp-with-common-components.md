@@ -5,9 +5,8 @@ layout: post
 author: Steve SCHNEPP
 ---
 
-This project[^cite] is an attempt to understand how RRIO opamps work internally, and to replicate one using very common components.
-
-[^cite]: Originally created in 2023 for [Hackaday.io](https://hackaday.io/project/190900).
+This project is an attempt to understand how RRIO opamps work internally, and to replicate one using very common components. 
+It was originally created in 2023 for [Hackaday.io](https://hackaday.io/project/190900).
 
 ## Goals
 
