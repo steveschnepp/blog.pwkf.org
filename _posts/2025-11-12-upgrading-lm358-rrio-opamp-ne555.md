@@ -1,8 +1,9 @@
 ---
-title: "Building a RRIO Opamp with Common Components"
+title: "Upgrading the LM358 OpAmp to be RRIO with a NE555"
 date: 2025-11-12
 layout: post
 author: Steve SCHNEPP
+redirect_from: /2025/11/12/rrio-opamp-with-common-components.html
 ---
 
 This project is an attempt to understand how RRIO opamps work internally, and to replicate one using very common components. 
