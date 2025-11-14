@@ -35,12 +35,11 @@ I'm using a NE555 to generate a dual voltage power source from a single voltage 
 
 I don't need to have a very high or low voltage, as I only need to supply a little more that the voltage drops in the opamp IC.
 
-Note, I also leverage the fact that the NE555 has a rather strong output, and it will be able drive both charge pumps directly without needed to use buffers. 
+Note, I also leverage the fact that the NE555 has a rather strong output, and it will be able drive both charge pumps directly without needed to use buffers.
 
 The values I'm using are also rather common as it is only power-of-ten. Which are the most easy to source components.
 
 The diodes will be the very common 1N4148, also ubiquitous to find. Using some Schottky ones like the 1N5711 might be more efficient, but they are more difficult to source.  
-
 
 The circuit is available in the [Live Simulation](https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BOJyWoSATNAHJAzGAGwYAs2CJArBoWCSJZAw05QKYC0YYAUCZOkKRsIBIRAB2DEzHgo0cUxiQMBeOo0rMPAO4ghI3PuHhFPAErGR3DAyHgwtpnnDTM0Su89KPPPIREDB1sgoiUoPwDJNyJJbHpYpV0rU2imROSpGXEs1MgeAHMQbDxbOnoSsvskgCc00Rz4hqhwOB4iW0rmrvLMEAATNgAzAEMAVwAbABcOCbZ+uXDlXgWMKX16UqZCeltB0cmpwpB-a0cTppsW-NOTqJ2QElKN655V9di1kN2B4fHp5JbF63B75aQSfSUcQPQhQk62egANQAwsieOC7oFNlFnkjUe1YY8ROkMMT9OBoHgqfE8FISGAJBIEKQ8JwEMdemFwCQEhJFBE9AzobtSC98nUyPCiSAOJL0uoeBKRLiRLJ5Qq9JLZJLHMSeABjaW6o18lpgWCaS0qThgHwICQkaQIfAM50qATyOC8Io60065mvd5VJhfTCivZ-Q7HUMYcPrUhLN7w9L2UNciMHAG3W5cp7B14YnP2HMBpEAUTL6MgENh4mNtdMTHLladmOCba5PnUaB7yHcDNKCFt5AIEjw2GJFogvFbIOxZycnvgvd7klgA6phEIpVtY+8U-AgJixaineSsfoDwvjYiliusoXMqM4X4zCWvj0afEoYfAsw61-IUZTlZIgMA85f3yQUIMlSVINA01njAkDoNsDgkJgvU9AkJpZC6WQZw9UMr1FUEl3gCBKGgfhuDoWM+WofAnAPQj0GvdMPmqcivQpIch0ZZl7TwelqH3HjeAAexOR4Wn4BARCwTxCGoloXDU8k8B4KSKlkgRrG2FTKMwMlSWk84SROHggA).
 
@@ -92,7 +91,7 @@ As expected, with some load, the voltage isn't that great : 3.3V only at 2.4mA, 
 
 ### Conclusion & Improvements
 
-My initial idea didn't work as well as expected. Without load it is perfect, but as soon as some load is added, the voltage drops. 
+My initial idea didn't work as well as expected. Without load it is perfect, but as soon as some load is added, the voltage drops.
 
 But the good findings are that the charge pump is the weak link here. So, if it is improved it should be fine.
 
