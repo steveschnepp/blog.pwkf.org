@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Serenity Prayer Revisited
+title: The Serenity Prayer, Revisited
 tags: life philosophy
 author: Steve SCHNEPP
 ---
