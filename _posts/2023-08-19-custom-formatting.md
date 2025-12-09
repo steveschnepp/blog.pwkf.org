@@ -54,9 +54,8 @@ This is a warning panel with `{: .panel .warning }`.
 
 Legends are similar.
 
-```
-<< 1 SWAP / 1 + >>
-```
+    << 1 SWAP / 1 + >>
+
 Sample RPL code
 {: .legend }
 
@@ -65,6 +64,7 @@ is produced by
     ```
     << 1 SWAP / 1 + >>
     ```
+
     Sample RPL code
     {: .legend }
 

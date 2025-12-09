@@ -6,7 +6,7 @@ author: Steve SCHNEPP
 redirect_from: /2025/11/12/rrio-opamp-with-common-components.html
 ---
 
-This project is an attempt to understand how RRIO opamps work internally, and to replicate one using very common components. 
+This project is an attempt to understand how RRIO opamps work internally, and to replicate one using very common components.
 It was originally created in 2023 for [Hackaday.io](https://hackaday.io/project/190900).
 
 ## Goals
