@@ -48,6 +48,10 @@ An excerpt of interest is:
 > unless you make sure that programs will execute with the same effect whether or not they are
 > defined. If they are defined, their value is 1.
 
+A very important information is that as soon as you have 2 code paths, you need to make sure that **both** paths are correct.
+Otherwise very subtle bugs may appear, as testing might leverage one of the paths and productive code uses the other one.
+{: .panel .note }
+
 ## Leveraging These Directives in Our Code
 
 That means, we can do exactly the same in our code to optimize for size.
