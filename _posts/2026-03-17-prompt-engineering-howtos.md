@@ -1,11 +1,7 @@
-# Prompt Engineering Frameworks - A Practical Overview
-
-Mar 17, 2026
-
-`ai` `best-practices` `development` `learning`
-
-About 5 min read
-
+---
+layout: post
+title: "Prompt Engineering Frameworks - A Practical Overview"
+tags: [ai, best-practices, development, learning]
 ---
 
 There is a recurrent question when starting to use LLMs seriously :
