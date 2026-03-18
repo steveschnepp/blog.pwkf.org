@@ -6,92 +6,80 @@ author: Steve SCHNEPP
 permalink: /:categories/:year/:title:output_ext
 ---
 
-In today's world, software development needs to be super flexible but also
-stable.  *Fluid teams* are a fresh new idea to help overcome that
-contradiction.
+Every project I have been on has the same unresolved tension: you need stable,
+trusted ownership of the codebase, and you also need to move fast on features.
+[Agile](https://en.wikipedia.org/wiki/Agile_software_development) solves the
+second, not the first. *Fluid teams* are my attempt at solving both at once.
 
-# Fluid Teams - A New Chapter in Agile Development
+The design splits every team into two distinct kinds with very different
+charters.
 
-The Fluid Teams design is comprised of 2 very distinct sets of teams :
+## Ephemeral Feature Teams
 
-* Ephemeral Feature teams (EFT)
-* Stable Technology teams (STT)
-
-## Ephemeral Feature Teams (EFT)
-
-The Ephemeral Feature Teams are formed by creative minds directly responsible
-for creating features.
+An Ephemeral Feature Team (EFT) is assembled for the duration of a single
+epic, then dissolved. That is not a bug — it is the point.
 
 EFT are **not** long lasting, by design.
 {: .panel .tip }
 
-* These *Ephemeral Feature Teams* are assembled at the start of an Epic with a
-  laser focus on it.
-* Then, once the epic is completed, the feature team disperses. This leaves
-  room for new associations & therefore new ideas.
+Dissolving the team after the epic closes forces new pairings. New pairings
+mean knowledge spreads, silos don't calcify, and people stop defending code
+they wrote two years ago. The EFT is given full latitude to design, build, and
+ship. It can include whoever the epic actually needs: a firmware engineer, a
+UX person, a DBA. Not whoever happens to be on the permanent squad.
 
-The core idea of an EFT is to combine as many specialized skillsets as needed
-to be able to design, develop, and *fully* deliver project-based features.
+The trade-off is that EFTs have no merge authority over the shared codebase.
+They cannot land code unilaterally.
 
-## Stable Technology Teams (STT)
+## Stable Technology Teams
 
-What the feature teams brings in flexibility, Stable Technology Teams brings in
-robustness of the codebase.
+A Stable Technology Team (STT) is the counterweight. It is formed by senior
+engineers with a long-term stake in a specific area of the codebase: the
+rendering subsystem, the data pipeline, the auth layer.
 
-A STT is formed by several *experts* directly responsible for *areas of code* with a *long term perspective*.
+An STT is formed by *experts* responsible for *areas of code* with a *long-term
+perspective*.
 {: .panel .tip }
 
-This team single purpose is to oversees the integrity of the codebase.  Those
-teams are the only ones that have the **merging** .  Therefore they have a
-responsibility for effective code reviews to ensure that only high standard
-work lands in the codebase.
+The STT owns merges. That is its entire power. It reviews every pull request
+that touches its area, and it can block anything that does not meet the bar.
+In exchange, it owns every bug in that area too. Veto power comes with
+maintenance responsibility. The two are inseparable by design.
 
-However, this immense power comes with a trade-off : in return for their
-authoritative role in merges, the technology team assumes the full maintenance
-within the code areas that their members are responsible for.
+That constraint is what keeps the STT from becoming a bureaucratic bottleneck.
+If they block carelessly, they inherit the problem. If they approve too
+loosely, the maintenance burden still falls on them. The incentives are
+aligned.
 
-This symbiotic relationship creates a balance between empowering fluid teams to
-innovate rapidly and ensuring sustainable, high-quality software delivery.
+## Structure at a Glance
 
-## Summary
+|          | EFT                  | STT                     |
+|----------|----------------------|-------------------------|
+| Duration | Short (epic-scoped)  | Long                    |
+| Focus    | Features             | Codebase integrity      |
+| Authority | Ships features      | Controls merges         |
+| Weakness | Needs STT sign-off   | Owns every bug          |
+| Seniority | Junior/Senior       | Senior/Expert           |
 
-|  | EFT | STT
-|--|--|--|
-| Duration | Short | Long |
-| Focus | Features | Maintenance |
-| Super Power | Evergreen | Can veto any code merge |
-| Critical Weakness | Needs STT approval | Fixes bugs |
-| Seniority | Junior/Senior | Senior/Expert |
+## Where It Breaks Down
 
-## Advantages of Fluid Teams
+The obvious failure mode is EFT versus STT friction. Feature teams feel
+*impeded*, technology teams see *short-term hacks* being pushed at them. Both
+perceptions are accurate. That friction is not a defect — it is the
+mechanism that produces quality. But it requires mutual respect to function,
+and mutual respect does not emerge automatically.
 
-| Advantage | Comment
-|--|--|
-| Expertise  | As features teams are temporary, you can pick & choose teammates who are great at what exactly the feature needs.
-|--|--|
-| Innovation | Constantly changing the teams brings new ideas and different ways of doing things each rotation, so everyone is always thinking with a fresh pairs of eyes.
-|--|--|
-| Adaptability | When business needs change, you can quickly rearrange your teams.
-|--|--|
-| Happiness | Most team members love working on different projects because they don't get bored and it helps them grow.
-|--|--|
-| Org Scaling | EFT can serve as testing ground for newcomers. As there's review from STT, they will learn and those that are struggling can be the focus point of management
+The structural fix is a **promotion path from EFT to STT**. Newcomers enter
+via EFTs, learn the codebase by submitting work for STT review, and gradually
+earn the context required to join a technology team. The EFT phase is
+effectively a structured apprenticeship. Those who are struggling surface
+quickly, because their PRs are reviewed by people who own the consequences.
 
-## Challenges of Fluid Teams
+The second failure mode is STT ossification. A technology team that never
+rotates becomes territorial. Rotation cadence is a tunable — the right
+interval depends on the codebase churn rate — but it needs to exist.
 
-| Challenge | Comment
-|--|--|
-| Confusion | You need to plan carefully to avoid confusion. Make sure that everyone knows what's going on.
-|--|--|
-| Disagreements | Keep the mutual respect between EFT and STT to making things work.
-
-Remember that even if the responsabilities are different, the **final objective
-is the same**.
-
-Usually the STT is seen as *impeding the release* from the EFT, and the EFT is
-seen as *short term coders*.
-
-A good working model is to have a **promotion path from EFT to STT**. This
-preserves the creativity of newcomers, but nutures them nicely into the rules
-of the organisation by "trial and error" when merging their features.
-{: .panel .tip}
+A good STT review is not *"this is not how I would have written it"*. It is
+*"this will break in these specific conditions"*. Keeping that distinction
+clear is the main job of whoever manages the boundary between the two team
+types.
