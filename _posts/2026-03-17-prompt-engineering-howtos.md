@@ -1,7 +1,11 @@
----
-layout: post
-title: "Prompt Engineering Frameworks - A Practical Overview"
-tags: [ai, best-practices, development, learning]
+# Prompt Engineering Frameworks - A Practical Overview
+
+Mar 17, 2026
+
+`ai` `best-practices` `development` `learning`
+
+About 5 min read
+
 ---
 
 There is a recurrent question when starting to use LLMs seriously :
@@ -17,6 +21,12 @@ A well-structured one yields a precise, useful one.
 
 The frameworks are just mnemonics. They are a checklist to avoid forgetting
 important context. Nothing more, nothing less.
+
+A good framework [makes the right path the easy path](https://blog.pwkf.org/2025/04/17/water-flows-down.html).
+Without one, the path of least resistance is to skip context entirely.
+
+Think of them the same way one might think of [1OPS](https://blog.pwkf.org/2023/08/17/one-sloc.html) :
+the rule itself is simple, but its value comes from *discipline* — not from the rule.
 
 ## CRAFT
 
@@ -49,14 +59,18 @@ Narrowing:    C99, no dynamic allocation, < 300 lines
 ```
 
 The *Narrowing* part is the most valuable addition over CRAFT.
-It is where you exclude what you don't want, which is often
+It is where you exclude what you don't want — which is often
 [as important as what you do want](https://blog.pwkf.org/2022/09/18/always-optimize-for-dummies.html).
+
+Saying *"no dynamic allocation"* is more useful than any amount of positive
+description. The model cannot read your mind, but it can follow a constraint.
 
 ## CREATE
 
 **Character, Request, Extras, Adjustments, Type, Extras**[^1]
 
-More creative / generative oriented. The double *Extras* is intentional :
+More creative and generative in orientation.
+The double *Extras* is intentional :
 first pass for constraints, second pass for polish.
 
 ```
@@ -87,6 +101,13 @@ Examples: [binary sample] → [expected struct output]
 The *Examples* part is the killer feature here.
 An LLM guided by examples makes far fewer wrong assumptions.
 
+The *Rules* field deserves equal attention.
+[What you forbid is as load-bearing as what you permit](https://blog.pwkf.org/post/2010/03/API-Design%3A-Hidden-costs-of-simple-features) :
+an unconstrained surface invites the wrong solution every time.
+
+This maps directly to how [always optimizing for junior devs](https://blog.pwkf.org/2022/09/18/always-optimize-for-dummies.html)
+works in code : concrete examples remove ambiguity faster than any amount of prose.
+
 ## CLEAR
 
 **Concise, Logical, Explicit, Audience, Role**
@@ -103,17 +124,17 @@ Role:      DSP systems programmer
 ```
 
 Useful as a review checklist once the prompt is written rather than as a
-writing guide.
+writing guide. Run it *after* CRAFT, not instead of it.
 
 ## Comparison
 
-| Framework | Sweet spot                        |
-|-----------|-----------------------------------|
-| CRAFT     | General purpose, good default     |
-| RISEN     | Multi-step, ordered tasks         |
-| CREATE    | Creative / generative output      |
-| CARE      | Data transformation, precise I/O  |
-| CLEAR     | Quality review of existing prompt |
+| Framework | Sweet spot |
+| --- | --- |
+| CRAFT | General purpose, good default |
+| RISEN | Multi-step, ordered tasks |
+| CREATE | Creative / generative output |
+| CARE | Data transformation, precise I/O |
+| CLEAR | Quality review of existing prompt |
 
 ## In practice
 
@@ -125,10 +146,16 @@ Use CARE when you can supply examples — it gives the most deterministic output
 The frameworks are not mutually exclusive either.
 A CRAFT prompt can embed CARE's *Examples* without issue.
 
+There is an obvious parallel with [cool vs useful](https://blog.pwkf.org/2023/06/28/cool-stuff-versus-useful-stuff.html) :
+every new framework looks interesting, but the boring, reliable one does the
+actual job. CRAFT is boring. Use CRAFT.
+
 The real takeaway is : **always include what the output is for and who reads it**.
 That single addition — *Target* in CRAFT, *Audience* in CLEAR — has the
 biggest impact on output quality, and is the most commonly forgotten element.[^2]
 
-[^2]: This article was written with [Claude](https://claude.ai). Asking an AI to explain how to talk to an AI is either the most efficient use of a prompt framework, or a remarkably short loop.
+---
 
 [^1]: The second *E* in CREATE varies by source. Some use *Evaluation*, some use *Extras*. The meaning differs slightly but the intent is the same : a second pass for refinements.
+
+[^2]: This article was written with [Claude](https://claude.ai). Asking an AI to explain how to talk to an AI is either the most efficient use of a prompt framework, or a remarkably short loop.
