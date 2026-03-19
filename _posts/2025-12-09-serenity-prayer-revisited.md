@@ -18,7 +18,16 @@ Courage to change the things I can.
 And wisdom to know the difference.
 ```
 
-You don't need the God part for this to be useful. What matters is the three-way split.
+It mentions God. Not everyone is comfortable with that. Which is a shame,
+because the idea is solid regardless of belief.
+
+## A Secular Version
+
+```
+May I find calm for what I cannot change.
+May I find courage for what I can.
+And may I know the difference.
+```
 
 ## Applied to a Codebase
 
@@ -28,29 +37,13 @@ Every codebase has things you can change and things you cannot.
 the language your team already knows. Pushing against these burns time and goodwill.
 The correct response is to accept the constraint and design around it.
 
-**Can change** — naming, structure, test coverage, your own habits. These are the
-things worth spending energy on. Yet they are often the first to be deprioritized
+**Can change** — naming, structure, test coverage, your own habits. These are
+worth spending energy on. Yet they are often the first to be deprioritized
 because they don't feel urgent.
 
-**The difference** — this is the hard part. A surprising number of arguments in code
-review, in architecture meetings, and in bug post-mortems are really about
-misclassifying something. Someone fighting a constraint that is fixed. Someone
-accepting a constraint that is actually movable.
-
-The [Cool Stuff versus Useful Stuff](https://blog.pwkf.org/2023/06/28/cool-stuff-versus-useful-stuff.html)
-problem is a variant of this. The cool stuff feels changeable because it is new.
-The boring stuff feels fixed because it is old. Neither feeling is reliable.
-
-## A Simple Test
-
-Before spending more than an hour on a problem, ask:
-
-1. Is this actually in my control?
-2. If yes, is it worth the cost?
-3. If no, what is the cheapest design that works *given* this constraint?
-
-That third question is the one most people skip. They either fight the constraint
-or give up entirely. Designing *around* a fixed constraint is a skill, and it is
-underrated.
+**The difference** — this is the hard part. A surprising number of arguments in
+code review and in bug post-mortems are really about misclassifying something.
+Someone fighting a constraint that is fixed. Someone accepting a constraint that
+is actually movable.
 
 The prayer is just a reminder to ask the question before you start.
