@@ -54,7 +54,7 @@ The boring stuff feels fixed because it is old. Neither feeling is reliable.
 Before spending more than an hour on a problem, ask:
 
 1. Is this actually in my control?
-2. If yes, is it worth the cost?
+2. If yes, is it worth the cost to change it?
 3. If no, what is the cheapest design that works *given* this constraint?
 
 That third question is the one most people skip. They either fight the constraint
