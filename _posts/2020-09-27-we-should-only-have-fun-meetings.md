@@ -11,7 +11,7 @@ author: Steve SCHNEPP
 >
 > This is a followup of my [Remote-mostly working is a paradigm shift]({% post_url 2020-09-26-remote-working-is-a-paradigm-shift %}).
 
-# Why I hate work meetings
+## Why I hate work meetings
 
 My #1 advice about distributed teams is actually even the case in collocated teams:
 **Try as hard as possible to avoid meetings, use textual IM instead** as [meetings are where work goes to die](https://blog.codinghorror.com/meetings-where-work-goes-to-die/).
@@ -29,7 +29,7 @@ It’s a very very fair humane reaction, I also fell myself into that trap.
 
 ![Thrown out of the fence for proposing an textual chat](../../../assets/images/out-of-window.jpg)
 
-# Stop Wasting Time
+## Stop Wasting Time
 
 I end up having the following workflow:
 
@@ -64,7 +64,7 @@ In a record-everything scenario, context switch is just a matter of reading back
 
 > 💡 **time is the only really scarce resource in a company** : you can’t buy it back, no matter the price.
 
-## Why you should only have fun ones
+### Why you should only have fun ones
 
 That said, I do agree that traveling is necessary. But we should name the real use case of traveling : having *fun* **together**.
 
@@ -74,7 +74,7 @@ The nicest part of that purpose is :
 * you can also budget it in advance
 * you can mentally map yourself in those fun times, and focus on actual work right now.
 
-# Mindset Changing is Really Difficult
+## Mindset Changing is Really Difficult
 
 The most used reason for meetings is "alignments", but it is very usually wasted as :
 

@@ -17,7 +17,7 @@ issues are already implementing a comment system, so let's reuse that.
 
 <!-- -->
 
-# A Simple Comment Ribbon
+## A Simple Comment Ribbon
 
 My first approach is to simply leverage a ribbon in the top right of every
 page.
@@ -30,7 +30,7 @@ page.
 __Update__: I finally removed the Ribbon in favor of a [simple static page]({% link comments.md %}).
 {: .panel .warning }
 
-## Implementation of the Ribbon
+### Implementation of the Ribbon
 
 It is very simple. It mainly consists of an include file that is injected in the `default.html` layout.
 

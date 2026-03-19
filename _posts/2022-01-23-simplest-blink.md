@@ -14,7 +14,7 @@ electronics, and the latter is used to compare programming languages.
 
 <!-- -->
 
-# Rules of engagement
+## Rules of engagement
 
 The rules are :
 
@@ -23,7 +23,7 @@ The rules are :
 * It has to work on a breadboard.
 * Only very simple to source components are allowed[^1].
 
-# Findings
+## Findings
 
 I remembered that I saw a [circuit out there](https://www.electronics-tutorials.ws/waveforms/555_oscillator.html)
 that reused the OUTPUT pin (pin 3) to charge and discharge the RC timing. The
@@ -32,7 +32,7 @@ duty cycle is therefore always 50%, but that's actually perfect for Blink.
 It has several shortcomings, as the number of components is not lower than the
 regular astable.
 
-# Improvements
+## Improvements
 
 The [TI LMC555 datasheet](http://www.ti.com/lit/ds/symlink/lmc555.pdf) has a
 better version of it as mentioned in an [electronics.stackexchange.com
@@ -45,7 +45,7 @@ It works since the LMC555 is much more closer to have a rail-to-rail OUTPUT
 than the regular bipolar NE555, but as we aren't interested in accuracy, we can
 also omit it with out regular NE555.
 
-# Leveraging the open-collector output
+## Leveraging the open-collector output
 
 As we are not using the DISCHARGE pin anymore for timings, we can use it for
 output. That has an interesting properties : the timings aren't affected by the
@@ -66,7 +66,7 @@ And for real.
 
 Mission accomplished!
 
-# Future Ideas
+## Future Ideas
 
 The open collector output makes me think that it can be multiplexed with other blinks. I might toy with that idea.
 

@@ -10,7 +10,7 @@ author: Steve SCHNEPP
 
 I bought an [ODROID-HC4](https://www.hardkernel.com/shop/odroid-hc4-oled/), but it didn't work with my TV. Let's fix it.
 
-# Context
+## Context
 
 I'm the proud owner of 2 [Dlink
 DNS-320L](https://eu.dlink.com/uk/en/products/dns-320l-sharecenter-2-bay-cloud-storage-enclosure).
@@ -32,7 +32,7 @@ rewamped their offering with the
 [ODROID-HC4](https://www.hardkernel.com/shop/odroid-hc4-oled/). I settled with
 the OLED version, as, for $10 more, why not?
 
-## Blank HDMI on boot
+### Blank HDMI on boot
 
 When I ordered it in February 2021, I unboxed it quickly, and was rather
 disappointed that it did seem to boot, but only figured a blank screen on the TV
@@ -46,7 +46,7 @@ might fail, and I didn't have a screen output at the time I'll need it.
 
 And then real life kicked in, and I didn't have time to look further.
 
-## Investigations
+### Investigations
 
 Lately, I tried to take another try at it.
 
@@ -60,7 +60,7 @@ even the SSH connectivity didn't work anymore.
 I spend some significant amount of troubleshooting. Mostly via trial & error,
 along with some creative shots in the dark.
 
-## Working Screen !
+### Working Screen !
 
 So, the single change that made the screen work is that we need to attach the
 console to `tty1` in addition to the default `ttyS0`.
@@ -87,7 +87,7 @@ HDMI-DVI cable.
 Note that it needs to be `tty1` and not `tty0` as the `tty0` is a special one
 that is the *current* one.
 
-## Fixing the boot failure of Ubuntu
+### Fixing the boot failure of Ubuntu
 
 Now that we can see the error messages from Ubuntu, we can see that it seek to
 mount the rootfs from `mmcblk1p2`. But there's only 1 SD card plugged and
@@ -114,7 +114,7 @@ to
 
 This isn't translated by petitboot, and won't be remapped inside Ubuntu.
 
-## More tweaks
+### More tweaks
 
 There is also a setting that configured the default elevator to `noop`. While
 this is usually a very good idea with an eMMC, it isn't in the case of SD

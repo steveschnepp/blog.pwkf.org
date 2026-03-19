@@ -9,7 +9,7 @@ I introduced my kids to [RoboRally](https://en.wikipedia.org/wiki/RoboRally) som
 It's an old but iconic game involving some programming and lots of fun dealing with bugs.
 We added our own additional rules set, effectively *modding* the game.
 
-# Handicap
+## Handicap
 
 Since my oldest son was often winning, I
 designed an handicap system to help balance the game.
@@ -43,7 +43,7 @@ Each time a player resets, he fully repairs, so he removes his damage points.
 He still gets 2 SPAM added to his discard pile if he does not have the
 *Firewall* upgrade.
 
-# Batteries Recharge
+## Batteries Recharge
 
 Each time a player passes on a waypoint, even when not stopping on it, all the
 empty batteries of the same plate are recharged.

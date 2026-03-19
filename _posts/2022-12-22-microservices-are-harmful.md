@@ -13,7 +13,7 @@ Micro-services are very fashionable nowadays but the real questions are:
 > Again, this article is a little bit on the satire side of things. <br/>
 > Yet, I promise you'll have a different view on your situation at the end of it.
 
-# Micro-services Are Magic. They Do Solve Real Problems
+## Micro-services Are Magic. They Do Solve Real Problems
 
 Micro-services are highly praised nowadays because **they are actually solving
 very real problems**.
@@ -32,7 +32,7 @@ doesn't usually have all those qualities it is a quick sell.
 Note that some monoliths are well designed. And therefore have those qualities.
 But then the question isn't even asked in the first place.
 
-# Magic Has a Price. Micro-services Are Not Cheap
+## Magic Has a Price. Micro-services Are Not Cheap
 
 Micro-services are inherently a distributed architecture.
 
@@ -67,12 +67,12 @@ conference about it, is an actor that offer to manage their burden for you.
 Some burden you wouldn't have otherwise. 😉
 
 
-# Avoiding to Pay the Price
+## Avoiding to Pay the Price
 
 Let's now see each benefits that micro-services have one by one, and see if we
 can solve them without going full micro-services.
 
-## Implementation teams independence
+### Implementation teams independence
 
 
 That's the most well known benefit.
@@ -80,7 +80,7 @@ That's the most well known benefit.
 Everyone has ugly war stories of late synchronizations between teams that derailed
 projects dates, and I'm sure you do either.
 
-### A Typical Story down the rabbit hole
+#### A Typical Story down the rabbit hole
 
 Yet, let's try with the following analogy :
 - The release is a car.
@@ -114,7 +114,7 @@ what customers want.
 
 **That said, it is a local optimum only.**
 
-### Mass transportation to the Rescue!
+#### Mass transportation to the Rescue!
 
 Overcrowded car transit is the *exact problem* that many European cities have.
 Therefore they invested heavily into mass transportation.
@@ -146,7 +146,7 @@ I won't lie. It does take some discipline, but if you organize yourself around
 "modules" that are owned by teams, it is the same as micro-services, just on a
 much more integrated scale.
 
-## Faster Restarts are actually not needed
+### Faster Restarts are actually not needed
 
 A micro-service is smaller, as the "micro" moniker implies. Therefore the
 restart time is much smaller also.  Typical figures are 10s versus 2 min.
@@ -171,7 +171,7 @@ already a huge stretch for many.
 Specially if it has to be done with a world-global scope that takes a while to
 execute anyway.
 
-## Robustness
+### Robustness
 
 It is true that micro-services are usually more robust than monoliths. But
 funnily it is not because a monolith isn't. It is more because that distributed
@@ -193,7 +193,7 @@ Do you remember the glory days of PHP ? Vast arrays of Apache servers with
 robust if not replaced yet. Their demise isn't a lack of robustness, it is more due to
 the language itself.
 
-## Performance Scaling
+### Performance Scaling
 
 Micro-services scale better than monoliths. Which is also true up to a certain point.
 
@@ -214,7 +214,7 @@ Now that you scale on the data level, each micro-service looks like a monolith.
 Which means that nothing prevents you from scaling a monolith exactly the same
 way you'd scale a micro-service.
 
-## Starting is more rewarding that finishing
+### Starting is more rewarding that finishing
 
 Now, a more insidious reason for micro-services is not well known. Yet I think it is the deciding reason for the whole industry move.
 
@@ -239,7 +239,7 @@ Now, the sad part is that :
 * The leader that initiated the project is now promoted elsewhere, as he made
   sure to exploit the nice story start.
 
-## No-one wants to be seen in a sinking ship
+### No-one wants to be seen in a sinking ship
 
 The biggest benefit of micro-services is again, not technical.
 
@@ -248,7 +248,7 @@ left on the bench while everyone has left.
 
 Unless monoliths are made cool again... 🤔🤣
 
-# What did we learn ?
+## What did we learn ?
 
 * Micro-services are solving your problems
 * So do monoliths

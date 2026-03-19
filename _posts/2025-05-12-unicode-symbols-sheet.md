@@ -11,7 +11,7 @@ Here is a simple page where you can simply copy & paste them from.
 
 This page is mostly aimed at my own usage. So I will add more when my need arise.
 
-# Emoji
+## Emoji
 
 | Emoji |  Short Code |
 |:-----:|:--------|
@@ -21,7 +21,7 @@ This page is mostly aimed at my own usage. So I will add more when my need arise
 | 🤦    |  `:facepalm:` | 
 | ™️    |  `:tm:` |
 
-# Various Symbols
+## Various Symbols
 
 | Symbol |
 |:-----:|

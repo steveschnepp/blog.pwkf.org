@@ -15,7 +15,7 @@ I'm always frustrated by heavy processes. They usually feel like unneeded
 overhead to get the job done. Let's explore that overhead world, as some is
 actually desirable.
 
-# Nudge theory
+## Nudge theory
 
 The [Nudge theory](https://en.wikipedia.org/wiki/Nudge_theory) is a simple
 concept that leverages the unconscious bias in each individual.
@@ -30,7 +30,7 @@ Each individual will usually favor the least painful way to do something.
 Therefore, if a pattern needs to be avoided unless really necessary, it makes
 sense to make it painful.
 
-# Water flows down
+## Water flows down
 
 This is reflected in the saying:
 
@@ -45,7 +45,7 @@ And, no, automating the pumping act is **not a good idea**. Automation here is
 One should redesign the thing to fully avoid the pain, not automate it away. As
 automation is even more additional maintenance effort that piles up over time.
 
-# Overhead as a Nudge
+## Overhead as a Nudge
 
 So, the obvious conclusion to it is that:
 

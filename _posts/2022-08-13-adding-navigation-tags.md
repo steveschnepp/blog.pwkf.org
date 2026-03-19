@@ -7,7 +7,7 @@ author: Steve SCHNEPP
 
 Navigation inside a blog site is essential to discover related content.
 
-# Existing inspiration
+## Existing inspiration
 
 It consists mostly of 3 things :
 
@@ -15,7 +15,7 @@ It consists mostly of 3 things :
 * previous/next navigation
 * related posts navigation
 
-## Tag navigation
+### Tag navigation
 
 I found some nice [tag handling snippet for
 jekyll](https://longqian.me/2017/02/09/github-jekyll-tag/) but it was a little
@@ -34,7 +34,7 @@ The code is comprised of
 * the [tags-cloud.md](https://github.com/steveschnepp/blog.pwkf.org/blob/master/_includes/tags-cloud.md?plain=1) include file
 * an `{{ "{%" }}  assign ctags = ... %}` [Liquid](https://jekyllrb.com/docs/liquid/) directive to setup the correct tag list
 
-## Previous/Next navigation
+### Previous/Next navigation
 
 Same as the tag navigation, I found a [prev/next handling snippet](https://blog.webjeda.com/related-post-jekyll/) and I adapted it, with some CSS tricks.
 
@@ -43,7 +43,7 @@ comprised of
 * the [prev-next.html](https://github.com/steveschnepp/blog.pwkf.org/blob/master/_includes/prev-next.html) include file
 * Adding the `{{ "{%" }} include prev-next.html -%}` into `_layout/post.html`
 
-## Related Post navigation
+### Related Post navigation
 
 For that, I got some inspiration from the same site as prev/next. They had
 an article that [found the same deficiencies as the built-in mechanism in

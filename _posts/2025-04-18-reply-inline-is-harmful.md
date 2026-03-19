@@ -13,7 +13,7 @@ Do you feel drowning in useless emails that are difficult to follow ? Search no
 more, simply blame the "*my replies are below*". Let's see how you can improve
 the situation.
 
-# Why inline is harmful
+## Why inline is harmful
 
 In the old days, it was very impolite to top-post when replying. The better way
 was to reply inline the conversation, quoting what you replied to. With the
@@ -37,7 +37,7 @@ Starting to **ignore emails** begins the **death spiral** of organisational
 communications.
 {: .panel .warning}
 
-# Why hard to read ?
+## Why hard to read ?
 
 It looks innocuous at first, but those inline replies are typically done on
 lenghty emails with focused replies. Therefore in order to know the answer, one
@@ -214,7 +214,7 @@ replies of the same person.
 And if you add blind personel to the mix, which need to resort to screen
 readers, you'll just made their life totally impossible.
 
-# Top quoting to the rescue
+## Top quoting to the rescue
 
 I agree that one advantage when inline replying is that the whole email is
 preserved. This enables late participants to understand the context much more
@@ -340,7 +340,7 @@ select the quote is very useful in avoiding misunderstandings. As you'll need
 to read carefully the message that was sent to you. **Which is very valuable to
 the writers.**
 
-# Call to Action
+## Call to Action
 
 To improve your emails, **start to top-quote**. It will take a little more of
 your time, but it is totally worth it. You'll make your readers happier and

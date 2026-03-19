@@ -26,7 +26,7 @@ I always suggest to keep a “mission log” along
 the journey. It will prove itself quite valuable to the rest of the team.
 {: .panel .tip}
 
-# "Mission Logs" as "Captain's Log"
+## "Mission Logs" as "Captain's Log"
 
 Ancient tribes traditions of “*oral transmission around a campfire*" are a quite
 awesome and friendly manner of information dissemination, but those **cannot
@@ -64,7 +64,7 @@ I actually do write mission logs in a pure selfish mood. To allow myself to
 forget. Then I can just find it again. The fact that it might serve others is
 just bonus. 
 
-# Why Tracer Bullets are Important for Teamwork
+## Why Tracer Bullets are Important for Teamwork
 
 Tracer bullets do actually serve 3 purposes.  
 
@@ -76,7 +76,7 @@ They have a drawback:
 
 - They also show the origin of the bullets.
 
-## Show me where my bullet do actually land
+### Show me where my bullet do actually land
 
 This is very important, as the ballistics of bullets in the midst of a battle
 can be hard to predict. It is therefore much more effective to have it go the
@@ -85,21 +85,21 @@ real way, and see the outcome.
 And in a debugging analogy, it shows where you currently are what your
 currently tested, and what assumptions you need to change to move forward.
 
-## Show me where others bullets do actually land.
+### Show me where others bullets do actually land.
 
 This enables a very nice teamwork, as a team member immediately knows where you
 are. And can then decide on helping you out if your struggling and they have
 the knowledge avoid retrying the exact things you failed, but aim for a somehow
 different path.
 
-## Serve as a deterrent for opponents
+### Serve as a deterrent for opponents
 
 This is sometimes the most overlooked benefit : if you show you are doing it,
 you will immediately silence most of the "this can't be done" sayings. This
 will then save you a lot of time arguing on the why it should be tried even
 facing low odds.
 
-## They also show the origin of the bullets
+### They also show the origin of the bullets
 
 That's the most *feared* consequence.
 

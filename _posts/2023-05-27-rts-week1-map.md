@@ -7,7 +7,7 @@ author: Steve SCHNEPP
 
 One week has passed. As usually wih new projects lots has happened.
 
-# Initial steps
+## Initial steps
 
 Beginnings are always similar, as it is mostly a copy/paste of some tutorial
 code.
@@ -24,7 +24,7 @@ The various links I used:
 If you are wondering about those links being old, it is because they are.
 Remember that I want to only use OpenGL 1.2.
 
-# Findings
+## Findings
 
 Camera positioning is hard to understand.
 {: .panel .warning}
@@ -68,7 +68,7 @@ later.
 Simple color/lighting effects are a rather cheap but very effective way to add eye candy.
 {: .panel .tip}
 
-## Simple can be effective
+### Simple can be effective
 
 As my naive implementation was performing quite well on even an old laptop
 with a i945 graphics chip, I was wondering what was happening behind the
@@ -87,7 +87,7 @@ but as the whole purpose of the project is to learn it isn't that bad.
 Moreover, since I'm writing about it, it isn't lost information at all.
 {: .panel .info}
 
-# Overall Architecture
+## Overall Architecture
 
 A game typically had a very common architecture, and here we won't be novel.
 
@@ -115,7 +115,7 @@ to GC and typical for FPS.
 
 So nothing really novel here.
 
-## Objects
+### Objects
 
 As stated earlier, each object is represented by a file.
 
@@ -128,7 +128,7 @@ already.
 This enables to have only 1 code path that does the rendering, just calling
 it with all the objects.
 
-## Maps
+### Maps
 
 Even for drawing the map, I'm using the object way. The map data is read
 from a heightmap file that is also textual. Then while reading it I convert
@@ -141,7 +141,7 @@ way of creating heightmap. I'm simply using the RGB24 value of each pixel as
 an integer, it does work nicely when using grayscale while permitting higher
 resolution if needed.
 
-## Map Tesselation
+### Map Tesselation
 
 From a heightmap, each map element is a quad that has its vertex on a X/Y grid, and the Z is done by the height of the pixel from the heightmap image.
 
@@ -157,7 +157,7 @@ But i got hinted that i should simply split the quad in 4 triangles, having each
 
 While it doubles the amount of triangles, it is much simpler to code and looks much better also. So a nice hint indeed.
 
-# Future
+## Future
 
 Next week, the plan is to have several units roaming on the map.
 
