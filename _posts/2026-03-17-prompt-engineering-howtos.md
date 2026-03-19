@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Prompt Engineering Frameworks - A Practical Overview"
-tags: [ai, best-practices, development, learning]
+tags: [ai-authored, best-practices, development, learning]
 ---
 
 There is a recurrent question when starting to use LLMs seriously :
