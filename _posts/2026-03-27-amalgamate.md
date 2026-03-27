@@ -1,25 +1,91 @@
 ---
 layout: post
-title: Amalgamate C Sources for Online IDE
+title: Amalgamate C Sources for Online IDE Compilers
 tags: development c tooling
 author: Steve SCHNEPP
 ---
 
-I use [Compiler Explorer](https://godbolt.org/) and
-[PGE Tinker](https://pgetinker.com/) regularly.
-Yet both take only a single C or C++ file as input.
-Most of the projects do not. This tool closes that gap.
+I use [Compiler Explorer](https://godbolt.org/) and [PGE Tinker](https://pgetinker.com/) regularly. Yet both take only a single C or C++ file as input. Most of the projects do not. This tool closes that gap.
 
 ## What it does
 
-It walks a C source tree and inlines all 
-`#include "local.h"` directives recursively.
-System includes (`<stdio.h>`) pass through untouched.
-The result is one `.c` file you can paste anywhere.
+It walks a C source tree and inlines all `#include "local.h"` directives recursively. System includes (`<stdio.h>`) pass through untouched. The result is one `.c` file you can paste anywhere.
 
 ```sh
 ./amalgamate main.c utils.c > squashed.c
 ```
+
+Pass every `.c` file that contributes symbols. Order matters: the compiler sees the amalgamated file top to bottom, so definitions must precede use — same as linking, but stricter.
+
+## What works
+
+The typical multi-file C project amalgamates cleanly. Given:
+
+```
+main.c        — includes utils.h, math.h
+utils.c       — defines add(), and sub() not declared in utils.h
+math.c        — defines mul(), and square() not declared in math.h
+utils.h       — declares add()
+math.h        — declares mul()
+types.h       — shared typedefs
+```
+
+Running:
+
+```sh
+./amalgamate main.c utils.c math.c > squashed.c
+```
+
+produces a single file that compiles and runs. Header guards (`#ifndef`) survive intact — `types.h` included by both `utils.h` and `math.h` is inlined twice, but the preprocessor deduplicates it correctly.
+
+Symbols not declared in any header — `sub()`, `square()` above — are present in the output because their `.c` files are passed explicitly. The caller must `extern`-declare them. That is the same constraint as with a normal linker.
+
+## What breaks
+
+**Colliding `static` names across translation units.**
+
+`static` limits linkage, not scope. In separate TUs the compiler never sees both definitions. In a single TU it does. C99 forbids two definitions of the same name in the same scope, even if both are `static`.
+
+This compiles fine as separate TUs:
+
+```c
+/* utils.c */
+static i32 helper(void) { return 1; }
+
+/* math.c */
+static double helper(void) { return 3.14; }  /* same name, different type */
+```
+
+Amalgamated, it fails:
+
+```
+error: conflicting types for 'helper'; have 'double(void)'
+note: previous definition of 'helper' with type 'i32(void)'
+```
+
+The fix is manual: adopt a prefix convention before amalgamating.
+
+```c
+/* utils.c */
+static i32 utils__helper(void) { return 1; }
+
+/* math.c */
+static double math__helper(void) { return 3.14; }
+```
+
+The tool cannot rename symbols. That requires a parser. This tool is not a parser.
+{: .panel .warning }
+
+**Include cycles** are detected and fatal:
+
+```
+include cycle detected: /src/cycle_a.h
+  /src/main.c
+  /src/cycle_a.h
+  /src/cycle_b.h
+```
+
+That is always a bug in the source. Fix the source.
 
 ## The code
 
@@ -198,11 +264,4 @@ Build on Linux or MSYS2 UCRT64:
 gcc -std=c99 -Wall -Wextra -o amalgamate amalgamate.c
 ```
 
-## What it deliberately doesn't do
-
-It doesn't deduplicate headers. If two translation units both include `types.h`, you get two copies in the output. The compiler will complain about redefinition. Good — that surfaces a structural problem instead of hiding it.
-
-Keep it small.
-{: .panel .tip 9}
-
-[^1]: The C code was written with Claude.
+[^1]: This article was written with Claude.
