@@ -77,10 +77,10 @@ The fix is manual: adopt a prefix convention before amalgamating.
 
 ```c
 /* utils.c */
-static i32 utils__helper(void) { return 1; }
+static i32 utils_helper(void) { return 1; }
 
 /* math.c */
-static double math__helper(void) { return 3.14; }
+static double math_helper(void) { return 3.14; }
 ```
 
 The tool cannot rename symbols. That requires a parser. This tool is not a parser.
