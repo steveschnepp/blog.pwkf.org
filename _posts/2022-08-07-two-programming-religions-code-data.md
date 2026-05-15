@@ -70,7 +70,7 @@ financial or auditable flows.
 ## What is better ? Is data king, or is code king ?
 
 The answer depends entirely on how long you plan to keep the system alive.
-When code is king, you move fast and reshape data at will. When data is king,
+When _code is king_, you move fast and reshape data at will. When _data is king_,
 every line of code is disposable but the records are sacred.
 
 That last sentence makes it very easy to choose. It simply **boils down to
@@ -79,6 +79,6 @@ to maintain it, the more you need to take care of the data.
 
 Which is the current plague of our current "go fast & break things" motto.
 
-We do not plan fo the long term anymore. Which is fine, as it enables agility.
+We sadly do not plan for the long term anymore. Which is fine, as it enables agility.
 Just always remind yourself, that after a while, you might need to convert
 yourself to another religion. And *that* doesn't come for free.
