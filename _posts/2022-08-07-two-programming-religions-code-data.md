@@ -67,7 +67,11 @@ rewritten. Data on the other hand, isn't that easily converted.
 This religion is usually encountered when one cannot loose data, typically
 financial or auditable flows.
 
-## What is better ?
+## What is better ? Is data king, or is code king ?
+
+The answer depends entirely on how long you plan to keep the system alive.
+When code is king, you move fast and reshape data at will. When data is king,
+every line of code is disposable but the records are sacred.
 
 That last sentence makes it very easy to choose. It simply **boils down to
 the expected longevity of the code** you are writing. The longer you'll have 
