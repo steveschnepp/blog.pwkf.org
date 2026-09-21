@@ -5,3 +5,4 @@
 /.docker.started
 /vendor
 .DS_Store
+AGENTS.md
