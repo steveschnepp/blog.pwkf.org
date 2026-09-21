@@ -10,8 +10,11 @@ understand why a particular loop had such a strange boundary condition.  The
 issue was closed.  The repo had moved.  The original author had left.  The
 context was gone.
 
-So here is the practice I have settled on: when an issue's resolution touches
-the code, the explanation goes *in the code*, not in the issue thread.
+So here is the practice I have settled on: 
+
+When an issue's resolution touches the code, the explanation goes *in the code*, 
+not in the issue thread.
+{: .panel .tip }
 
 ## GitHub Issues Disappear
 
