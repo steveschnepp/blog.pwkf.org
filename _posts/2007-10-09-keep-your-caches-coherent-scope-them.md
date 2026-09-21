@@ -2,7 +2,7 @@
 layout: post
 title: "Keep your caches coherent : Scope them !"
 date: 2007-10-09 04:42:24 +0100
-tags: []
+tags: java best-practices
 permalink: /post/2007/10/11/Keep-your-caches-coherent-%3A-Scope-them
 author: Steve SCHNEPP
 excerpt_separator: </p>

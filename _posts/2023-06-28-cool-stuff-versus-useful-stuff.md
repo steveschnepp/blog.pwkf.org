@@ -84,7 +84,7 @@ up to the caller to use the correct one based on his use case.
 Suppose we have an API to add something to an anonymous cart which
 synchronously returns a JSON with the cart state.
 
-```
+```bash
 $ curl -sk -0 -X POST -d ean=9780201633610 https://eshop.com/rest/v1/carts/current/entries
 < HTTP/1.1 200 OK
 {
@@ -102,7 +102,7 @@ Also its return would be completely different. Not business oriented,
 but generic & technical.
 
 
-```
+```bash
 $ curl -sk -0 -X POST -d ean=9780201633610 https://eshop.com/async/rest/v1/carts/current/entries
 < HTTP/1.1 202 Accepted
 < Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -115,7 +115,7 @@ $ curl -sk -0 -X POST -d ean=9780201633610 https://eshop.com/async/rest/v1/carts
 Then the caller can poll on the async API to have its status.
 
 
-```
+```bash
 $ curl -sk -0 -X GET https://eshop.com/async?id=XOIKXBQC
 < HTTP/1.1 202 Accepted
 < Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -128,7 +128,7 @@ $ curl -sk -0 -X GET https://eshop.com/async?id=XOIKXBQC
 When the processing is finished, it does gives the return value.
 
 
-```
+```bash
 $ curl -sk -0 -X GET https://eshop.com/async?id=XOIKXBQC
 < HTTP/1.1 200 OK
 {
@@ -158,7 +158,7 @@ transparently for all the API. Evermore, you can even add a "callback" feature
 to remove the polling need, for improved efficiency. Simply add a CallBack url
 in the HTTP request headers:
 
-```
+```bash
 $ curl -sk -0 -X POST -d ean=9780201633610 https://eshop.com/async/rest/v1/carts/current/entries -H 'Callback: https://my.com/cart/f4cdae8a'
 < HTTP/1.1 202 Accepted
 < Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -172,7 +172,7 @@ $ curl -sk -0 -X POST -d ean=9780201633610 https://eshop.com/async/rest/v1/carts
 Then the polling will still work, but the server will also directly POST the
 result JSON to the callback url upon processing completion.
 
-```
+```bash
 POST https://my.com/cart/f4cdae8a
 {
   "id": "f4cdae8a-3a76-4175-b221-015ee8f21706",
@@ -295,7 +295,7 @@ selecting the right middle layer and leveraging that.
 
 An example of HTTP call would be in the same cart API:
 
-```
+```bash
 POST -d ean=9780201633610 https://eshop.com/rest/v1/carts/current/entries
 [
     {

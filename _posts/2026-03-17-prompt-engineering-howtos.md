@@ -30,7 +30,7 @@ the rule itself is simple, but its value comes from *discipline* — not from th
 
 The most widely used one. Easy to remember, covers most cases.
 
-```
+```text
 Context: Building a 2D platformer in C99
 Role:    Senior game engine developer
 Action:  Write an AABB collision detection system
@@ -46,7 +46,7 @@ A good default. Start here.
 
 Better suited for multi-step tasks where the order matters.
 
-```
+```text
 Role:         Physics programmer
 Instructions: Implement sweep-and-prune broadphase
 Steps:        1) Define axis-sorted list  2) Find overlapping pairs  3) Output pair buffer
@@ -69,7 +69,7 @@ More creative and generative in orientation.
 The double *Extras* is intentional :
 first pass for constraints, second pass for polish.
 
-```
+```text
 Character:   Senior graphics programmer
 Request:     Implement a sprite batch renderer
 Extras:      Must sustain 10k sprites @ 60fps
@@ -87,7 +87,7 @@ The distinction between *Extras* and *Adjustments* is subtle but useful :
 
 Best when you have concrete I/O examples. Closest to a proper specification.
 
-```
+```text
 Context:  Tile-based binary map loader
 Ask:      Parse format into a struct
 Rules:    No malloc, fixed buffers, C99 only
@@ -111,7 +111,7 @@ works in code : concrete examples remove ambiguity faster than any amount of pro
 A meta-framework of sorts. Less about structure, more about quality attributes
 of each component.
 
-```
+```text
 Concise:   "Write a ring buffer"
 Logical:   "for audio streaming, SPSC"
 Explicit:  "thread-safe via atomics, no locks"

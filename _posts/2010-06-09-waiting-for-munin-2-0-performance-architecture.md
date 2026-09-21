@@ -1,0 +1,43 @@
+---
+layout: post
+title: "Waiting for Munin 2.0 - Performance - Architecture"
+date: 2010-06-09 20:26:24 +0100
+tags: munin munin20 performance sysadmin
+permalink: /post/2010/06/Waiting-for-Munin-2%2e0-Performance-Introduction-Architecture
+author: Steve SCHNEPP
+excerpt_separator: </p>
+---
+
+Munin has a very simple architecture on the master : `munin-cron` is launched via cron every 5 minutes. Its only job is to launch in order `munin-update`, `munin-graph`, `munin-html` & `munin-limits`.
+
+## The various processes
+
+### munin-update
+
+This process retrieves the values from the various nodes and to update the rrd files. This one should never take more than 5 minutes to run, otherwise there will be gaps since the next update will not be launched (lockfile-protected runs).
+
+This process stresses the I/O on the master, and depends on the plugins execution time on the various nodes. On 1.4 the retrieval is multi-threaded[^1], so an slow node doesn't impact too much the whole process.
+
+**2.0 proposes asynchronous updates and vectorized updates.**
+
+### munin-graph
+
+This process generates all the image files from the rrd files.
+
+It is usually a process that is quite CPU-bound, it generates also a fair load of I/O. Since 1.4 there might also be a parallel graphing generation in order to take advantage of multiple CPU / multiple I/O paths.
+
+A simple optimization is to generate only needed graphs instead of all of them each time. This leads to CGI-generation of graphs. 1.2 & 1.4 took a first step in this direction, but it's quite a hack since it's only a very basic script that calls `munin-update` with the correct parameters.
+
+A FastCGI port of the wrapper (`munin-cgi-graph`) removes the overhead of starting the wrapper for each call, but in 1.4 the code is quite experimental and has some serious bugs that would need extensive patching to be fixed.
+
+**2.0 completes the integration of CGI graphing with removing the overhead of calling `munin-graph` and does this extensive patching for bugs fixing**
+
+### munin-html
+
+This process generates all the html files from the rrd files. This one is quite fast for now.
+
+### munin-limits
+
+This process checks the limits to see if there is a warning/alert to send via mail or nagios. This one is also quite fast for now.
+
+[^1]: more multi-process actually

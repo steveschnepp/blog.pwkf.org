@@ -13,7 +13,7 @@ let's emulate a RiscV MCU in serverless style.
 
 Serverless means HTTP REST usually. Let's have a very simple API.
 
-```
+```text
 PUT /mcu
 > ...  ROM binary ...
 
@@ -45,7 +45,7 @@ Actually `lighttpd` and `/bin/sh`. Those setup the ROM, RAM and IO. Then they de
 
 Launching is very easy.
 
-```
+```bash
 rv32im /rom.file /ram.file /io/in.file /io/out.file
 ```
 
