@@ -99,14 +99,24 @@ Issues capture the *debate*.
 This is context for the *decision*, not the *decision itself*.
 The decision lives in code.
 
-The worst outcome is when the explanation lives only in a call or a chat thread.
-Only the people who attended are aware, the same way
-[an inline email reply]({% post_url 2025-04-18-reply-inline-is-harmful %})
+## The Answer Goes in the Code
+
+When someone asks why a line is there — in a GitHub issue, in a PR review, in a call, anywhere —
+do not reply in that thread.
+{: .box }
+
+The thread is ephemeral. The code is permanent.
+
+If a PR review asks "why -1 here?", the answer is a code comment, not a PR comment.
+If a GitHub issue asks "what is this loop for?", the answer is a code comment, not an issue reply.
+If a standup asks "why do we cap at length-1?", you walk to the laptop and add a code comment.
+
+The thread serves the two people in the conversation.
+A code comment serves everyone who reads the code after.
+The same way [an inline email reply]({% post_url 2025-04-18-reply-inline-is-harmful %})
  only serves the two people already in the conversation.
 
-Everyone else reads the code and guesses, which is the worst that can happen.
-
-Therefore when someone does ask why a line is there, really thank them.
+When someone does ask why a line is there, thank them.
 If one person asks, a dozen others were wondering but too shy to ask.
 That question deserves an answer everyone can see.
 So write the answer where everyone looks: in the code.
