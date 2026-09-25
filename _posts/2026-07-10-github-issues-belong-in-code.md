@@ -69,8 +69,8 @@ Here is the list of the most durable medium to the least durable one.
    platform shifts.
 2. **Code comments** — moves with the code, visible on every read.
 3. **Git commit messages** — lost in force pushes, shallow clones, zip exports, history-less
-   migrations. Still, [git makes a decent safety net]({% post_url
-2013-04-04-do-not-fear-git-rebase-make-snapshots %}) when you keep the history.
+   migrations. Still, [git makes a decent safety net]({% post_url 2013-04-04-do-not-fear-git-rebase-make-snapshots %})
+   when you keep the history.
 4. **External references** — GitHub issues, JIRA, wikis. Lost when platforms
    change, accounts close, tools migrate.
 
@@ -82,9 +82,20 @@ Even code comments will be removed eventually by some "comments are evil" zealot
 - The code is what runs.
 - The comment explains why.
 
-Not in a deleted GitHub issue. Not in an archived JIRA ticket. Not in a deprecated tool. Not in git history lost during migration, refactoring, or squashing.
+Not in a deleted GitHub issue. Not in an archived JIRA ticket. Not in a
+deprecated tool. Not in git history lost during migration, refactoring, or
+squashing.
 
-The issue is *discussion*; the code comment is the *decision* record and its *explanation* for future maintaners..
+There is a new kind of reader that makes this even more urgent. AI coding agents.
+{: .panel .warning }
+
+Those read codebases to understand context and make changes. They almost never
+look at external tools, be it a wiki or JIRA tickets. If you're lucky they will
+have a look a the git commits history, but most probably they will very quickly read
+the code, and assume. Period.
+
+The issue is *discussion*; the code comment is the *decision* record and its
+*explanation* for future maintaners..
 {: .panel .tip }
 
 ## What Belongs in the Issue, Then?
