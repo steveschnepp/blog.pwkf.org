@@ -2,7 +2,9 @@
 layout: post
 title: Mission Logs are our Tracer Bullets - Always Use Them
 tags: best-practices development
+author: Steve SCHNEPP
 ---
+
 
 Exploratory work is often needed when trying a novel idea. As a good idea at
 first might end up highly impractical in reality. Which is why when doing a
